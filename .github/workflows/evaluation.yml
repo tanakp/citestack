@@ -1,0 +1,26 @@
+name: Neural retrieval evaluation
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      HF_HOME: .cache/huggingface
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff # v6
+        with:
+          version: "0.12.3"
+          enable-cache: true
+      - run: uv sync --frozen --python 3.12
+      - run: uv run citestack fetch
+      - run: uv run citestack ingest
+      - run: uv run citestack eval --output data/evaluation.json --min-hit-rate 0.8
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: retrieval-evaluation
+          path: data/evaluation.json

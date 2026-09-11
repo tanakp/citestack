@@ -1,0 +1,20 @@
+{"question":"What is the smallest deployable unit that Kubernetes manages?","relevant_path":"/content/en/docs/concepts/workloads/pods/_index.md"}
+{"question":"How do I roll back a Deployment to an earlier revision?","relevant_path":"/content/en/docs/concepts/workloads/controllers/deployment.md"}
+{"question":"Are Kubernetes Secrets encrypted in etcd by default?","relevant_path":"/content/en/docs/concepts/configuration/secret.md"}
+{"question":"What is a ConfigMap and what kind of data should it store?","relevant_path":"/content/en/docs/concepts/configuration/configmap.md"}
+{"question":"How does a StatefulSet give Pods stable identities?","relevant_path":"/content/en/docs/concepts/workloads/controllers/statefulset.md"}
+{"question":"How can I run a copy of a Pod on every node?","relevant_path":"/content/en/docs/concepts/workloads/controllers/daemonset.md"}
+{"question":"How do I schedule a Job to run repeatedly at specified times?","relevant_path":"/content/en/docs/concepts/workloads/controllers/cron-jobs.md"}
+{"question":"How does a Kubernetes Job track successful completion of Pods?","relevant_path":"/content/en/docs/concepts/workloads/controllers/job.md"}
+{"question":"What is the difference between ClusterIP and NodePort Services?","relevant_path":"/content/en/docs/concepts/services-networking/service.md"}
+{"question":"How does an Ingress route HTTP traffic to Services?","relevant_path":"/content/en/docs/concepts/services-networking/ingress.md"}
+{"question":"How do NetworkPolicies control incoming and outgoing Pod traffic?","relevant_path":"/content/en/docs/concepts/services-networking/network-policies.md"}
+{"question":"How does a PersistentVolumeClaim request storage?","relevant_path":"/content/en/docs/concepts/storage/persistent-volumes.md"}
+{"question":"How do StorageClasses support dynamic volume provisioning?","relevant_path":"/content/en/docs/concepts/storage/storage-classes.md"}
+{"question":"What is the difference between a Role and a ClusterRole?","relevant_path":"/content/en/docs/reference/access-authn-authz/rbac.md"}
+{"question":"How can a HorizontalPodAutoscaler scale replicas based on CPU utilization?","relevant_path":"/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md"}
+{"question":"What is the difference between readiness probes and liveness probes?","relevant_path":"/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md"}
+{"question":"How do CPU requests and CPU limits affect container scheduling and execution?","relevant_path":"/content/en/docs/concepts/configuration/manage-resources-containers.md"}
+{"question":"How do taints and tolerations affect which Pods can run on a node?","relevant_path":"/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md"}
+{"question":"How do namespaces divide cluster resources?","relevant_path":"/content/en/docs/concepts/overview/working-with-objects/namespaces.md"}
+{"question":"How can labels and selectors identify groups of Kubernetes objects?","relevant_path":"/content/en/docs/concepts/overview/working-with-objects/labels.md"}
