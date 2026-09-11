@@ -188,3 +188,33 @@ def test_unexpected_programming_errors_are_not_silently_swallowed():
 def test_invalid_engine_configuration_rejected(kwargs):
     with pytest.raises(ValueError):
         StructuredOutputEngine(lambda _: VALID, **kwargs)
+
+
+def test_total_budget_prevents_retry_after_expensive_attempt():
+    now = [0.0]
+    calls = []
+
+    def provider(request):
+        calls.append(request)
+        now[0] += 0.9
+        return "malformed"
+
+    result = StructuredOutputEngine(provider, budget_seconds=1, clock=lambda: now[0]).run(
+        Item, "input"
+    )
+    assert result.status == "failed" and len(calls) == 1
+    assert calls[0].timeout_seconds == 1
+    assert result.errors[-1].code == "generation_deadline"
+
+
+def test_late_provider_success_cannot_bypass_deadline():
+    now = [0.0]
+
+    def provider(request):
+        now[0] = 2
+        return VALID
+
+    result = StructuredOutputEngine(provider, budget_seconds=1, clock=lambda: now[0]).run(
+        Item, "input"
+    )
+    assert result.status == "failed" and result.errors[-1].code == "generation_deadline"

@@ -46,7 +46,14 @@ def main():
         import uvicorn
 
         factory = "create_structured_app" if args.structured_only else "create_app"
-        uvicorn.run(f"citestack.api:{factory}", factory=True, host=args.host, port=args.port)
+        uvicorn.run(
+            f"citestack.api:{factory}",
+            factory=True,
+            host=args.host,
+            port=args.port,
+            access_log=False,
+            timeout_graceful_shutdown=settings.shutdown_timeout,
+        )
         return
     if args.command == "inspect":
         import sqlite3

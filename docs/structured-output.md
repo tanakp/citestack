@@ -41,7 +41,7 @@ else:
 
 Providers are callables accepting a `GenerationRequest` and returning the model's raw
 string. The request contains the prompt, system instruction, JSON schema, and attempt
-number. Implement another adapter without changing parsing, validation, or fallback
+number and remaining `timeout_seconds` budget. Implement another adapter without changing parsing, validation, or fallback
 logic. The supplied adapter uses local Ollama; no hosted API key is required.
 
 `engine.run(..., validate=callback)` adds business validation. A callback receives
@@ -74,10 +74,14 @@ arbitrary Python or user-defined JSON schemas.
 
 The default is two total attempts, configurable with `CITESTACK_STRUCTURED_MAX_ATTEMPTS`
 (1–5). Retries wait 0.25 seconds, doubling up to a five-second cap. Provider calls use
-`CITESTACK_GENERATION_TIMEOUT` (90 seconds by default). HTTPX timeouts apply to network
-operations, not a guaranteed end-to-end deadline; multiple attempts can extend a
-request. Raw model text is limited to 32,000 characters before parsing. This is not
-a cap on the complete HTTP response download; use transport/gateway limits for that.
+`CITESTACK_GENERATION_TIMEOUT` (90 seconds by default) as a total transport deadline.
+`CITESTACK_GENERATION_BUDGET` (90 seconds) covers all attempts and backoff, further
+bounded by the HTTP request deadline. A retry is skipped if its backoff would exhaust
+the remaining budget. Custom providers must honor `GenerationRequest.timeout_seconds`;
+the synchronous engine can reject late results but cannot forcibly stop arbitrary code.
+Raw model text is limited to 32,000 characters before parsing. The Ollama transport
+also caps the entire response at `CITESTACK_PROVIDER_MAX_BYTES` (262,144 bytes), rejects
+compressed envelopes, and requires a completed generation rather than truncated output.
 
 Results report `status`, typed `data`, provider-call `attempts`, safe `errors`,
 `schema_name`, and `elapsed_ms`. No raw failed output is returned. Repair feedback
@@ -116,8 +120,8 @@ curl http://127.0.0.1:8000/v1/structured/ticket \
 
 The normal RAG server also exposes this endpoint. Both modes share API-key
 authentication and inference concurrency limits. HTTP 200 means an extraction result
-was delivered; inspect `status` to distinguish success and fallback. Health/readiness
-in structured-only mode means the application is ready, not that Ollama is reachable.
+was delivered; inspect `status` to distinguish success and fallback. Liveness checks the API process. Readiness in structured-only mode also verifies that
+Ollama lists the configured model; missing or unreachable models return 503.
 RAG endpoints return 503 when that mode disables the retrieval service.
 
 ## Verified example and regression checks

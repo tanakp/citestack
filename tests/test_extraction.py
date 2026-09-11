@@ -57,6 +57,11 @@ def test_structured_only_api_has_auth_validation_and_no_rag_startup(settings, mo
         raise AssertionError("Extraction must not load neural retrieval models")
 
     monkeypatch.setattr("citestack.api.NeuralModels", fail_if_loaded)
+
+    async def ready(self):
+        return True
+
+    monkeypatch.setattr("citestack.api.OllamaProvider.ready", ready)
     settings.api_key = "test-secret"
     extractor = TicketExtractor(settings, StructuredOutputEngine(lambda _: json.dumps(TICKET)))
     with TestClient(create_app(settings, extractor=extractor, structured_only=True)) as client:

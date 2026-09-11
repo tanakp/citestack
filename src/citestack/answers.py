@@ -8,6 +8,7 @@ import httpx
 
 from citestack.config import Settings
 from citestack.providers import OllamaProvider
+from citestack.runtime import request_id_var
 from citestack.schemas import Answer, Citation, GeneratedAnswer, Hit
 from citestack.structured import StructuredOutputEngine
 
@@ -65,7 +66,9 @@ def generate(question: str, hits: list[Hit], settings: Settings) -> GeneratedAns
     evidence = [{"source_id": hit.chunk.id, "text": hit.chunk.text} for hit in hits]
     prompt = json.dumps({"question": question, "evidence": evidence}, ensure_ascii=False)
     result = StructuredOutputEngine(
-        OllamaProvider(settings), max_attempts=settings.structured_max_attempts
+        OllamaProvider(settings),
+        max_attempts=settings.structured_max_attempts,
+        budget_seconds=settings.generation_budget,
     ).run(
         GeneratedAnswer,
         prompt,
@@ -107,7 +110,7 @@ class AnswerService:
         retrieved = perf_counter()
         selected = select_context(hits, self.settings)
         result = Answer(
-            request_id=uuid4().hex,
+            request_id=request_id_var.get() if request_id_var.get() != "cli" else uuid4().hex,
             answer="I could not find enough relevant evidence in the indexed documentation.",
             citations=[],
             abstained=True,

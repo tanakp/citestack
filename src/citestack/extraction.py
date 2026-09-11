@@ -62,7 +62,9 @@ Do not guess service names or claim any action was taken."""
 class TicketExtractor:
     def __init__(self, settings: Settings, engine: StructuredOutputEngine | None = None):
         self.engine = engine or StructuredOutputEngine(
-            OllamaProvider(settings), max_attempts=settings.structured_max_attempts
+            OllamaProvider(settings),
+            max_attempts=settings.structured_max_attempts,
+            budget_seconds=settings.generation_budget,
         )
 
     def extract(self, text: str) -> StructuredResult[SupportTicket]:

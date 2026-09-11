@@ -1,7 +1,10 @@
+import json
+
 import httpx
 import pytest
 
 from citestack.answers import AnswerService, generate, select_context, validate_grounding
+from citestack.providers import OllamaProvider
 from citestack.schemas import Claim, Evidence, GeneratedAnswer
 
 
@@ -82,16 +85,17 @@ def test_generation_retries_malformed_json_then_accepts(retriever, settings, mon
     responses = ["not JSON", valid_generated(hits[0]).model_dump_json()]
     calls = []
 
-    def post(self, url, **kwargs):
-        calls.append(kwargs)
-        return httpx.Response(
-            200, json={"response": responses.pop(0)}, request=httpx.Request("POST", url)
-        )
+    def respond(request):
+        calls.append(json.loads(request.content))
+        return httpx.Response(200, json={"response": responses.pop(0), "done": True})
 
-    monkeypatch.setattr(httpx.Client, "post", post)
+    monkeypatch.setattr(
+        "citestack.answers.OllamaProvider",
+        lambda settings: OllamaProvider(settings, transport=httpx.MockTransport(respond)),
+    )
     result = generate("Pod containers", hits, settings)
     assert len(calls) == 2 and not result.abstained
-    assert calls[0]["json"]["stream"] is False
+    assert calls[0]["stream"] is False
 
 
 def test_model_abstention_is_preserved(retriever, settings, monkeypatch):
@@ -106,11 +110,14 @@ def test_model_abstention_is_preserved(retriever, settings, monkeypatch):
 def test_invalid_provider_envelope_is_bounded(retriever, settings, monkeypatch):
     calls = []
 
-    def post(self, url, **kwargs):
-        calls.append(url)
-        return httpx.Response(200, json=[], request=httpx.Request("POST", url))
+    def respond(request):
+        calls.append(request.url)
+        return httpx.Response(200, json=[])
 
-    monkeypatch.setattr(httpx.Client, "post", post)
+    monkeypatch.setattr(
+        "citestack.answers.OllamaProvider",
+        lambda settings: OllamaProvider(settings, transport=httpx.MockTransport(respond)),
+    )
     settings.answer_mode = "ollama"
     answer = AnswerService(retriever, settings).answer("Pod containers")
     assert len(calls) == 2

@@ -70,7 +70,12 @@ def corpus(tmp_path):
 
 @pytest.fixture
 def settings(tmp_path):
-    return Settings(index_path=tmp_path / "index.sqlite", _env_file=None)
+    return Settings(
+        index_path=tmp_path / "index.sqlite",
+        quota_path=tmp_path / "quotas.sqlite",
+        rate_limit_burst=100,
+        _env_file=None,
+    )
 
 
 @pytest.fixture

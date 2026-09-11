@@ -11,6 +11,8 @@ from typing import Generic, Literal, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
+from citestack.runtime import remaining_seconds, request_id_var
+
 T = TypeVar("T", bound=BaseModel)
 logger = logging.getLogger("citestack.structured")
 ErrorCode = Literal[
@@ -19,6 +21,7 @@ ErrorCode = Literal[
     "invalid_semantics",
     "output_too_large",
     "provider_timeout",
+    "generation_deadline",
     "provider_unavailable",
     "provider_http_error",
     "provider_response_invalid",
@@ -49,6 +52,7 @@ class GenerationRequest:
     system: str
     json_schema: dict
     attempt: int
+    timeout_seconds: float = 90
 
 
 class ProviderFailure(Exception):
@@ -116,6 +120,8 @@ class StructuredOutputEngine:
         max_output_chars: int = 32_000,
         retry_delay: float = 0.25,
         sleep: Callable[[float], None] = time.sleep,
+        budget_seconds: float = 90,
+        clock: Callable[[], float] = time.monotonic,
     ):
         if not 1 <= max_attempts <= 5:
             raise ValueError("max_attempts must be between 1 and 5")
@@ -123,6 +129,9 @@ class StructuredOutputEngine:
             raise ValueError("max_output_chars must be between 1 and 1,000,000")
         if not 0 <= retry_delay <= 5:
             raise ValueError("retry_delay must be between 0 and 5 seconds")
+        if not 0 < budget_seconds <= 300:
+            raise ValueError("budget_seconds must be between 0 and 300 seconds")
+        self.budget_seconds, self.clock = budget_seconds, clock
         self.provider = provider
         self.max_attempts, self.max_output_chars = max_attempts, max_output_chars
         self.retry_delay, self.sleep = retry_delay, sleep
@@ -137,6 +146,7 @@ class StructuredOutputEngine:
         fallback: T | dict | None = None,
     ) -> StructuredResult[T]:
         start = time.perf_counter()
+        deadline = self.clock() + remaining_seconds(self.budget_seconds)
         errors: list[AttemptError] = []
         json_schema = schema.model_json_schema()
 
@@ -164,6 +174,7 @@ class StructuredOutputEngine:
                 json.dumps(
                     {
                         "event": "structured_output",
+                        "request_id": request_id_var.get(),
                         "schema": schema.__name__,
                         "status": status,
                         "attempts": attempts,
@@ -174,7 +185,13 @@ class StructuredOutputEngine:
             )
             return result
 
+        attempts = 0
         for attempt in range(1, self.max_attempts + 1):
+            remaining = min(deadline - self.clock(), remaining_seconds(self.budget_seconds))
+            if remaining <= 0:
+                errors.append(AttemptError(attempt=attempts, code="generation_deadline"))
+                break
+            attempts = attempt
             request_prompt = prompt
             if errors:
                 # Only safe diagnostics are fed back; no raw failed output is replayed.
@@ -185,7 +202,17 @@ class StructuredOutputEngine:
                 )
             retryable = True
             try:
-                raw = self.provider(GenerationRequest(request_prompt, system, json_schema, attempt))
+                raw = self.provider(
+                    GenerationRequest(
+                        request_prompt,
+                        system,
+                        json_schema,
+                        attempt,
+                        remaining,
+                    )
+                )
+                if self.clock() >= deadline:
+                    raise ProviderFailure("generation_deadline")
                 value = checked(raw)
                 return finish("success", value, attempt)
             except ProviderFailure as error:
@@ -208,7 +235,11 @@ class StructuredOutputEngine:
             errors.append(failure)
             if not retryable or attempt == self.max_attempts:
                 break
-            self.sleep(min(self.retry_delay * 2 ** (attempt - 1), 5))
+            delay = min(self.retry_delay * 2 ** (attempt - 1), 5)
+            if deadline - self.clock() <= delay:
+                errors.append(AttemptError(attempt=attempts, code="generation_deadline"))
+                break
+            self.sleep(delay)
 
         if fallback is not None:
             try:
@@ -217,7 +248,7 @@ class StructuredOutputEngine:
                     if isinstance(fallback, BaseModel)
                     else json.dumps(fallback, allow_nan=False)
                 )
-                return finish("fallback", checked(raw), attempt)
+                return finish("fallback", checked(raw), attempts)
             except (ValueError, TypeError, ProviderFailure):
-                errors.append(AttemptError(attempt=attempt, code="fallback_invalid"))
-        return finish("failed", None, attempt)
+                errors.append(AttemptError(attempt=attempts, code="fallback_invalid"))
+        return finish("failed", None, attempts)

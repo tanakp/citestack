@@ -91,9 +91,12 @@ Citation numbers in the answer correspond to the one-based `citations` array.
 | Context | Relevance threshold, passage-token budget, at most two chunks per source page |
 | Answers | Local Ollama, Pydantic schema validation, source-ID and verbatim-quote checks |
 | Failure behavior | Abstention, bounded repair, labeled excerpts on model failure |
-| Serving | FastAPI/OpenAPI, optional API key, concurrency limit, health/readiness, structured request logs |
+| Serving | Credential-bound clients, separate index snapshots, persistent quotas, body/deadline limits, bounded workers, readiness, metrics |
 | Index safety | Atomic snapshot replacement, build lock, embedding identity checks, consistent readers |
 | Evaluation | BM25/dense/hybrid/reranked comparison, inspectable per-question results, CLI quality threshold |
+
+Production hardening is in progress. See the [operating controls](docs/operations.md)
+and [acceptance plan](docs/production-plan.md) for verified behavior and remaining work.
 
 ## Structured output engine (project #2)
 

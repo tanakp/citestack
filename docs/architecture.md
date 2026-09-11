@@ -84,17 +84,30 @@ application grants the model no tools, code execution, secrets, or outbound brow
 
 ## Serving
 
-FastAPI provides an OpenAPI contract, validation, health/readiness endpoints, optional
-constant-time API-key checks, and bounded concurrent inference. Saturation returns
-503 with `Retry-After`. Model calls run in worker threads. Structured logs include
-request ID, mode, fallback, latency, and citation count; prompts and API keys are not logged.
+FastAPI provides strict input validation and a pure ASGI admission boundary. Production
+requires credentials and an explicit host allowlist. API keys select a client registry
+entry and its dedicated index; request fields and headers cannot choose another tenant.
+A shared model instance serves separate in-memory vectors and SQLite read connections.
+OpenAPI is available in development and disabled in production.
 
-This is a single-node portfolio reference, not an audited multi-tenant service.
-Before internet exposure, configure TLS, an API key, request-body limits, request
-rate limits, timeouts, and monitoring at a reverse proxy. Caller cancellation may
-not stop an already-running inference. Generation can take up to two configured
-timeouts when an invalid response needs repair. No automatic cost accounting,
-tenant isolation, incremental updates, distributed tracing, or autoscaling is claimed.
+A persistent SQLite token bucket and daily admission count limit each client. HTTP
+requests, quota workers, and inference workers have bounded admission. Saturation
+returns 503 with `Retry-After`; exhausted client quotas return 429. Body size, body
+receive time, request duration, and complete provider response size are bounded.
+Generation retries share one deadline. A native inference thread cannot be forcibly
+cancelled; its slot remains occupied until completion even after the HTTP caller exits.
+
+Structured logs correlate HTTP requests, answers, and extraction outcomes without
+payloads. The CLI disables Uvicorn's raw-URL access log. Prometheus labels are bounded
+by known routes and outcomes. `/healthz` checks process responsiveness; `/readyz` also
+checks the configured Ollama model in production or structured-only mode. Readiness
+is cached briefly and proves model availability, not the quality of a generated answer.
+
+The supported target is one API process on one host. Quotas share a local SQLite file,
+not a distributed counter. No distributed tracing, autoscaling, per-token billing,
+or audited security certification is claimed. See [operating controls](operations.md)
+and the unfinished [production acceptance plan](production-plan.md) for scope and
+remaining deployment/evaluation work.
 
 ## Design references
 

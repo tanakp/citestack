@@ -20,6 +20,7 @@ dependencies = [
   "torch>=2.6,<3",
   "filelock>=3.16,<4",
   "PyYAML>=6,<7",
+  "prometheus-client>=0.21,<1",
 ]
 
 [dependency-groups]
