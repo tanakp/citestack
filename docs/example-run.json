@@ -1,0 +1,10 @@
+{
+  "question": "What does a Kubernetes readiness probe do?",
+  "provider": "Ollama",
+  "model": "qwen3:4b",
+  "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+  "date": "2026-09-11",
+  "mode": "ollama",
+  "citation_quotes_verified": true,
+  "answer_file": "example-answer.json"
+}

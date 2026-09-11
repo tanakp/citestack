@@ -1095,5 +1095,13 @@
         }
       ]
     }
+  },
+  "retrieval_config": {
+    "candidate_k": 30,
+    "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "reranker_revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "device": "cpu",
+    "rrf_k": 60,
+    "max_chunks_per_document": 2
   }
 }

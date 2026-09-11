@@ -20,6 +20,14 @@ def evaluate(retriever, dataset: Path, *, k: int = 5) -> dict:
         "index": retriever.manifest,
         "modes": {},
     }
+    report["retrieval_config"] = {
+        "candidate_k": retriever.settings.candidate_k,
+        "reranker_model": retriever.settings.reranker_model,
+        "reranker_revision": retriever.settings.reranker_revision,
+        "device": retriever.settings.device,
+        "rrf_k": 60,
+        "max_chunks_per_document": 2,
+    }
     for mode in ["bm25", "dense", "hybrid", "reranked"]:
         results = []
         for case in cases:

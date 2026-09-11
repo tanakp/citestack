@@ -1,0 +1,93 @@
+{
+  "request_id": "dc64aa9cb29d4b61a5237321cfbf8353",
+  "answer": "A readiness probe is a diagnostic performed periodically by the kubelet to determine if a container is ready to receive traffic. [1]\n\nReadiness probes run on the container during its whole lifecycle and prevent traffic from being sent to containers that are not ready. [2]",
+  "citations": [
+    {
+      "source_id": "cb4bb8ade5e4fcc675b6cdde",
+      "title": "Liveness, Readiness, and Startup Probes",
+      "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+      "quote": "Kubernetes lets you define _probes_ to continuously monitor the health\nof containers in a Pod. A probe is a diagnostic performed periodically\nby the  on a container."
+    },
+    {
+      "source_id": "1f47b4604f7beaa584e3e068",
+      "title": "Configure Liveness, Readiness and Startup Probes",
+      "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+      "quote": "A pod with containers\nreporting that they are not ready does not receive traffic through Kubernetes\nServices."
+    }
+  ],
+  "abstained": false,
+  "mode": "ollama",
+  "fallback_reason": null,
+  "hits": [
+    {
+      "chunk": {
+        "id": "cb4bb8ade5e4fcc675b6cdde",
+        "document_id": "7e163035bfdcf33d4681fddf",
+        "title": "Liveness, Readiness, and Startup Probes",
+        "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+        "heading": "Liveness, Readiness, and Startup Probes",
+        "text": "Kubernetes lets you define _probes_ to continuously monitor the health\nof containers in a Pod. A probe is a diagnostic performed periodically\nby the  on a container.\nTo perform a diagnostic, the kubelet either executes code within\nthe container or makes a network request.\n\nBased on the probe results, Kubernetes can restart unhealthy containers\nor stop sending traffic to containers that are not ready.\n\n## Types of probe {#types-of-probe}\n\nThe kubelet can optionally perform and react to three kinds of probes on running\ncontainers, each serving a different purpose:\n\n- Startup probe\n- Liveness probe\n- Readiness probe\n\n### Startup probe {#startup-probe}\n\nStartup probes verify whether the application within a container is started.\nIf a startup probe is configured, Kubernetes does not execute liveness or \nreadiness probes until the startup probe succeeds, allowing the application\ntime to finish its initialization.\n\nThis type of probe is only executed at startup, unlike liveness and readiness\nprobes, which are run periodically.\nIf the startup",
+        "token_count": 220
+      },
+      "score": 0.03278688524590164,
+      "rerank_score": 8.103257179260254
+    },
+    {
+      "chunk": {
+        "id": "bff9f5a92eff4090f23d0b3a",
+        "document_id": "19fa1b22d65b12a2af29f78e",
+        "title": "Pod Lifecycle",
+        "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md",
+        "heading": "Container probes",
+        "text": ".\nTo perform a diagnostic, the kubelet either executes code within\nthe container or makes a network request.\n\nBased on the probe results, Kubernetes can restart unhealthy containers\nor stop sending traffic to containers that are not ready.\n\nThe kubelet can optionally perform and react to three kinds of probes on running\ncontainers, each serving a different purpose. For probe mechanisms (`exec`,\n`grpc`, `httpGet`, `tcpSocket`), configuration fields, and detailed usage\nguidance, see Liveness, Readiness, and Startup Probes.\n\n### Startup probe\n\nStartup probes verify whether the application within a container is started.\nIf a startup probe is configured, Kubernetes does not execute liveness or\nreadiness probes until the startup probe succeeds, allowing the application\ntime to finish its initialization.\n\nThis type of probe is only executed at startup, unlike liveness and readiness\nprobes, which are run periodically.\n\nIf the startup probe fails, the kubelet kills the container, and the container\nis subjected to",
+        "token_count": 220
+      },
+      "score": 0.029236022193768675,
+      "rerank_score": 7.185297012329102
+    },
+    {
+      "chunk": {
+        "id": "3993fd553ea5313e79acb9a3",
+        "document_id": "7e163035bfdcf33d4681fddf",
+        "title": "Liveness, Readiness, and Startup Probes",
+        "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+        "heading": "Configuration fields {#configure-probes}",
+        "text": "failureThreshold` probes have failed, Kubernetes treats the container as unhealthy and triggers a restart for that specific container. The kubelet honors the setting of `terminationGracePeriodSeconds` for that container. For a failed readiness probe, the kubelet continues running the container that failed checks, and also continues to run more probes; because the check failed, the kubelet sets the `Ready` condition on the Pod to `false`.\n\n`terminationGracePeriodSeconds`\n: configure a grace period for the kubelet to wait between triggering a shut down of the failed container, and then forcing the container runtime to stop that container. The default is to inherit the Pod-level value for `terminationGracePeriodSeconds` (30 seconds if not specified), and the minimum value is 1. See probe-level `terminationGracePeriodSeconds` for more detail.\n\nIncorrect implementation of readiness probes may result in an ever growing",
+        "token_count": 220
+      },
+      "score": 0.014925373134328358,
+      "rerank_score": 7.142256736755371
+    },
+    {
+      "chunk": {
+        "id": "1f47b4604f7beaa584e3e068",
+        "document_id": "f44d6fd18f2d908255941bca",
+        "title": "Configure Liveness, Readiness and Startup Probes",
+        "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+        "heading": "Protect slow starting containers with startup probes {#define-startup-probes}",
+        "text": ", the liveness probe takes over to\nprovide a fast response to container deadlocks.\nIf the startup probe never succeeds, the container is killed after 300s and\nsubject to the pod's `restartPolicy`.\n\n## Define readiness probes\n\nSometimes, applications are temporarily unable to serve traffic.\nFor example, an application might need to load large data or configuration\nfiles during startup, or depend on external services after startup.\nIn such cases, you don't want to kill the application,\nbut you don't want to send it requests either. Kubernetes provides\nreadiness probes to detect and mitigate these situations. A pod with containers\nreporting that they are not ready does not receive traffic through Kubernetes\nServices.\n\nReadiness probes run on the container during its whole lifecycle.\n\nThe readiness and liveness probes do not depend on each other to succeed.\nIf you want to wait before executing a readiness probe, you should use\n`initialDelaySeconds` or a `startupProbe`.\n\nReadiness probes are configured similarly to liveness probes",
+        "token_count": 220
+      },
+      "score": 0.03225806451612903,
+      "rerank_score": 7.00718879699707
+    },
+    {
+      "chunk": {
+        "id": "44539059b4d24c14c6dee288",
+        "document_id": "f44d6fd18f2d908255941bca",
+        "title": "Configure Liveness, Readiness and Startup Probes",
+        "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+        "heading": "Configure Liveness, Readiness and Startup Probes",
+        "text": "This page shows how to configure liveness, readiness and startup probes for\ncontainers.\n\nFor more information about probes, see\nLiveness, Readiness and Startup Probes.\n\n## \n\n## Define a liveness command\n\nMany applications running for long periods of time eventually transition to\nbroken states, and cannot recover except by being restarted. Kubernetes provides\nliveness probes to detect and remedy such situations.\n\nIn this exercise, you create a Pod that runs a container based on the\n`registry.k8s.io/busybox:1.27.2` image. Here is the configuration file for the Pod:\n\nIn the configuration file, you can see that the Pod has a single `Container`.\nThe `periodSeconds` field specifies that the kubelet should perform a liveness\nprobe every 5 seconds. The `initialDelaySeconds` field tells the kubelet that it\nshould wait 5 seconds before performing the first probe. To perform a probe, the\nkubelet executes the command `cat /tmp/healthy` in the",
+        "token_count": 220
+      },
+      "score": 0.015625,
+      "rerank_score": 6.346615791320801
+    }
+  ],
+  "timings_ms": {
+    "retrieval": 907.94,
+    "generation": 22400.3,
+    "total": 23308.28
+  }
+}

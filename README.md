@@ -60,6 +60,16 @@ are resolved back to the exact original source span. The server builds
 the citation URLs. Invalid output gets one repair attempt, then a clearly marked
 extractive fallback. Missing relevant evidence produces an abstention.
 
+**Verified example:** “What does a Kubernetes readiness probe do?”
+
+> A readiness probe is a diagnostic performed periodically by the kubelet to
+> determine if a container is ready to receive traffic. [1]
+
+The [full API response](docs/example-answer.json) includes both generated claims,
+their exact source quotes, source links, retrieved passages, and timings.
+[Run metadata](docs/example-run.json) records the model digest. This local example
+took about 23 seconds including generation; model latency depends on hardware.
+
 ```bash
 curl http://127.0.0.1:8000/v1/answer \
   -H 'Content-Type: application/json' \

@@ -16,6 +16,13 @@ Date: 2026-09-11. Host: macOS 26.6.2, ARM64. Python: 3.12.13.
   football prediction question returned an abstention.
 - When the Ollama server was unavailable, the pipeline returned a labeled extractive
   fallback with `generation_unavailable_or_invalid`, rather than a synthetic answer.
+- A generated readiness-probe explanation passed schema and source-quote checks with
+  `mode=ollama` and no fallback. The full response and local model digest are saved in
+  `example-answer.json` and `example-run.json`. Both claims were inspected against
+  their supporting source spans.
+- GitHub Actions passed the tests and built the Linux Docker image, then ran the
+  container CLI successfully: [initial CI run](https://github.com/tanakp/citestack/actions/runs/34584317033).
+  This container check does not run the full downloaded corpus inside Docker.
 
 ## Reading the benchmark
 
@@ -29,6 +36,11 @@ single expected label was the general Secret concept page. The report preserves 
 actual retrieved pages for inspection. Alternative pages can be relevant, and a
 single-source label is not exhaustive. No labels or thresholds were adjusted to hide
 this miss.
+
+A comparison question about readiness and liveness produced an overbroad statement
+about their differences based on a valid quote about configuration syntax. Citation
+matching alone cannot detect that contextual error. The project deliberately reports
+this limitation; the saved example is not evidence that every generated answer is correct.
 
 ## Reproduce
 
