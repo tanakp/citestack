@@ -69,11 +69,13 @@ Ollama model. Ollama receives up to 8,192 context tokens and a 1,200-token outpu
 Supported local models must handle that context size and structured output.
 
 Generated output is a Pydantic schema of claims and evidence. Each claim must cite an
-available chunk with a verbatim quote. Whitespace-only reflow is accepted, then replaced
+available chunk with a verbatim quote. The shared [structured engine](structured-output.md)
+enforces strict schemas and owns the retry budget. Whitespace-only reflow is accepted, then replaced
 with the exact original source span; changes to words or punctuation are rejected.
 URLs are resolved by the server, never accepted
 from generated text. Invalid JSON, missing claims, unknown IDs, and nonmatching quotes
-trigger one repair attempt. Network failures and exhausted repair attempts return
+trigger a repair attempt (two total attempts by default, configurable up to five).
+Network failures and exhausted repair attempts return
 explicitly labeled excerpts. A model's deliberate abstention is preserved.
 
 This verifies citation provenance; it does **not** prove that a quote entails a claim.

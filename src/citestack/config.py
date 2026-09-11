@@ -23,5 +23,6 @@ class Settings(BaseSettings):
     ollama_url: str = "http://127.0.0.1:11434"
     ollama_model: str = "qwen3:4b"
     generation_timeout: float = Field(default=90, gt=0, le=300)
+    structured_max_attempts: int = Field(default=2, ge=1, le=5)
     api_key: str | None = None
     max_concurrent_requests: int = Field(default=2, ge=1, le=32)

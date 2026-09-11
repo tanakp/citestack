@@ -5,10 +5,11 @@ from time import perf_counter
 from uuid import uuid4
 
 import httpx
-from pydantic import ValidationError
 
 from citestack.config import Settings
+from citestack.providers import OllamaProvider
 from citestack.schemas import Answer, Citation, GeneratedAnswer, Hit
+from citestack.structured import StructuredOutputEngine
 
 logger = logging.getLogger("citestack")
 
@@ -63,43 +64,18 @@ def validate_grounding(generated: GeneratedAnswer, hits: list[Hit]) -> None:
 def generate(question: str, hits: list[Hit], settings: Settings) -> GeneratedAnswer:
     evidence = [{"source_id": hit.chunk.id, "text": hit.chunk.text} for hit in hits]
     prompt = json.dumps({"question": question, "evidence": evidence}, ensure_ascii=False)
-    schema = GeneratedAnswer.model_json_schema()
-    # One repair attempt; timeouts stop immediately to bound request duration.
-    for attempt in range(2):
-        with httpx.Client(timeout=settings.generation_timeout) as client:
-            response = client.post(
-                settings.ollama_url.rstrip("/") + "/api/generate",
-                json={
-                    "model": settings.ollama_model,
-                    "system": SYSTEM,
-                    "prompt": prompt,
-                    "format": schema,
-                    "stream": False,
-                    "think": False,
-                    "options": {"temperature": 0, "num_predict": 1200, "num_ctx": 8192},
-                },
-            )
-            response.raise_for_status()
-            try:
-                result = GeneratedAnswer.model_validate_json(response.json()["response"])
-                validate_grounding(result, hits)
-                return result
-            except (ValidationError, ValueError, KeyError, TypeError) as error:
-                logger.warning(
-                    json.dumps(
-                        {
-                            "event": "generation_validation_failed",
-                            "attempt": attempt + 1,
-                            "error_type": type(error).__name__,
-                        }
-                    )
-                )
-                if attempt:
-                    raise ValueError(
-                        "Generated output failed citation/schema validation"
-                    ) from error
-                prompt += "\nRepair: return valid schema JSON with exact quotes from evidence."
-    raise AssertionError("Unreachable")
+    result = StructuredOutputEngine(
+        OllamaProvider(settings), max_attempts=settings.structured_max_attempts
+    ).run(
+        GeneratedAnswer,
+        prompt,
+        system=SYSTEM,
+        validate=lambda answer: validate_grounding(answer, hits),
+    )
+    if result.status != "success" or result.data is None:
+        # RAG keeps its domain-specific extractive fallback and public response shape.
+        raise ValueError("Generated output unavailable or failed validation")
+    return result.data
 
 
 def extractive_answer(question: str, hits: list[Hit]) -> tuple[str, list[Citation]]:

@@ -23,3 +23,9 @@ Make one improvement of your own and measure it on an independently labeled set.
 Possible experiments: heading-aware splitting, document-level recall, a larger
 candidate pool, contextual compression, or a calibrated abstention threshold.
 Report the tradeoff in latency and quality, including regressions.
+
+For the structured-output engine, be ready to explain why syntactically valid JSON
+can still fail a schema, why strict types matter, which provider failures should be
+retried, why fallback data is validated, and why a valid extraction can still be
+factually wrong. Run `examples/structured_demo.py` and follow the failure codes across
+attempts. The standalone ticket endpoint is a concrete second use of the same engine.

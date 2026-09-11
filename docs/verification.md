@@ -1,5 +1,16 @@
 # Verification record
 
+## Version 0.2 — structured output engine
+
+77 unit/API tests pass, including the original RAG regression tests. The reusable
+engine was exercised with malformed JSON, strict type failures, nested extra fields,
+bounded retries, provider errors, invalid fallbacks, and diagnostics that omit raw
+input. The deterministic demo, real Ollama ticket extraction, standalone API route,
+and RAG generation were checked. See [the engine guide](structured-output.md) and
+[recorded verification metadata](structured-verification.json).
+
+## Original RAG build
+
 Date: 2026-09-11. Host: macOS 26.6.2, ARM64. Python: 3.12.13.
 
 - Public source: Kubernetes website commit `17133089068629ec12ca15c1bdf36a60d2671a74`.

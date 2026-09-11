@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "data": {
+    "summary": "Checkout service unavailable due to HTTP 503 errors",
+    "category": "availability",
+    "priority": "high",
+    "affected_services": [
+      "checkout"
+    ],
+    "requires_human_review": false
+  },
+  "attempts": 1,
+  "errors": [],
+  "schema_name": "SupportTicket",
+  "elapsed_ms": 5874.29
+}

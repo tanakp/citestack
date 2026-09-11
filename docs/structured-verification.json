@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-11",
+  "version": "0.2.0",
+  "model": "qwen3:4b",
+  "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+  "input": "The checkout service is down for all customers. Requests return HTTP 503. Please investigate.",
+  "example": "structured-example.json",
+  "unit_api_tests_passed": 77,
+  "standalone_api_real_model": "success",
+  "rag_real_model": "success",
+  "rag_citations_verified": true
+}

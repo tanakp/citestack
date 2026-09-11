@@ -23,9 +23,20 @@ def main():
     serve = commands.add_parser("serve", help="Serve API and Swagger documentation")
     serve.add_argument("--host", default="127.0.0.1")
     serve.add_argument("--port", type=int, default=8000)
+    serve.add_argument("--structured-only", action="store_true", help="No RAG models/index needed")
+    extract = commands.add_parser("extract", help="Extract a typed support ticket using Ollama")
+    extract.add_argument("text")
     commands.add_parser("inspect", help="Read index metadata without loading models")
     args = parser.parse_args()
     settings = Settings()
+    if args.command == "extract":
+        from citestack.extraction import TicketExtractor
+
+        result = TicketExtractor(settings).extract(args.text)
+        print(result.model_dump_json(indent=2))
+        if result.status != "success":
+            raise SystemExit(2)
+        return
     if args.command == "fetch":
         from citestack.ingestion import fetch_kubernetes
 
@@ -34,7 +45,8 @@ def main():
     if args.command == "serve":
         import uvicorn
 
-        uvicorn.run("citestack.api:create_app", factory=True, host=args.host, port=args.port)
+        factory = "create_structured_app" if args.structured_only else "create_app"
+        uvicorn.run(f"citestack.api:{factory}", factory=True, host=args.host, port=args.port)
         return
     if args.command == "inspect":
         import sqlite3

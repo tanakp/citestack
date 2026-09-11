@@ -95,6 +95,26 @@ Citation numbers in the answer correspond to the one-based `citations` array.
 | Index safety | Atomic snapshot replacement, build lock, embedding identity checks, consistent readers |
 | Evaluation | BM25/dense/hybrid/reranked comparison, inspectable per-question results, CLI quality threshold |
 
+## Structured output engine (project #2)
+
+The reusable engine enforces Pydantic schemas, retries malformed or invalid output,
+and validates fallbacks. RAG uses it internally; you can also use it independently.
+
+```bash
+# No model or API key needed: demonstrate malformed JSON, repair, and fallback.
+uv run python examples/structured_demo.py
+
+# Real extraction through the installed local Ollama model.
+uv run citestack extract "The checkout service is down for all customers. Requests return HTTP 503."
+
+# API without downloading embedding models or building a RAG index.
+uv run citestack serve --structured-only
+```
+
+`POST /v1/structured/ticket` returns typed ticket data and explicit success/fallback
+status, attempt counts, and safe validation diagnostics. See the
+[engine guide and Python API](docs/structured-output.md).
+
 ## Evaluation and tests
 
 Measured on the pinned 1,175-page / 24,580-chunk corpus on macOS ARM64,
@@ -159,6 +179,7 @@ All settings use the `CITESTACK_` prefix and can be loaded from `.env`.
 | `MIN_RERANK_SCORE` | `0` | Initial relevance cutoff; requires domain calibration |
 | `API_KEY` | unset | Optional `X-API-Key` authentication |
 | `MAX_CONCURRENT_REQUESTS` | `2` | Saturation returns 503 + `Retry-After` |
+| `STRUCTURED_MAX_ATTEMPTS` | `2` | Total model attempts for extraction and RAG generation (1–5) |
 
 Use `uv run citestack inspect` to view corpus and model metadata. To refresh a corpus,
 fetch and ingest again, then restart the API. The fetcher is intentionally pinned;

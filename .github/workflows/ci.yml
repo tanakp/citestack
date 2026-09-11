@@ -14,9 +14,10 @@ jobs:
           version: "0.12.3"
           enable-cache: true
       - run: uv sync --frozen --python 3.12
-      - run: uv run ruff check src tests
-      - run: uv run ruff format --check src tests
+      - run: uv run ruff check src tests examples
+      - run: uv run ruff format --check src tests examples
       - run: uv run pytest -q -m 'not integration'
+      - run: uv run python examples/structured_demo.py
   container:
     runs-on: ubuntu-latest
     steps:
