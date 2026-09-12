@@ -1,0 +1,3192 @@
+{
+  "suite": "retrieval",
+  "dataset_sha256": "2b4f0d5bc144f3cca0ca8ceaef3929baeee3c67795f9dde7f23b3d669d198fd1",
+  "cases": 56,
+  "index": {
+    "schema_version": 2,
+    "corpus_sha256": "2aba3a73d76f6c2095d2847eab02c9581b4b5981c456eba17714e3d0e2470ecb",
+    "embedding_fingerprint": "BAAI/bge-small-en-v1.5@5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "dimensions": 384,
+    "documents": 1180,
+    "chunks": 24594,
+    "chunk_tokens": 220,
+    "overlap_tokens": 35,
+    "built_at": "2026-09-12T02:42:11.860957+00:00",
+    "source": {
+      "source": "Kubernetes documentation contributors",
+      "revision": "17133089068629ec12ca15c1bdf36a60d2671a74",
+      "tree_url": "https://api.github.com/repos/kubernetes/website/git/trees/17133089068629ec12ca15c1bdf36a60d2671a74",
+      "blob_checksums_verified": true,
+      "license": "CC-BY-4.0",
+      "license_url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/LICENSE",
+      "cleaner_version": "markdown-v2-glossary",
+      "transforms": "English docs; glossary labels retained; other shortcodes and link targets removed",
+      "documents": 1180,
+      "corpus_sha256": "2aba3a73d76f6c2095d2847eab02c9581b4b5981c456eba17714e3d0e2470ecb"
+    },
+    "snapshot_id": "3fb41063f1fe6ebaa0095163db2c963eace49b7e0a985427a9c26505aded3c98"
+  },
+  "min_rerank_score": 0.0,
+  "answer_mode": "extractive",
+  "policy": {
+    "retrieval_hit_rate": 0.85,
+    "answerable_coverage": 0.9,
+    "out_of_domain_abstention": 0.9,
+    "private_state_abstention": 0.9,
+    "citation_provenance": 1.0,
+    "structured_accuracy": 0.85,
+    "structured_success": 0.9
+  },
+  "metrics": {
+    "retrieval_hit_rate": 0.975,
+    "answerable_coverage": 1.0,
+    "citation_provenance": 1.0,
+    "out_of_domain_abstention": 1.0,
+    "private_state_abstention": 0.125
+  },
+  "checks": {
+    "retrieval_hit_rate": {
+      "actual": 0.975,
+      "minimum": 0.85,
+      "passed": true
+    },
+    "answerable_coverage": {
+      "actual": 1.0,
+      "minimum": 0.9,
+      "passed": true
+    },
+    "citation_provenance": {
+      "actual": 1.0,
+      "minimum": 1.0,
+      "passed": true
+    },
+    "out_of_domain_abstention": {
+      "actual": 1.0,
+      "minimum": 0.9,
+      "passed": true
+    },
+    "private_state_abstention": {
+      "actual": 0.125,
+      "minimum": 0.9,
+      "passed": false
+    }
+  },
+  "passed": false,
+  "results": [
+    {
+      "id": "doc-01",
+      "question": "What is the smallest deployable unit that Kubernetes manages?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/pods/_index.md"
+      ],
+      "rank": 2,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "The smallest and simplest Kubernetes object. [1]\n\n_Pods_ are the smallest deployable units of computing that you can create and manage in Kubernetes. [2]\n\nA Pod is the basic building block of Kubernetes\u2013the smallest and simplest unit in\n  the Kubernetes object model that you create or deploy. [3]",
+      "citations": [
+        {
+          "source_id": "d36cc9ef186824e857851fae",
+          "title": "Pod",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/pod.md",
+          "quote": "The smallest and simplest Kubernetes object."
+        },
+        {
+          "source_id": "c11b46f5522de9a460eb6112",
+          "title": "Pods",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/_index.md",
+          "quote": "_Pods_ are the smallest deployable units of computing that you can create and manage in Kubernetes."
+        },
+        {
+          "source_id": "4d3e911e32c9e686cc7a17a0",
+          "title": "Windows containers in Kubernetes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/windows/intro.md",
+          "quote": "A Pod is the basic building block of Kubernetes\u2013the smallest and simplest unit in\n  the Kubernetes object model that you create or deploy."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/pod.md",
+          "score": 7.184638023376465
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/_index.md",
+          "score": 6.634697914123535
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/windows/intro.md",
+          "score": 4.073726177215576
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/_index.md",
+          "score": 1.425828218460083
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/_index.md",
+          "score": 0.902580738067627
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 777.36,
+        "generation": 0.76,
+        "total": 778.11
+      }
+    },
+    {
+      "id": "doc-02",
+      "question": "How do I roll back a Deployment to an earlier revision?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/controllers/deployment.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "* Rollback to an earlier Deployment revision if the current state of the Deployment is not stable. [1]\n\nThis means that when you roll back to an earlier revision, only the Deployment's Pod template part is\nrolled back. [2]\n\n- (If required) Roll back to a previous revision. [3]",
+      "citations": [
+        {
+          "source_id": "849139cf331e00d4ea0066f3",
+          "title": "Deployments",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+          "quote": "* Rollback to an earlier Deployment revision if the current state of the Deployment is not stable."
+        },
+        {
+          "source_id": "5d30b94c56c150d9763463ea",
+          "title": "Deployments",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+          "quote": "This means that when you roll back to an earlier revision, only the Deployment's Pod template part is\nrolled back."
+        },
+        {
+          "source_id": "c1c15e15ec5bdc72171fab80",
+          "title": "Update a Deployment Without Downtime",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md",
+          "quote": "- (If required) Roll back to a previous revision."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+          "score": 8.114412307739258
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+          "score": 8.035120964050293
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md",
+          "score": 6.498887538909912
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md",
+          "score": 6.204996585845947
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/update/update-intro.md",
+          "score": 5.162327766418457
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 418.19,
+        "generation": 0.38,
+        "total": 418.58
+      }
+    },
+    {
+      "id": "doc-03",
+      "question": "Are Kubernetes Secrets encrypted in etcd by default?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/configuration/secret.md"
+      ],
+      "rank": null,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "`storagemigration.k8s.io/v1` REST API are enabled by default in all clusters. [1]\n\nBy default, Secret objects are stored unencrypted in etcd. [2]\n\nThe contents of that file, if you specify one,\ncontrol how Kubernetes API data is encrypted in etcd. [3]",
+      "citations": [
+        {
+          "source_id": "9fe8f1e357feb4b0555a1d22",
+          "title": "Migrate Kubernetes Objects Using Storage Version Migration",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-kubernetes-objects/storage-version-migration.md",
+          "quote": "`storagemigration.k8s.io/v1` REST API are enabled by default in all clusters."
+        },
+        {
+          "source_id": "29f67e3e1edc108cdea08151",
+          "title": "Good practices for Kubernetes Secrets",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/secrets-good-practices.md",
+          "quote": "By default, Secret objects are stored unencrypted in etcd."
+        },
+        {
+          "source_id": "8a19ab9b0d90140f602bb9e6",
+          "title": "Encrypting Confidential Data at Rest",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+          "quote": "The contents of that file, if you specify one,\ncontrol how Kubernetes API data is encrypted in etcd."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-kubernetes-objects/storage-version-migration.md",
+          "score": 7.430563926696777
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/secrets-good-practices.md",
+          "score": 6.967270851135254
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+          "score": 6.289543151855469
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/kms-provider.md",
+          "score": 6.2728142738342285
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+          "score": 6.017856121063232
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 472.73,
+        "generation": 0.34,
+        "total": 473.07
+      }
+    },
+    {
+      "id": "doc-04",
+      "question": "What is a ConfigMap and what kind of data should it store?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/configuration/configmap.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "A ConfigMap is an API object\nthat lets you store configuration for other objects to use. [1]\n\nAn API object used to store non-confidential data in key-value pairs. [2]\n\nA ConfigMap is not designed to hold large chunks of data. [3]",
+      "citations": [
+        {
+          "source_id": "6cf0d7af36088c2755743551",
+          "title": "ConfigMaps",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+          "quote": "A ConfigMap is an API object\nthat lets you store configuration for other objects to use."
+        },
+        {
+          "source_id": "e814630d3d9e829a52f2ad75",
+          "title": "ConfigMap",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/configmap.md",
+          "quote": "An API object used to store non-confidential data in key-value pairs."
+        },
+        {
+          "source_id": "e83168ebc1784a92cf866ee7",
+          "title": "ConfigMaps",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+          "quote": "A ConfigMap is not designed to hold large chunks of data."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+          "score": 7.309141159057617
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/configmap.md",
+          "score": 7.198215484619141
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+          "score": 5.3089094161987305
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+          "score": 3.7286057472229004
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+          "score": 2.5480570793151855
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 448.58,
+        "generation": 0.26,
+        "total": 448.84
+      }
+    },
+    {
+      "id": "doc-05",
+      "question": "How does a StatefulSet give Pods stable identities?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/controllers/statefulset.md"
+      ],
+      "rank": 5,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "As mentioned in the StatefulSets\nconcept, the Pods in a StatefulSet have a sticky, unique identity. [1]\n\nStatefulSet represents a set of pods with consistent identities. [2]\n\nLike a deployment, a StatefulSet manages Pods that are based on an identical container spec. [3]",
+      "citations": [
+        {
+          "source_id": "7b57afed726868a1521ba124",
+          "title": "StatefulSet Basics",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/basic-stateful-set.md",
+          "quote": "As mentioned in the StatefulSets\nconcept, the Pods in a StatefulSet have a sticky, unique identity."
+        },
+        {
+          "source_id": "e63f3a3a165339e521ca5f28",
+          "title": "StatefulSet",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/stateful-set-v1.md",
+          "quote": "StatefulSet represents a set of pods with consistent identities."
+        },
+        {
+          "source_id": "242b543a880fe9f54d3a0f3a",
+          "title": "StatefulSet",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/statefulset.md",
+          "quote": "Like a deployment, a StatefulSet manages Pods that are based on an identical container spec."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/basic-stateful-set.md",
+          "score": 7.234673023223877
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/stateful-set-v1.md",
+          "score": 6.7892866134643555
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/statefulset.md",
+          "score": 6.781577110290527
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/basic-stateful-set.md",
+          "score": 6.769652366638184
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/statefulset.md",
+          "score": 6.470834732055664
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 409.99,
+        "generation": 0.32,
+        "total": 410.31
+      }
+    },
+    {
+      "id": "doc-06",
+      "question": "How can I run a copy of a Pod on every node?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/controllers/daemonset.md"
+      ],
+      "rank": 3,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "In this task, a basic DaemonSet is created which ensures that the copy of a Pod is scheduled on every node. [1]\n\nIf none of these approaches work, you can find the Node on which the Pod is\nrunning and create a Pod running on the Node. [2]\n\nA DaemonSet can be used to ensure that all eligible nodes run a copy of a Pod. [3]",
+      "citations": [
+        {
+          "source_id": "e3c0b95a22dc55ea6a2b2b62",
+          "title": "Building a Basic DaemonSet",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-daemon/create-daemon-set.md",
+          "quote": "In this task, a basic DaemonSet is created which ensures that the copy of a Pod is scheduled on every node."
+        },
+        {
+          "source_id": "6b2610b23202a5c185d93d7d",
+          "title": "Debug Running Pods",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md",
+          "quote": "If none of these approaches work, you can find the Node on which the Pod is\nrunning and create a Pod running on the Node."
+        },
+        {
+          "source_id": "2818be900758d75be03ad3f2",
+          "title": "DaemonSet",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md",
+          "quote": "A DaemonSet can be used to ensure that all eligible nodes run a copy of a Pod."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-daemon/create-daemon-set.md",
+          "score": 6.332858562469482
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md",
+          "score": 5.91065788269043
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md",
+          "score": 5.772190570831299
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md",
+          "score": 5.474950313568115
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/daemon-set-v1.md",
+          "score": 5.388943672180176
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 514.55,
+        "generation": 0.32,
+        "total": 514.87
+      }
+    },
+    {
+      "id": "doc-07",
+      "question": "How do I schedule a Job to run repeatedly at specified times?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/controllers/cron-jobs.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "If `startingDeadlineSeconds` is set to a large value or left unset (the default)\nand if `concurrencyPolicy` is set to `Allow`, the Jobs will always run\nat least once. [1]\n\nYou should see that the cron job `hello` successfully scheduled a job at the time specified in\n`LAST SCHEDULE`. [2]\n\nFor example, when using `concurrencyPolicy: Forbid`, long-running Jobs may cause scheduled times to be skipped, but a new Job can be created once the previous Job completes. [3]",
+      "citations": [
+        {
+          "source_id": "3e832daa718832d0f909cebd",
+          "title": "CronJob",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+          "quote": "If `startingDeadlineSeconds` is set to a large value or left unset (the default)\nand if `concurrencyPolicy` is set to `Allow`, the Jobs will always run\nat least once."
+        },
+        {
+          "source_id": "9c5854dac0839886bfce8161",
+          "title": "Running Automated Tasks with a CronJob",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/automated-tasks-with-cron-jobs.md",
+          "quote": "You should see that the cron job `hello` successfully scheduled a job at the time specified in\n`LAST SCHEDULE`."
+        },
+        {
+          "source_id": "3b8e1db1296d391509a2edc5",
+          "title": "CronJob",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+          "quote": "For example, when using `concurrencyPolicy: Forbid`, long-running Jobs may cause scheduled times to be skipped, but a new Job can be created once the previous Job completes."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+          "score": 2.2650327682495117
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/automated-tasks-with-cron-jobs.md",
+          "score": 0.8794050216674805
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+          "score": 0.15836259722709656
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+          "score": -0.1229579895734787
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/indexed-parallel-processing-static.md",
+          "score": -1.0219850540161133
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 441.87,
+        "generation": 0.29,
+        "total": 442.16
+      }
+    },
+    {
+      "id": "doc-08",
+      "question": "How does a Kubernetes Job track successful completion of Pods?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/controllers/job.md"
+      ],
+      "rank": 2,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "`Indexed` means that the Pods of a Job get an associated completion index from 0 to (.spec.completions - 1), available in the annotation batch.kubernetes.io/job-completion-index. [1]\n\nA Job creates one or more Pods and will continue to retry execution of the Pods until a specified number of them successfully terminate. [2]\n\n- `Indexed`: the Pods of a Job get an associated completion index from 0 to\n  `.spec.completions-1`. [3]",
+      "citations": [
+        {
+          "source_id": "904c041adc608274d3bfab8a",
+          "title": "Job",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md",
+          "quote": "`Indexed` means that the Pods of a Job get an associated completion index from 0 to (.spec.completions - 1), available in the annotation batch.kubernetes.io/job-completion-index."
+        },
+        {
+          "source_id": "4a074043230ede5145746c2b",
+          "title": "Jobs",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+          "quote": "A Job creates one or more Pods and will continue to retry execution of the Pods until a specified number of them successfully terminate."
+        },
+        {
+          "source_id": "9dcfc9e7ba471911cc8ae598",
+          "title": "Jobs",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+          "quote": "- `Indexed`: the Pods of a Job get an associated completion index from 0 to\n  `.spec.completions-1`."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md",
+          "score": 6.592532634735107
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+          "score": 5.719054222106934
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+          "score": 5.467707633972168
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md",
+          "score": 5.333373546600342
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/job-with-pod-to-pod-communication.md",
+          "score": 4.632818222045898
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 445.1,
+        "generation": 0.31,
+        "total": 445.41
+      }
+    },
+    {
+      "id": "doc-09",
+      "question": "What is the difference between ClusterIP and NodePort Services?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/services-networking/service.md"
+      ],
+      "rank": 3,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "If clusterIP is \"None\", no virtual IP is allocated and the endpoints are published as a set of endpoints rather than a virtual IP. [1]\n\n\"LoadBalancer\" builds on NodePort and creates an external load-balancer (if supported in the current cloud) which routes to the same endpoints as the clusterIP. [2]\n\nThe available `type` values and their behaviors are: [3]",
+      "citations": [
+        {
+          "source_id": "43dcdb7a0d3a727443420262",
+          "title": "Service",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/service-v1.md",
+          "quote": "If clusterIP is \"None\", no virtual IP is allocated and the endpoints are published as a set of endpoints rather than a virtual IP."
+        },
+        {
+          "source_id": "3c0eca103cc4d83846dc2450",
+          "title": "Service",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/service-v1.md",
+          "quote": "\"LoadBalancer\" builds on NodePort and creates an external load-balancer (if supported in the current cloud) which routes to the same endpoints as the clusterIP."
+        },
+        {
+          "source_id": "35e0e346c0e5230e28926b7b",
+          "title": "Service",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+          "quote": "The available `type` values and their behaviors are:"
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/service-v1.md",
+          "score": 3.9513933658599854
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/service-v1.md",
+          "score": 3.6661417484283447
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+          "score": 3.1735498905181885
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+          "score": 2.451153516769409
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/expose/expose-intro.md",
+          "score": 2.4439175128936768
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 429.76,
+        "generation": 0.33,
+        "total": 430.09
+      }
+    },
+    {
+      "id": "doc-10",
+      "question": "How does an Ingress route HTTP traffic to Services?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/services-networking/ingress.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "A fanout configuration routes traffic from a single IP address to more than one Service,\nbased on the HTTP URI being requested. [1]\n\nIf you create an Ingress resource without any hosts defined in the rules, then any\nweb traffic to the IP address of your Ingress controller can be matched without a name based\nvirtual host being required. [2]\n\n><em><a href=\"\">IngressBackend</a></em></td>\n      <td>backend defines the referenced service endpoint to which the traffic will be forwarded to.</td>\n    </tr>\n    <tr>\n      <td><code>path</code><br/><em>string</em></td>\n      <td>path is matched against the path of an incoming request. [3]",
+      "citations": [
+        {
+          "source_id": "362673016d52973398c5c2de",
+          "title": "Ingress",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+          "quote": "A fanout configuration routes traffic from a single IP address to more than one Service,\nbased on the HTTP URI being requested."
+        },
+        {
+          "source_id": "5d722bcb7e9770adbc816ade",
+          "title": "Ingress",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+          "quote": "If you create an Ingress resource without any hosts defined in the rules, then any\nweb traffic to the IP address of your Ingress controller can be matched without a name based\nvirtual host being required."
+        },
+        {
+          "source_id": "f9b7cdbd5012ce6180a4d24e",
+          "title": "Ingress",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md",
+          "quote": "><em><a href=\"\">IngressBackend</a></em></td>\n      <td>backend defines the referenced service endpoint to which the traffic will be forwarded to.</td>\n    </tr>\n    <tr>\n      <td><code>path</code><br/><em>string</em></td>\n      <td>path is matched against the path of an incoming request."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+          "score": 6.045037746429443
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+          "score": 5.9424333572387695
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md",
+          "score": 5.298189640045166
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md",
+          "score": 4.227146148681641
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+          "score": 3.481107473373413
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 406.83,
+        "generation": 0.26,
+        "total": 407.1
+      }
+    },
+    {
+      "id": "doc-11",
+      "question": "How do NetworkPolicies control incoming and outgoing Pod traffic?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/services-networking/network-policies.md"
+      ],
+      "rank": 2,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. [1]\n\n### Default deny all ingress and all egress traffic [2]\n\nThe traffic must match both ports and to. [3]",
+      "citations": [
+        {
+          "source_id": "976f7edd45d55c20e9efb1c8",
+          "title": "NetworkPolicy",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+          "quote": "Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod."
+        },
+        {
+          "source_id": "12a24f545515c54f3d3be1b2",
+          "title": "Network Policies",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+          "quote": "### Default deny all ingress and all egress traffic"
+        },
+        {
+          "source_id": "da35cdba93a091705f406764",
+          "title": "NetworkPolicy",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+          "quote": "The traffic must match both ports and to."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+          "score": 5.819271087646484
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+          "score": 4.4975786209106445
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+          "score": 4.279020309448242
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+          "score": 4.144587993621826
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/_index.md",
+          "score": 2.8088293075561523
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 423.11,
+        "generation": 0.28,
+        "total": 423.39
+      }
+    },
+    {
+      "id": "doc-12",
+      "question": "How does a PersistentVolumeClaim request storage?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/storage/persistent-volumes.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "A _PersistentVolumeClaim_ (PVC) is a request for storage by a user. [1]\n\nPods can request storage using a PersistentVolumeClaim. [2]\n\nIn this exercise, you create a PersistentVolumeClaim\nthat requests a volume of at least three gibibytes that can provide read-write\naccess for at most one Node at a time. [3]",
+      "citations": [
+        {
+          "source_id": "7597d171d11135ff9b4c498b",
+          "title": "Persistent Volumes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+          "quote": "A _PersistentVolumeClaim_ (PVC) is a request for storage by a user."
+        },
+        {
+          "source_id": "d02f5a219b72bacace5d6abf",
+          "title": "Multi-tenancy",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/multi-tenancy.md",
+          "quote": "Pods can request storage using a PersistentVolumeClaim."
+        },
+        {
+          "source_id": "de70596a64903434a7c301bf",
+          "title": "Configure a Pod to Use a PersistentVolume for Storage",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md",
+          "quote": "In this exercise, you create a PersistentVolumeClaim\nthat requests a volume of at least three gibibytes that can provide read-write\naccess for at most one Node at a time."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+          "score": 7.662476539611816
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/multi-tenancy.md",
+          "score": 7.453155517578125
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md",
+          "score": 7.22048807144165
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/storage-classes.md",
+          "score": 6.241409778594971
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md",
+          "score": 6.166875839233398
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 437.48,
+        "generation": 0.28,
+        "total": 437.76
+      }
+    },
+    {
+      "id": "doc-13",
+      "question": "How do StorageClasses support dynamic volume provisioning?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/storage/storage-classes.md"
+      ],
+      "rank": 5,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Dynamic volume provisioning is based on an API object, StorageClass, referring to a Volume Plugin that provisions a Volume and the set of parameters to pass to the Volume Plugin. [1]\n\nDynamic volume provisioning allows storage volumes to be created on-demand. [2]\n\n## Enabling Dynamic Provisioning [3]",
+      "citations": [
+        {
+          "source_id": "883e6c5312942f933fbcf126",
+          "title": "Dynamic Volume Provisioning",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/dynamic-volume-provisioning.md",
+          "quote": "Dynamic volume provisioning is based on an API object, StorageClass, referring to a Volume Plugin that provisions a Volume and the set of parameters to pass to the Volume Plugin."
+        },
+        {
+          "source_id": "9e96e87d35d85fbed5830070",
+          "title": "Dynamic Volume Provisioning",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+          "quote": "Dynamic volume provisioning allows storage volumes to be created on-demand."
+        },
+        {
+          "source_id": "c525f3fa429171c54b562e7e",
+          "title": "Dynamic Volume Provisioning",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+          "quote": "## Enabling Dynamic Provisioning"
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/dynamic-volume-provisioning.md",
+          "score": 8.512648582458496
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+          "score": 8.104859352111816
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+          "score": 8.020591735839844
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+          "score": 7.637063980102539
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/storage-classes.md",
+          "score": 7.2872114181518555
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 408.67,
+        "generation": 0.31,
+        "total": 408.97
+      }
+    },
+    {
+      "id": "doc-14",
+      "question": "What is the difference between a Role and a ClusterRole?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/reference/access-authn-authz/rbac.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "The resources have different names (Role\nand ClusterRole) because a Kubernetes object always has to be either namespaced or not namespaced;\nit can't be both. [1]\n\nThe name of a Role or a ClusterRole object must be a valid\npath segment name. [2]\n\n<table>\n  <thead><tr><th>Field</th><th>Description</th></tr></thead>\n  <tbody>\n    <tr>\n      <td><code>aggregationRule</code><br/><em><a href=\"\">AggregationRule</a></em></td>\n      <td>aggregationRule is an optional field that describes how to build the Rules for this ClusterRole. [3]",
+      "citations": [
+        {
+          "source_id": "b663e0954c716be974d2a200",
+          "title": "Using RBAC Authorization",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+          "quote": "The resources have different names (Role\nand ClusterRole) because a Kubernetes object always has to be either namespaced or not namespaced;\nit can't be both."
+        },
+        {
+          "source_id": "e671782f415ff331be657e2c",
+          "title": "Using RBAC Authorization",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+          "quote": "The name of a Role or a ClusterRole object must be a valid\npath segment name."
+        },
+        {
+          "source_id": "02c70dcd67a4604ec3083e08",
+          "title": "ClusterRole",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/rbac/cluster-role-v1.md",
+          "quote": "<table>\n  <thead><tr><th>Field</th><th>Description</th></tr></thead>\n  <tbody>\n    <tr>\n      <td><code>aggregationRule</code><br/><em><a href=\"\">AggregationRule</a></em></td>\n      <td>aggregationRule is an optional field that describes how to build the Rules for this ClusterRole."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+          "score": 6.624717712402344
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+          "score": 4.914685249328613
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/rbac/cluster-role-v1.md",
+          "score": 2.2178826332092285
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/rbac/cluster-role-binding-v1.md",
+          "score": 0.06667489558458328
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_clusterrole.md",
+          "score": -0.2605774998664856
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 425.5,
+        "generation": 0.3,
+        "total": 425.8
+      }
+    },
+    {
+      "id": "doc-15",
+      "question": "How can a HorizontalPodAutoscaler scale replicas based on CPU utilization?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "For instance, executing `kubectl autoscale rs foo --min=2 --max=5 --cpu=80%`\nwill create an autoscaler for ReplicaSet _foo_, with target CPU utilization set to `80%`\nand the number of replicas between 2 and 5. [1]\n\nThe controller then takes the mean of the utilization or the raw value (depending on the type\n  of target specified) across all targeted Pods, and produces a ratio used to scale\n  the number of desired replicas. [2]\n\nRoughly speaking, the HPA controller will increase and decrease\nthe number of replicas (by updating the Deployment) to maintain an average CPU utilization across all Pods of 50%. [3]",
+      "citations": [
+        {
+          "source_id": "4df97bb6e20c2ea6a7ba1223",
+          "title": "Horizontal Pod Autoscaling",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+          "quote": "For instance, executing `kubectl autoscale rs foo --min=2 --max=5 --cpu=80%`\nwill create an autoscaler for ReplicaSet _foo_, with target CPU utilization set to `80%`\nand the number of replicas between 2 and 5."
+        },
+        {
+          "source_id": "a042e32bc9cb794902c9b793",
+          "title": "Horizontal Pod Autoscaling",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+          "quote": "The controller then takes the mean of the utilization or the raw value (depending on the type\n  of target specified) across all targeted Pods, and produces a ratio used to scale\n  the number of desired replicas."
+        },
+        {
+          "source_id": "fb501498339ef8f70d78c376",
+          "title": "HorizontalPodAutoscaler Walkthrough",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md",
+          "quote": "Roughly speaking, the HPA controller will increase and decrease\nthe number of replicas (by updating the Deployment) to maintain an average CPU utilization across all Pods of 50%."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+          "score": 6.726271629333496
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+          "score": 6.5406174659729
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md",
+          "score": 5.848184585571289
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/horizontal-pod-autoscaler.md",
+          "score": 5.671278476715088
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md",
+          "score": 5.591343879699707
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 448.59,
+        "generation": 0.29,
+        "total": 448.88
+      }
+    },
+    {
+      "id": "doc-16",
+      "question": "What is the difference between readiness probes and liveness probes?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Readiness and liveness probes can be used in parallel for the same container. [1]\n\nUnderstand the difference between liveness and\nreadiness probes and when to apply them for your app. [2]\n\nThis type of probe is only executed at startup, unlike liveness and readiness\nprobes, which are run periodically. [3]",
+      "citations": [
+        {
+          "source_id": "0a112b6e89024f2c147a3a87",
+          "title": "Configure Liveness, Readiness and Startup Probes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "quote": "Readiness and liveness probes can be used in parallel for the same container."
+        },
+        {
+          "source_id": "2cc811cccc9dbcebf0e5d2cd",
+          "title": "Liveness, Readiness, and Startup Probes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+          "quote": "Understand the difference between liveness and\nreadiness probes and when to apply them for your app."
+        },
+        {
+          "source_id": "ace05d781546555957bbd000",
+          "title": "Liveness, Readiness, and Startup Probes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+          "quote": "This type of probe is only executed at startup, unlike liveness and readiness\nprobes, which are run periodically."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "score": 8.780807495117188
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+          "score": 7.697484970092773
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+          "score": 7.163731098175049
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md",
+          "score": 6.639503479003906
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "score": 6.618716239929199
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 440.24,
+        "generation": 0.3,
+        "total": 440.54
+      }
+    },
+    {
+      "id": "doc-17",
+      "question": "How do CPU requests and CPU limits affect container scheduling and execution?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/configuration/manage-resources-containers.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "- The CPU limit defines a hard ceiling on how much CPU time the container can use. [1]\n\nMotivation for CPU requests and limits [2]\n\nBoth `cpu` and `memory` limits are applied by the kubelet (and\ncontainer runtime),\nand are ultimately enforced by the kernel. [3]",
+      "citations": [
+        {
+          "source_id": "49c28be6f8c1187af20054ce",
+          "title": "Resource Management for Pods and Containers",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+          "quote": "- The CPU limit defines a hard ceiling on how much CPU time the container can use."
+        },
+        {
+          "source_id": "4e698de30573704ea3aa2ac1",
+          "title": "Assign CPU Resources to Containers and Pods",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+          "quote": "Motivation for CPU requests and limits"
+        },
+        {
+          "source_id": "126d0164ceee8b7ba437b010",
+          "title": "Resource Management for Pods and Containers",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+          "quote": "Both `cpu` and `memory` limits are applied by the kubelet (and\ncontainer runtime),\nand are ultimately enforced by the kernel."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+          "score": 6.308688163757324
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+          "score": 4.821473121643066
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+          "score": 4.716102600097656
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+          "score": 4.425477504730225
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/resource-managers.md",
+          "score": 4.3312273025512695
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 421.64,
+        "generation": 0.29,
+        "total": 421.92
+      }
+    },
+    {
+      "id": "doc-18",
+      "question": "How do taints and tolerations affect which Pods can run on a node?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "`NoSchedule`\n: No new Pods will be scheduled on the tainted node unless they have a matching\n  toleration. [1]\n\nNormally, if a taint with effect `NoExecute` is added to a node, then any pods that do\nnot tolerate the taint will be evicted immediately, and pods that do tolerate the\ntaint will never be evicted. [2]\n\nTaints prevent the scheduling of Pods on nodes or node groups. [3]",
+      "citations": [
+        {
+          "source_id": "3b76c0311ac53adf49dcf3ba",
+          "title": "Taints and Tolerations",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+          "quote": "`NoSchedule`\n: No new Pods will be scheduled on the tainted node unless they have a matching\n  toleration."
+        },
+        {
+          "source_id": "3301945df18ab60544651397",
+          "title": "Taints and Tolerations",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+          "quote": "Normally, if a taint with effect `NoExecute` is added to a node, then any pods that do\nnot tolerate the taint will be evicted immediately, and pods that do tolerate the\ntaint will never be evicted."
+        },
+        {
+          "source_id": "6b4b29faf960ae8bff7d5b5c",
+          "title": "Taint",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/taint.md",
+          "quote": "Taints prevent the scheduling of Pods on nodes or node groups."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+          "score": 7.812958717346191
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+          "score": 7.444197177886963
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/taint.md",
+          "score": 7.053340911865234
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/toleration.md",
+          "score": 6.450623512268066
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md",
+          "score": 5.477143287658691
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 428.94,
+        "generation": 0.25,
+        "total": 429.19
+      }
+    },
+    {
+      "id": "doc-19",
+      "question": "How do namespaces divide cluster resources?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/overview/working-with-objects/namespaces.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Namespaces are a way to divide cluster resources between multiple users (via resource quota). [1]\n\nNamespaces are used to organize objects in a cluster and provide a way to divide cluster resources. [2]\n\n- Proportionally divide total cluster resources among several teams. [3]",
+      "citations": [
+        {
+          "source_id": "b270c6348a461333423056ed",
+          "title": "Namespaces",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+          "quote": "Namespaces are a way to divide cluster resources between multiple users (via resource quota)."
+        },
+        {
+          "source_id": "26247e795896ac118c40dd8a",
+          "title": "Namespace",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/namespace.md",
+          "quote": "Namespaces are used to organize objects in a cluster and provide a way to divide cluster resources."
+        },
+        {
+          "source_id": "701995b1588ec1e7dd65d27c",
+          "title": "Resource Quotas",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/resource-quotas.md",
+          "quote": "- Proportionally divide total cluster resources among several teams."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+          "score": 7.885769844055176
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/namespace.md",
+          "score": 7.4659423828125
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/resource-quotas.md",
+          "score": 5.268143653869629
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+          "score": 4.892894268035889
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/multi-tenancy.md",
+          "score": 4.707986831665039
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 393.47,
+        "generation": 0.27,
+        "total": 393.73
+      }
+    },
+    {
+      "id": "doc-20",
+      "question": "How can labels and selectors identify groups of Kubernetes objects?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/overview/working-with-objects/labels.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "For some API types, such as ReplicaSets, the label selectors of two instances must\nnot overlap within a namespace, or the controller can see that as conflicting\ninstructions and fail to determine how many replicas should be present. [1]\n\nPods are namespaced objects in\nKubernetes, so Pod labels also implicitly have namespaces. [2]\n\nServices match a set of Pods using\nlabels and selectors, a grouping\nprimitive that allows logical operation on objects in Kubernetes. [3]",
+      "citations": [
+        {
+          "source_id": "d53d1c39fe6c99d7417293c7",
+          "title": "Labels and Selectors",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+          "quote": "For some API types, such as ReplicaSets, the label selectors of two instances must\nnot overlap within a namespace, or the controller can see that as conflicting\ninstructions and fail to determine how many replicas should be present."
+        },
+        {
+          "source_id": "93a67efe0cebc788eca4fdf8",
+          "title": "Assigning Pods to Nodes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+          "quote": "Pods are namespaced objects in\nKubernetes, so Pod labels also implicitly have namespaces."
+        },
+        {
+          "source_id": "3164046ff800a2595ae1af6f",
+          "title": "Using a Service to Expose Your App",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/expose/expose-intro.md",
+          "quote": "Services match a set of Pods using\nlabels and selectors, a grouping\nprimitive that allows logical operation on objects in Kubernetes."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+          "score": 8.189214706420898
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+          "score": 5.766790390014648
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/expose/expose-intro.md",
+          "score": 5.568801403045654
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+          "score": 4.655611515045166
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/annotations.md",
+          "score": 4.4626030921936035
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 484.81,
+        "generation": 0.31,
+        "total": 485.13
+      }
+    },
+    {
+      "id": "doc-21",
+      "question": "What does a PodDisruptionBudget restrict during voluntary disruptions?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/pods/disruptions.md"
+      ],
+      "rank": 2,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "B)\nallows application owners to limit the number of Pods of a replicated application\nthat are down simultaneously from voluntary disruptions. [1]\n\nYour cluster administrator or hosting provider should have documented what level of voluntary\ndisruptions, if any, to expect. [2]\n\nVoluntary disruptions are started intentionally by application owners or cluster \nadministrators. [3]",
+      "citations": [
+        {
+          "source_id": "b19a6d2c271c81bb8404214a",
+          "title": "Pod Priority and Preemption",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/pod-priority-preemption.md",
+          "quote": "B)\nallows application owners to limit the number of Pods of a replicated application\nthat are down simultaneously from voluntary disruptions."
+        },
+        {
+          "source_id": "d326f28bee1fbc5afa955655",
+          "title": "Disruptions",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/disruptions.md",
+          "quote": "Your cluster administrator or hosting provider should have documented what level of voluntary\ndisruptions, if any, to expect."
+        },
+        {
+          "source_id": "9512736180d2dc04916889ac",
+          "title": "Pod Disruption",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/pod-disruption.md",
+          "quote": "Voluntary disruptions are started intentionally by application owners or cluster \nadministrators."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/pod-priority-preemption.md",
+          "score": 5.568557262420654
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/disruptions.md",
+          "score": 5.283419132232666
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/pod-disruption.md",
+          "score": 4.139566421508789
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/configure-pdb.md",
+          "score": 4.075284481048584
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/policy/pod-disruption-budget-v1.md",
+          "score": 4.043485641479492
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 408.65,
+        "generation": 0.26,
+        "total": 408.91
+      }
+    },
+    {
+      "id": "doc-22",
+      "question": "How do init containers differ from regular app containers?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/pods/init-containers.md"
+      ],
+      "rank": 2,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Initialization (init) containers are like regular app containers, with one difference: init containers must run to completion before any app containers can start. [1]\n\nRegular init containers (in other words: excluding sidecar containers) do not support the\n`lifecycle`, `livenessProbe`, `readinessProbe`, or `startupProbe` fields. [2]\n\nApplication containers (or app containers) are the containers in a pod that are started after any init containers have completed. [3]",
+      "citations": [
+        {
+          "source_id": "7997ae934a716514d0aa3ce9",
+          "title": "Init Container",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/init-container.md",
+          "quote": "Initialization (init) containers are like regular app containers, with one difference: init containers must run to completion before any app containers can start."
+        },
+        {
+          "source_id": "d9299af7705584e727fa83c8",
+          "title": "Init Containers",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/init-containers.md",
+          "quote": "Regular init containers (in other words: excluding sidecar containers) do not support the\n`lifecycle`, `livenessProbe`, `readinessProbe`, or `startupProbe` fields."
+        },
+        {
+          "source_id": "a6d5c186695fdea3b912faff",
+          "title": "App Container",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/app-container.md",
+          "quote": "Application containers (or app containers) are the containers in a pod that are started after any init containers have completed."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/init-container.md",
+          "score": 8.989336013793945
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/init-containers.md",
+          "score": 8.012292861938477
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/app-container.md",
+          "score": 7.559859752655029
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/init-containers.md",
+          "score": 7.476409912109375
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/sidecar-container.md",
+          "score": 6.9149675369262695
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 393.86,
+        "generation": 0.21,
+        "total": 394.08
+      }
+    },
+    {
+      "id": "doc-23",
+      "question": "What is the purpose of a restartable sidecar container?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/pods/sidecar-containers.md"
+      ],
+      "rank": 2,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Sidecar containers are like regular app containers, but with a different purpose: the sidecar provides a Pod-local service to the main app container. [1]\n\nFrom a Kubernetes perspective, the sidecar container's graceful termination is less important. [2]\n\nthat your cluster has the `SidecarContainers`\nfeature gate enabled\n(the feature is active by default since Kubernetes v1.29), you can specify a `restartPolicy`\nfor containers listed in a Pod's `initContainers` field. [3]",
+      "citations": [
+        {
+          "source_id": "78069be1d7ec777d62795681",
+          "title": "Sidecar Container",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/sidecar-container.md",
+          "quote": "Sidecar containers are like regular app containers, but with a different purpose: the sidecar provides a Pod-local service to the main app container."
+        },
+        {
+          "source_id": "f9df9f119cd42fa304ee1722",
+          "title": "Sidecar Containers",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/sidecar-containers.md",
+          "quote": "From a Kubernetes perspective, the sidecar container's graceful termination is less important."
+        },
+        {
+          "source_id": "87604b62ff08f1cafa6871db",
+          "title": "Sidecar Containers",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/sidecar-containers.md",
+          "quote": "that your cluster has the `SidecarContainers`\nfeature gate enabled\n(the feature is active by default since Kubernetes v1.29), you can specify a `restartPolicy`\nfor containers listed in a Pod's `initContainers` field."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/sidecar-container.md",
+          "score": 5.112791061401367
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/sidecar-containers.md",
+          "score": 5.067048072814941
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/sidecar-containers.md",
+          "score": 4.9621357917785645
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/_index.md",
+          "score": 4.613998889923096
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md",
+          "score": 4.3431806564331055
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 427.77,
+        "generation": 0.25,
+        "total": 428.02
+      }
+    },
+    {
+      "id": "doc-24",
+      "question": "Why does deletion wait for finalizers to be removed?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/overview/working-with-objects/finalizers.md"
+      ],
+      "rank": 3,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Finalizers may be processed and removed in any order. [1]\n\nWithout enforced ordering, finalizers are free to order amongst themselves and are\nnot vulnerable to ordering changes in the list. [2]\n\ndeleting state, avoid manually\nremoving finalizers to allow deletion to continue. [3]",
+      "citations": [
+        {
+          "source_id": "00fffbec267b191acb12c19f",
+          "title": "ObjectMeta",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/definitions/object-meta-v1-meta.md",
+          "quote": "Finalizers may be processed and removed in any order."
+        },
+        {
+          "source_id": "36c48c2d8a330bc8b7190265",
+          "title": "Kubernetes API Concepts",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/using-api/api-concepts.md",
+          "quote": "Without enforced ordering, finalizers are free to order amongst themselves and are\nnot vulnerable to ordering changes in the list."
+        },
+        {
+          "source_id": "47588c7d98913acef4f6dafa",
+          "title": "Finalizers",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/finalizers.md",
+          "quote": "deleting state, avoid manually\nremoving finalizers to allow deletion to continue."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/definitions/object-meta-v1-meta.md",
+          "score": 6.845110893249512
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/using-api/api-concepts.md",
+          "score": 6.384194850921631
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/finalizers.md",
+          "score": 6.124002933502197
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/finalizer.md",
+          "score": 5.861056327819824
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/finalizers.md",
+          "score": 4.983014106750488
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 401.25,
+        "generation": 0.3,
+        "total": 401.55
+      }
+    },
+    {
+      "id": "doc-25",
+      "question": "How does garbage collection remove dependent objects?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/architecture/garbage-collection.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "You should avoid using external garbage collection tools, as these can\nbreak the kubelet behavior and remove containers that should exist. [1]\n\nYou can also control how and when garbage collection deletes resources that have\nowner references using Kubernetes finalizers. [2]\n\nEither this field or PropagationPolicy may be set, but not both.</td>\n    </tr>\n    <tr>\n      <td><code>propagationPolicy</code></td>\n      <td><em>string</em></td>\n      <td>Whether and how garbage collection will be performed. [3]",
+      "citations": [
+        {
+          "source_id": "10949dc9d0b7f13e91bb58bb",
+          "title": "Garbage Collection",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/garbage-collection.md",
+          "quote": "You should avoid using external garbage collection tools, as these can\nbreak the kubelet behavior and remove containers that should exist."
+        },
+        {
+          "source_id": "1b389262782157a3daa4a768",
+          "title": "Garbage Collection",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/garbage-collection.md",
+          "quote": "You can also control how and when garbage collection deletes resources that have\nowner references using Kubernetes finalizers."
+        },
+        {
+          "source_id": "49b647d49d32d4c1368dae5e",
+          "title": "ResourceQuota",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/resource-quota-v1.md",
+          "quote": "Either this field or PropagationPolicy may be set, but not both.</td>\n    </tr>\n    <tr>\n      <td><code>propagationPolicy</code></td>\n      <td><em>string</em></td>\n      <td>Whether and how garbage collection will be performed."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/garbage-collection.md",
+          "score": 7.901679039001465
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/garbage-collection.md",
+          "score": 6.524193286895752
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/resource-quota-v1.md",
+          "score": 6.110814571380615
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/resource/device-taint-rule-v1.md",
+          "score": 6.077000617980957
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apiserverinternal/storage-version-v1alpha1.md",
+          "score": 6.050051689147949
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 382.64,
+        "generation": 0.28,
+        "total": 382.92
+      }
+    },
+    {
+      "id": "doc-26",
+      "question": "What identities do ServiceAccounts provide for processes in Pods?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/security/service-accounts.md"
+      ],
+      "rank": 4,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Provides an identity for processes that run in a Pod. [1]\n\nA _ServiceAccount_ provides an identity for processes that run in a Pod. [2]\n\nA _service account_ provides an identity for processes that run in a Pod,\nand maps to a ServiceAccount object. [3]",
+      "citations": [
+        {
+          "source_id": "cb5fdb038357d0374d45db2d",
+          "title": "ServiceAccount",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/service-account.md",
+          "quote": "Provides an identity for processes that run in a Pod."
+        },
+        {
+          "source_id": "dfc5581a9fbeb943786a9cbc",
+          "title": "Managing Service Accounts",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/service-accounts-admin.md",
+          "quote": "A _ServiceAccount_ provides an identity for processes that run in a Pod."
+        },
+        {
+          "source_id": "198a24542a7b2f6862267b28",
+          "title": "Configure Service Accounts for Pods",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-service-account.md",
+          "quote": "A _service account_ provides an identity for processes that run in a Pod,\nand maps to a ServiceAccount object."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/service-account.md",
+          "score": 9.270042419433594
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/service-accounts-admin.md",
+          "score": 7.464929580688477
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-service-account.md",
+          "score": 6.8317060470581055
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/service-accounts.md",
+          "score": 5.08024263381958
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/service-accounts.md",
+          "score": 4.313261985778809
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 410.46,
+        "generation": 0.26,
+        "total": 410.72
+      }
+    },
+    {
+      "id": "doc-27",
+      "question": "What DNS name does a normal Service receive?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/services-networking/dns-pod-service.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "\"Normal\" (not headless) Services are assigned DNS A and/or AAAA records,\ndepending on the IP family or families of the Service, with a name of the form\n`my-svc.my-namespace.svc.cluster-domain.example`. [1]\n\nHeadless Services\n(without a cluster IP) are also assigned DNS A and/or AAAA records,\nwith a name of the form `my-svc.my-namespace.svc.cluster-domain.example`. [2]\n\n## Does the Service work by DNS name? [3]",
+      "citations": [
+        {
+          "source_id": "fd6f0f0d2e661a0e5b10770d",
+          "title": "DNS for Services and Pods",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/dns-pod-service.md",
+          "quote": "\"Normal\" (not headless) Services are assigned DNS A and/or AAAA records,\ndepending on the IP family or families of the Service, with a name of the form\n`my-svc.my-namespace.svc.cluster-domain.example`."
+        },
+        {
+          "source_id": "c49fa2bf741d58551e6c26d7",
+          "title": "DNS for Services and Pods",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/dns-pod-service.md",
+          "quote": "Headless Services\n(without a cluster IP) are also assigned DNS A and/or AAAA records,\nwith a name of the form `my-svc.my-namespace.svc.cluster-domain.example`."
+        },
+        {
+          "source_id": "126c20396c372ba2a0c05f0f",
+          "title": "Debug Services",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-service.md",
+          "quote": "## Does the Service work by DNS name?"
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/dns-pod-service.md",
+          "score": 3.321153163909912
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/dns-pod-service.md",
+          "score": 3.2893452644348145
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-service.md",
+          "score": 1.786756157875061
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-service.md",
+          "score": 0.9193353652954102
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+          "score": -0.0070792920887470245
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 411.81,
+        "generation": 0.27,
+        "total": 412.08
+      }
+    },
+    {
+      "id": "doc-28",
+      "question": "How do resource quotas constrain resource consumption in a namespace?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/policy/resource-quotas.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "A resource quota, defined by a ResourceQuota object, provides constraints that limit\naggregate resource consumption per namespace. [1]\n\nUsing  Kubernetes resource quotas,\nadministrators (also termed _cluster operators_) can restrict consumption and creation\nof cluster resources (such as CPU time, memory, and persistent storage) within a specified\nnamespace. [2]\n\nIt may be desired that pods at a particular priority, such as \"cluster-services\",\nshould be allowed in a namespace, if and only if, a matching quota object exists. [3]",
+      "citations": [
+        {
+          "source_id": "75252e1b33a2d68f1e9224a1",
+          "title": "Resource Quotas",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/resource-quotas.md",
+          "quote": "A resource quota, defined by a ResourceQuota object, provides constraints that limit\naggregate resource consumption per namespace."
+        },
+        {
+          "source_id": "8e44bec7ef04bd97286491ee",
+          "title": "Limit Ranges",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/limit-range.md",
+          "quote": "Using  Kubernetes resource quotas,\nadministrators (also termed _cluster operators_) can restrict consumption and creation\nof cluster resources (such as CPU time, memory, and persistent storage) within a specified\nnamespace."
+        },
+        {
+          "source_id": "6321dad7ae71edd6a95024cd",
+          "title": "Resource Quotas",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/resource-quotas.md",
+          "quote": "It may be desired that pods at a particular priority, such as \"cluster-services\",\nshould be allowed in a namespace, if and only if, a matching quota object exists."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/resource-quotas.md",
+          "score": 6.909732341766357
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/limit-range.md",
+          "score": 6.408875465393066
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/resource-quotas.md",
+          "score": 6.177914619445801
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/multi-tenancy.md",
+          "score": 5.287988185882568
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/multi-tenancy.md",
+          "score": 4.960009574890137
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 423.05,
+        "generation": 0.29,
+        "total": 423.33
+      }
+    },
+    {
+      "id": "doc-29",
+      "question": "How can LimitRanges enforce minimum and maximum resource requests?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/policy/limit-range.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "- Enforce minimum and maximum compute resources usage per Pod or Container in a namespace. [1]\n\n- Second, the LimitRange tracks usage to ensure it does not exceed resource minimum,\n  maximum and ratio defined in any LimitRange present in the namespace. [2]\n\nwould cause the Pod's CPU values\nto violate the LimitRange constraints (either exceeding the maximum or falling below the minimum),\nthe resize will be rejected and the Pod's resources remain at their previous values. [3]",
+      "citations": [
+        {
+          "source_id": "939fa61826c50986aa50a9e9",
+          "title": "Limit Ranges",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/limit-range.md",
+          "quote": "- Enforce minimum and maximum compute resources usage per Pod or Container in a namespace."
+        },
+        {
+          "source_id": "19bee09248a17748b24d8da0",
+          "title": "Limit Ranges",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/limit-range.md",
+          "quote": "- Second, the LimitRange tracks usage to ensure it does not exceed resource minimum,\n  maximum and ratio defined in any LimitRange present in the namespace."
+        },
+        {
+          "source_id": "04a1d9d52a74c1f48e74fc16",
+          "title": "Configure Minimum and Maximum CPU Constraints for a Namespace",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/manage-resources/cpu-constraint-namespace.md",
+          "quote": "would cause the Pod's CPU values\nto violate the LimitRange constraints (either exceeding the maximum or falling below the minimum),\nthe resize will be rejected and the Pod's resources remain at their previous values."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/limit-range.md",
+          "score": 7.949960231781006
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/limit-range.md",
+          "score": 5.4398884773254395
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/manage-resources/cpu-constraint-namespace.md",
+          "score": 5.215790748596191
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/limit-storage-consumption.md",
+          "score": 4.544981002807617
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/limitrange.md",
+          "score": 2.6896300315856934
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 420.11,
+        "generation": 0.38,
+        "total": 420.49
+      }
+    },
+    {
+      "id": "doc-30",
+      "question": "What does a startup probe do for a slow-starting container?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/pods/probes.md"
+      ],
+      "rank": 3,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": ", the liveness probe takes over to\nprovide a fast response to container deadlocks. [1]\n\nOnce the startup probe has succeeded once, the liveness probe takes over to\nprovide a fast response to container deadlocks. [2]\n\nIf the startup probe fails, the kubelet kills the container, and the container\nis subjected to its restart policy. [3]",
+      "citations": [
+        {
+          "source_id": "1f47b4604f7beaa584e3e068",
+          "title": "Configure Liveness, Readiness and Startup Probes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "quote": ", the liveness probe takes over to\nprovide a fast response to container deadlocks."
+        },
+        {
+          "source_id": "efc3684fa901e71baa63e61e",
+          "title": "Configure Liveness, Readiness and Startup Probes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "quote": "Once the startup probe has succeeded once, the liveness probe takes over to\nprovide a fast response to container deadlocks."
+        },
+        {
+          "source_id": "ace05d781546555957bbd000",
+          "title": "Liveness, Readiness, and Startup Probes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+          "quote": "If the startup probe fails, the kubelet kills the container, and the container\nis subjected to its restart policy."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "score": 8.22110366821289
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "score": 7.671675682067871
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+          "score": 6.453829765319824
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md",
+          "score": 6.1319260597229
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+          "score": 6.080610275268555
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 475.17,
+        "generation": 0.33,
+        "total": 475.5
+      }
+    },
+    {
+      "id": "doc-31",
+      "question": "How can a TTL controller clean up a finished Job?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/controllers/ttlafterfinished.md"
+      ],
+      "rank": 2,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Another way to clean up finished Jobs (either `Complete` or `Failed`)\nautomatically is to use a TTL mechanism provided by a\nTTL controller for\nfinished resources, by specifying the `.spec.ttlSecondsAfterFinished` field of\nthe Job. [1]\n\nWhen the\nTTL-after-finished controller cleans up a job, it will delete it cascadingly, that is to say it will delete\nits dependent objects together with it. [2]\n\nYou can use this mechanism to clean\nup finished Jobs (either `Complete` or `Failed`) automatically by specifying the\n`.spec.ttlSecondsAfterFinished` field of a Job, as in this\nexample. [3]",
+      "citations": [
+        {
+          "source_id": "5ddd5a6afa9bf61471758c7b",
+          "title": "Jobs",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+          "quote": "Another way to clean up finished Jobs (either `Complete` or `Failed`)\nautomatically is to use a TTL mechanism provided by a\nTTL controller for\nfinished resources, by specifying the `.spec.ttlSecondsAfterFinished` field of\nthe Job."
+        },
+        {
+          "source_id": "8434ce5ae34a5214db715d1b",
+          "title": "Automatic Cleanup for Finished Jobs",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/ttlafterfinished.md",
+          "quote": "When the\nTTL-after-finished controller cleans up a job, it will delete it cascadingly, that is to say it will delete\nits dependent objects together with it."
+        },
+        {
+          "source_id": "35d9b6794ac5ff6a23122eac",
+          "title": "Automatic Cleanup for Finished Jobs",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/ttlafterfinished.md",
+          "quote": "You can use this mechanism to clean\nup finished Jobs (either `Complete` or `Failed`) automatically by specifying the\n`.spec.ttlSecondsAfterFinished` field of a Job, as in this\nexample."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+          "score": 8.922718048095703
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/ttlafterfinished.md",
+          "score": 8.440810203552246
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/ttlafterfinished.md",
+          "score": 8.4283447265625
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+          "score": 6.612274169921875
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+          "score": 0.986491322517395
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 513.16,
+        "generation": 0.33,
+        "total": 513.49
+      }
+    },
+    {
+      "id": "doc-32",
+      "question": "How does Pod priority influence scheduling and preemption?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/scheduling-eviction/pod-priority-preemption.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "## How to use priority and preemption [1]\n\nThe\nscheduler picks a Pod from the queue and tries to schedule it on a Node. [2]\n\nPreemption logic in Kubernetes helps a pending pod to find a suitable node by evicting low priority Pods existing on that Node. [3]",
+      "citations": [
+        {
+          "source_id": "b30bca895f01b318b45fcf2b",
+          "title": "Pod Priority and Preemption",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/pod-priority-preemption.md",
+          "quote": "## How to use priority and preemption"
+        },
+        {
+          "source_id": "118e0c8a87ab40e6316042dd",
+          "title": "Pod Priority and Preemption",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/pod-priority-preemption.md",
+          "quote": "The\nscheduler picks a Pod from the queue and tries to schedule it on a Node."
+        },
+        {
+          "source_id": "6d957af1e49a199149358514",
+          "title": "Preemption",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/preemption.md",
+          "quote": "Preemption logic in Kubernetes helps a pending pod to find a suitable node by evicting low priority Pods existing on that Node."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/pod-priority-preemption.md",
+          "score": 7.827523231506348
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/pod-priority-preemption.md",
+          "score": 7.373471260070801
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/preemption.md",
+          "score": 6.907803058624268
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/workload-api/disruption-and-priority.md",
+          "score": 6.777453899383545
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/workload-api/disruption-and-priority.md",
+          "score": 6.168148994445801
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 449.58,
+        "generation": 0.3,
+        "total": 449.89
+      }
+    },
+    {
+      "id": "doc-33",
+      "question": "How do topology spread constraints distribute Pods across failure domains?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "You can use _topology spread constraints_ to control how\nPods are spread across your cluster\namong failure-domains such as regions, zones, nodes, and other user-defined topology\ndomains. [1]\n\nor regions, you can use node labels\nin conjunction with\nPod topology spread constraints\nto control how Pods are spread across your cluster among fault domains:\nregions, zones, and even specific nodes. [2]\n\nFor finer control, you can specify topology spread constraints to distribute\nPods across different topology domains - to achieve either high availability or\ncost-saving. [3]",
+      "citations": [
+        {
+          "source_id": "6779d2246e05daf469f271b4",
+          "title": "Pod Topology Spread Constraints",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md",
+          "quote": "You can use _topology spread constraints_ to control how\nPods are spread across your cluster\namong failure-domains such as regions, zones, nodes, and other user-defined topology\ndomains."
+        },
+        {
+          "source_id": "33e9710c1eb39b895dc7d202",
+          "title": "Running in multiple zones",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/best-practices/multiple-zones.md",
+          "quote": "or regions, you can use node labels\nin conjunction with\nPod topology spread constraints\nto control how Pods are spread across your cluster among fault domains:\nregions, zones, and even specific nodes."
+        },
+        {
+          "source_id": "88d656a5cc8820a56d8b87a1",
+          "title": "Pod Topology Spread Constraints",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md",
+          "quote": "For finer control, you can specify topology spread constraints to distribute\nPods across different topology domains - to achieve either high availability or\ncost-saving."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md",
+          "score": 8.027706146240234
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/best-practices/multiple-zones.md",
+          "score": 7.733726501464844
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md",
+          "score": 7.145298957824707
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+          "score": 7.1055989265441895
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/zookeeper.md",
+          "score": 5.644745826721191
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 424.32,
+        "generation": 0.34,
+        "total": 424.66
+      }
+    },
+    {
+      "id": "doc-34",
+      "question": "Why are ephemeral containers useful for debugging an existing Pod?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/workloads/pods/ephemeral-containers.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Ephemeral containers are useful for interactive troubleshooting when `kubectl\nexec` is insufficient because a container has crashed or a container image\ndoesn't include debugging utilities. [1]\n\nThis page provides an overview of ephemeral containers: a special type of container\nthat runs temporarily in an existing pod to\naccomplish user-initiated actions such as troubleshooting. [2]\n\nEphemeral containers\nare useful for interactive troubleshooting when `kubectl exec` is insufficient\nbecause a container has crashed or a container image doesn't include debugging\nutilities, such as with distroless images. [3]",
+      "citations": [
+        {
+          "source_id": "d767f754bd53aec213a785a6",
+          "title": "Ephemeral Containers",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/ephemeral-containers.md",
+          "quote": "Ephemeral containers are useful for interactive troubleshooting when `kubectl\nexec` is insufficient because a container has crashed or a container image\ndoesn't include debugging utilities."
+        },
+        {
+          "source_id": "900fbc78527f2b84681df345",
+          "title": "Ephemeral Containers",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/ephemeral-containers.md",
+          "quote": "This page provides an overview of ephemeral containers: a special type of container\nthat runs temporarily in an existing pod to\naccomplish user-initiated actions such as troubleshooting."
+        },
+        {
+          "source_id": "12466848045ea7c83699009c",
+          "title": "Debug Running Pods",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md",
+          "quote": "Ephemeral containers\nare useful for interactive troubleshooting when `kubectl exec` is insufficient\nbecause a container has crashed or a container image doesn't include debugging\nutilities, such as with distroless images."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/ephemeral-containers.md",
+          "score": 6.92508602142334
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/ephemeral-containers.md",
+          "score": 6.821071624755859
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md",
+          "score": 6.675953388214111
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/pod-v1.md",
+          "score": 6.6691412925720215
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/pod-v1.md",
+          "score": 6.213287353515625
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 431.77,
+        "generation": 0.34,
+        "total": 432.11
+      }
+    },
+    {
+      "id": "doc-35",
+      "question": "How does a projected volume combine multiple sources in one directory?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/storage/projected-volumes.md"
+      ],
+      "rank": 2,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "This page shows how to use a `projected` Volume to mount\nseveral existing volume sources into the same directory. [1]\n\nA `projected` volume maps several existing volume sources into the same directory. [2]\n\nA projected volume maps several existing volume sources into the same\ndirectory. [3]",
+      "citations": [
+        {
+          "source_id": "9c214964fe1f95009b2d489a",
+          "title": "Configure a Pod to Use a Projected Volume for Storage",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-projected-volume-storage.md",
+          "quote": "This page shows how to use a `projected` Volume to mount\nseveral existing volume sources into the same directory."
+        },
+        {
+          "source_id": "e5347dd8327a1ac1d06a0bca",
+          "title": "Projected Volumes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/projected-volumes.md",
+          "quote": "A `projected` volume maps several existing volume sources into the same directory."
+        },
+        {
+          "source_id": "9e19917e32e0b664c4f7b921",
+          "title": "Volumes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/volumes.md",
+          "quote": "A projected volume maps several existing volume sources into the same\ndirectory."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-projected-volume-storage.md",
+          "score": 5.072661399841309
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/projected-volumes.md",
+          "score": 4.366557598114014
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/volumes.md",
+          "score": 2.380350112915039
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/projected-volumes.md",
+          "score": 2.054736375808716
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-projected-volume-storage.md",
+          "score": 1.2934455871582031
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 418.48,
+        "generation": 0.28,
+        "total": 418.77
+      }
+    },
+    {
+      "id": "doc-36",
+      "question": "Which tasks use Lease objects for coordination?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/architecture/leases.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "In Kubernetes, the lease concept is represented by Lease\nobjects in the `coordination.k8s.io` API Group,\nwhich are used for system-critical capabilities such as node heartbeats and component-level leader election. [1]\n\nLeaseCandidate defines a candidate for a Lease object. [2]\n\nProvided that you have enabled the `CoordinatedLeaderElection` feature gate _and_  \nhave the `coordination.k8s.io/v1beta1` API group enabled, compatible control plane  \ncomponents automatically use the LeaseCandidate and Lease APIs to elect a leader  \nas needed. [3]",
+      "citations": [
+        {
+          "source_id": "7fa6bfba6780e32edc01a104",
+          "title": "Leases",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/leases.md",
+          "quote": "In Kubernetes, the lease concept is represented by Lease\nobjects in the `coordination.k8s.io` API Group,\nwhich are used for system-critical capabilities such as node heartbeats and component-level leader election."
+        },
+        {
+          "source_id": "6f418d8024f2849b10b1286d",
+          "title": "LeaseCandidate",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/coordination/lease-candidate-v1beta1.md",
+          "quote": "LeaseCandidate defines a candidate for a Lease object."
+        },
+        {
+          "source_id": "0bf9783b13594451ac3caef6",
+          "title": "Coordinated Leader Election",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/cluster-administration/coordinated-leader-election.md",
+          "quote": "Provided that you have enabled the `CoordinatedLeaderElection` feature gate _and_  \nhave the `coordination.k8s.io/v1beta1` API group enabled, compatible control plane  \ncomponents automatically use the LeaseCandidate and Lease APIs to elect a leader  \nas needed."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/leases.md",
+          "score": 4.7239556312561035
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/coordination/lease-candidate-v1beta1.md",
+          "score": 3.01951003074646
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/cluster-administration/coordinated-leader-election.md",
+          "score": 2.714132785797119
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/leases.md",
+          "score": 2.191296339035034
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/cluster-administration/coordinated-leader-election.md",
+          "score": 1.8606022596359253
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 432.71,
+        "generation": 0.33,
+        "total": 433.05
+      }
+    },
+    {
+      "id": "doc-37",
+      "question": "What does Pod Security Admission do in enforce mode?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/security/pod-security-admission.md"
+      ],
+      "rank": 2,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "The `audit` and `warn` modes of the Pod Security Standards admission controller make it easy to\ncollect important security insights about your pods without breaking existing workloads. [1]\n\npod-security.kubernetes.io/<MODE>-version: <VERSION>\n``` [2]\n\npod-security.kubernetes.io/<MODE>: <LEVEL> [3]",
+      "citations": [
+        {
+          "source_id": "1c2a35da2204f5aa8e1fe44e",
+          "title": "Enforcing Pod Security Standards",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/best-practices/enforcing-pod-security-standards.md",
+          "quote": "The `audit` and `warn` modes of the Pod Security Standards admission controller make it easy to\ncollect important security insights about your pods without breaking existing workloads."
+        },
+        {
+          "source_id": "34e39f3043700f9686a65b3a",
+          "title": "Pod Security Admission",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/pod-security-admission.md",
+          "quote": "pod-security.kubernetes.io/<MODE>-version: <VERSION>\n```"
+        },
+        {
+          "source_id": "bafbdd536735a4af57e4701a",
+          "title": "Pod Security Admission",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/pod-security-admission.md",
+          "quote": "pod-security.kubernetes.io/<MODE>: <LEVEL>"
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/best-practices/enforcing-pod-security-standards.md",
+          "score": 6.751404762268066
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/pod-security-admission.md",
+          "score": 6.593944549560547
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/pod-security-admission.md",
+          "score": 6.3891401290893555
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/security/cluster-level-pss.md",
+          "score": 6.171372413635254
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/enforce-standards-admission-controller.md",
+          "score": 6.080040454864502
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 458.46,
+        "generation": 0.33,
+        "total": 458.78
+      }
+    },
+    {
+      "id": "doc-38",
+      "question": "When are validating admission controllers invoked?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/reference/access-authn-authz/admission-controllers.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "It is enabled when both feature gate `validatingadmissionpolicy` and `admissionregistration.k8s.io/v1alpha1` group/version are enabled. [1]\n\nhas side effects (for example, decrementing quota) it\n*must* have a reconciliation system, as it is not guaranteed that subsequent\nwebhooks or other validating admission controllers will permit the request to finish. [2]\n\nAdmission controllers are configurable for the Kubernetes API server and may be \"validating\", \"mutating\", or\nboth. [3]",
+      "citations": [
+        {
+          "source_id": "1e784a0dbc97ea5bc522bb40",
+          "title": "Admission Control in Kubernetes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+          "quote": "It is enabled when both feature gate `validatingadmissionpolicy` and `admissionregistration.k8s.io/v1alpha1` group/version are enabled."
+        },
+        {
+          "source_id": "d63c99912567e8d265eec2f3",
+          "title": "Admission Control in Kubernetes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+          "quote": "has side effects (for example, decrementing quota) it\n*must* have a reconciliation system, as it is not guaranteed that subsequent\nwebhooks or other validating admission controllers will permit the request to finish."
+        },
+        {
+          "source_id": "529f2accf66c0abee23371b7",
+          "title": "Admission Controller",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/admission-controller.md",
+          "quote": "Admission controllers are configurable for the Kubernetes API server and may be \"validating\", \"mutating\", or\nboth."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+          "score": 5.259255409240723
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+          "score": 4.7568840980529785
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/admission-controller.md",
+          "score": 4.514631271362305
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/controlling-access.md",
+          "score": 3.656564235687256
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/_index.md",
+          "score": 3.641453742980957
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 423.3,
+        "generation": 0.22,
+        "total": 423.52
+      }
+    },
+    {
+      "id": "doc-39",
+      "question": "How can required node affinity constrain scheduling?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity.md"
+      ],
+      "rank": 4,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "Node affinity is conceptually similar to `nodeSelector`, allowing you to constrain which nodes your\nPod can be scheduled on based on node labels. [1]\n\nWhen configuring multiple scheduling profiles, you can associate\na profile with a node affinity, which is useful if a profile only applies to a specific set of nodes. [2]\n\nfor each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding \"weight\" to the sum if the node matches the corresponding matchExpressions; the node(s) with the highest sum are the most preferred.</td>\n    </tr>\n    <tr>\n      <td><code>requiredDuringSchedulingIgnoredDuringExecution</code><br/><em><a href=\"\">NodeSelector</a></em></td>\n      <td>If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto [3]",
+      "citations": [
+        {
+          "source_id": "e060b86dd9e79b015295a3b3",
+          "title": "Assigning Pods to Nodes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+          "quote": "Node affinity is conceptually similar to `nodeSelector`, allowing you to constrain which nodes your\nPod can be scheduled on based on node labels."
+        },
+        {
+          "source_id": "59b9462ddee0b3f8c730cc1f",
+          "title": "Assigning Pods to Nodes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+          "quote": "When configuring multiple scheduling profiles, you can associate\na profile with a node affinity, which is useful if a profile only applies to a specific set of nodes."
+        },
+        {
+          "source_id": "67019612f6deae5246500608",
+          "title": "Pod",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/pod-v1.md",
+          "quote": "for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding \"weight\" to the sum if the node matches the corresponding matchExpressions; the node(s) with the highest sum are the most preferred.</td>\n    </tr>\n    <tr>\n      <td><code>requiredDuringSchedulingIgnoredDuringExecution</code><br/><em><a href=\"\">NodeSelector</a></em></td>\n      <td>If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto"
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+          "score": 5.601963043212891
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+          "score": 5.299654006958008
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/pod-v1.md",
+          "score": 3.9394547939300537
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity.md",
+          "score": 3.87117338180542
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/advanced-pod-config.md",
+          "score": 3.4168968200683594
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 426.64,
+        "generation": 0.37,
+        "total": 427.01
+      }
+    },
+    {
+      "id": "doc-40",
+      "question": "What is the difference between generic ephemeral volumes and persistent volumes?",
+      "category": "documentation",
+      "relevant_paths": [
+        "/content/en/docs/concepts/storage/ephemeral-volumes.md"
+      ],
+      "rank": 1,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "The latter is recommended for generic ephemeral volumes\nbecause then the scheduler is free to choose a suitable node for\nthe Pod. [1]\n\nTake care when naming Pods and volumes inside the\nsame namespace, so that these conflicts can't occur. [2]\n\nEphemeral volume types have a lifetime linked to a specific Pod,\nbut persistent volumes exist beyond\nthe lifetime of any individual Pod. [3]",
+      "citations": [
+        {
+          "source_id": "9c8896eb9690f82e91f34469",
+          "title": "Ephemeral Volumes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/ephemeral-volumes.md",
+          "quote": "The latter is recommended for generic ephemeral volumes\nbecause then the scheduler is free to choose a suitable node for\nthe Pod."
+        },
+        {
+          "source_id": "d6dfb8e6a65242fa18491b95",
+          "title": "Ephemeral Volumes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/ephemeral-volumes.md",
+          "quote": "Take care when naming Pods and volumes inside the\nsame namespace, so that these conflicts can't occur."
+        },
+        {
+          "source_id": "6cd9a75b9fb62e60b5c5aeda",
+          "title": "Volumes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/volumes.md",
+          "quote": "Ephemeral volume types have a lifetime linked to a specific Pod,\nbut persistent volumes exist beyond\nthe lifetime of any individual Pod."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/ephemeral-volumes.md",
+          "score": 5.631216526031494
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/ephemeral-volumes.md",
+          "score": 5.438926696777344
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/volumes.md",
+          "score": 3.061497449874878
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/pod-v1.md",
+          "score": 2.9948441982269287
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/persistent-volume.md",
+          "score": 2.5238847732543945
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 401.41,
+        "generation": 0.31,
+        "total": 401.73
+      }
+    },
+    {
+      "id": "out_of_domain-01",
+      "question": "How do I bake a sourdough loaf at home?",
+      "category": "out_of_domain",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": true,
+      "mode": "abstained",
+      "fallback_reason": null,
+      "answer": "I could not find enough relevant evidence in the indexed documentation.",
+      "citations": [],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/contribute/style/style-guide.md",
+          "score": -9.045928955078125
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/setup-tools/kubeadm/generated/kubeadm_completion/_index.md",
+          "score": -11.072549819946289
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/tools/install-kubectl-macos.md",
+          "score": -11.081475257873535
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/cluster-administration/logging.md",
+          "score": -11.124260902404785
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_completion/_index.md",
+          "score": -11.163683891296387
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 426.72,
+        "generation": 0.05,
+        "total": 426.77
+      }
+    },
+    {
+      "id": "out_of_domain-02",
+      "question": "Who won the FIFA World Cup in 1998?",
+      "category": "out_of_domain",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": true,
+      "mode": "abstained",
+      "fallback_reason": null,
+      "answer": "I could not find enough relevant evidence in the indexed documentation.",
+      "citations": [],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md",
+          "score": -10.911056518554688
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/networking/virtual-ips.md",
+          "score": -10.936161994934082
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/replica-set-v1.md",
+          "score": -10.953742027282715
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateless-application/expose-external-ip-address.md",
+          "score": -10.967863082885742
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/contribute/advanced.md",
+          "score": -10.972198486328125
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 533.68,
+        "generation": 0.07,
+        "total": 533.75
+      }
+    },
+    {
+      "id": "out_of_domain-03",
+      "question": "What is the best treatment for seasonal allergies?",
+      "category": "out_of_domain",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": true,
+      "mode": "abstained",
+      "fallback_reason": null,
+      "answer": "I could not find enough relevant evidence in the indexed documentation.",
+      "citations": [],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/resource-quotas.md",
+          "score": -11.133357048034668
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/events/event-v1.md",
+          "score": -11.172504425048828
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/event-v1.md",
+          "score": -11.174894332885742
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/setup-tools/kubeadm/implementation-details.md",
+          "score": -11.183061599731445
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/topology-manager.md",
+          "score": -11.184138298034668
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 432.4,
+        "generation": 0.05,
+        "total": 432.46
+      }
+    },
+    {
+      "id": "out_of_domain-04",
+      "question": "Write a love poem about the moon.",
+      "category": "out_of_domain",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": true,
+      "mode": "abstained",
+      "fallback_reason": null,
+      "answer": "I could not find enough relevant evidence in the indexed documentation.",
+      "citations": [],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/extend-kubernetes/_index.md",
+          "score": -11.101519584655762
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_token.md",
+          "score": -11.109594345092773
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-condition.md",
+          "score": -11.110395431518555
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/determine-reason-pod-failure.md",
+          "score": -11.11673641204834
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/kubectl.md",
+          "score": -11.122198104858398
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 395.0,
+        "generation": 0.05,
+        "total": 395.05
+      }
+    },
+    {
+      "id": "out_of_domain-05",
+      "question": "What is the weather forecast for Istanbul tomorrow?",
+      "category": "out_of_domain",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": true,
+      "mode": "abstained",
+      "fallback_reason": null,
+      "answer": "I could not find enough relevant evidence in the indexed documentation.",
+      "citations": [],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/instrumentation/understand-psi-metrics.md",
+          "score": -11.080711364746094
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/cluster-administration/system-metrics.md",
+          "score": -11.121186256408691
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro.md",
+          "score": -11.172775268554688
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/node/what-happens-on-restart.md",
+          "score": -11.18687629699707
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/pod-security-standards.md",
+          "score": -11.196802139282227
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 453.46,
+        "generation": 0.05,
+        "total": 453.51
+      }
+    },
+    {
+      "id": "out_of_domain-06",
+      "question": "How much is a flight from London to Tokyo today?",
+      "category": "out_of_domain",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": true,
+      "mode": "abstained",
+      "fallback_reason": null,
+      "answer": "I could not find enough relevant evidence in the indexed documentation.",
+      "citations": [],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/cluster-administration/flow-control.md",
+          "score": -11.132925987243652
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md",
+          "score": -11.16569709777832
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/windows-resource-management.md",
+          "score": -11.17129135131836
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/scheduling/priority-class-v1.md",
+          "score": -11.17430305480957
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ip-address-v1.md",
+          "score": -11.17979621887207
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 448.17,
+        "generation": 0.06,
+        "total": 448.23
+      }
+    },
+    {
+      "id": "out_of_domain-07",
+      "question": "How do I replace the timing belt on a car?",
+      "category": "out_of_domain",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": true,
+      "mode": "abstained",
+      "fallback_reason": null,
+      "answer": "I could not find enough relevant evidence in the indexed documentation.",
+      "citations": [],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_replace/_index.md",
+          "score": -9.672690391540527
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_replace/_index.md",
+          "score": -9.737750053405762
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/replicationcontroller.md",
+          "score": -10.493706703186035
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/daemon-set-v1.md",
+          "score": -10.684364318847656
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+          "score": -10.847564697265625
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 413.68,
+        "generation": 0.05,
+        "total": 413.74
+      }
+    },
+    {
+      "id": "out_of_domain-08",
+      "question": "Explain how photosynthesis works in oak leaves.",
+      "category": "out_of_domain",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": true,
+      "mode": "abstained",
+      "fallback_reason": null,
+      "answer": "I could not find enough relevant evidence in the indexed documentation.",
+      "citations": [],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/dynamic-resource-allocation/how-dra-works.md",
+          "score": -10.940559387207031
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/dynamic-resource-allocation/how-dra-works.md",
+          "score": -11.08167839050293
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/best-practices/node-conformance.md",
+          "score": -11.20404052734375
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/dynamic-resource-allocation/dra-features.md",
+          "score": -11.25345230102539
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_explain/_index.md",
+          "score": -11.25726318359375
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 399.89,
+        "generation": 0.04,
+        "total": 399.93
+      }
+    },
+    {
+      "id": "private_state-01",
+      "question": "How many Pods are running in my cluster right now?",
+      "category": "private_state",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "To avoid running into cloud provider quota issues, when creating a cluster with many nodes,\nconsider:\n* Requesting a quota increase for cloud resources such as:\n    * Computer instances\n    * CPUs\n    * Storage volumes\n    * In-use IP addresses\n    * Packet filtering rule sets\n    * Number of load balancers\n    * Network subnets\n    * Log streams\n* Gating the cluster scaling actions to bring up new nodes in batches, with a pause\n  between batches, because [1]\n\nImagine\nthat you have three nodes running five Pods each. [2]\n\nYou can use _topology spread constraints_ to control how\nPods are spread across your cluster\namong failure-domains such as regions, zones, nodes, and other user-defined topology\ndomains. [3]",
+      "citations": [
+        {
+          "source_id": "e0194115adf5ebb6fa5c3307",
+          "title": "Considerations for large clusters",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/best-practices/cluster-large.md",
+          "quote": "To avoid running into cloud provider quota issues, when creating a cluster with many nodes,\nconsider:\n* Requesting a quota increase for cloud resources such as:\n    * Computer instances\n    * CPUs\n    * Storage volumes\n    * In-use IP addresses\n    * Packet filtering rule sets\n    * Number of load balancers\n    * Network subnets\n    * Log streams\n* Gating the cluster scaling actions to bring up new nodes in batches, with a pause\n  between batches, because"
+        },
+        {
+          "source_id": "bc70b36c970816546b4131f2",
+          "title": "Pod Topology Spread Constraints",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md",
+          "quote": "Imagine\nthat you have three nodes running five Pods each."
+        },
+        {
+          "source_id": "6779d2246e05daf469f271b4",
+          "title": "Pod Topology Spread Constraints",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md",
+          "quote": "You can use _topology spread constraints_ to control how\nPods are spread across your cluster\namong failure-domains such as regions, zones, nodes, and other user-defined topology\ndomains."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/best-practices/cluster-large.md",
+          "score": 3.952132225036621
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md",
+          "score": 3.7313356399536133
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md",
+          "score": 2.712043285369873
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/services/connect-applications-service.md",
+          "score": 2.6392555236816406
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md",
+          "score": 2.3949038982391357
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 404.53,
+        "generation": 0.37,
+        "total": 404.9
+      }
+    },
+    {
+      "id": "private_state-02",
+      "question": "What is the current password stored in my production database Secret?",
+      "category": "private_state",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "```\n  username: my-app\n  password: 39528$vdg7Jb\n  ``` [1]",
+      "citations": [
+        {
+          "source_id": "85c39b5520f314628f8fc197",
+          "title": "Distribute Credentials Securely Using Secrets",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/inject-data-application/distribute-credentials-secure.md",
+          "quote": "```\n  username: my-app\n  password: 39528$vdg7Jb\n  ```"
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/inject-data-application/distribute-credentials-secure.md",
+          "score": 0.31338581442832947
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configmap-secret/managing-secret-using-kustomize.md",
+          "score": -1.0227118730545044
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/secret.md",
+          "score": -1.1058745384216309
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/inject-data-application/distribute-credentials-secure.md",
+          "score": -1.253522276878357
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configmap-secret/managing-secret-using-kubectl.md",
+          "score": -1.7902178764343262
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 427.36,
+        "generation": 0.13,
+        "total": 427.49
+      }
+    },
+    {
+      "id": "private_state-03",
+      "question": "Which nodes in our production cluster are currently unhealthy?",
+      "category": "private_state",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "The corner case is when all zones are\ncompletely unhealthy (none of the nodes in the cluster are healthy). [1]\n\nor crashes\n  - currently those are colocated with the apiserver, and their unavailability has similar consequences as apiserver\n  - in future, these will be replicated as well and may not be co-located\n  - they do not have their own persistent state\n- Individual node (VM or physical machine) shuts down\n  - Results\n    - pods on that Node stop running\n- Network partition\n  - Results\n    - partition A thinks the nodes in partition B are down; partition B thinks the apiserver is down. [2]",
+      "citations": [
+        {
+          "source_id": "649adfc30138958b12511ac1",
+          "title": "Nodes",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/nodes.md",
+          "quote": "The corner case is when all zones are\ncompletely unhealthy (none of the nodes in the cluster are healthy)."
+        },
+        {
+          "source_id": "7313858c5208c43e2c12d3d4",
+          "title": "Troubleshooting Clusters",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-cluster/_index.md",
+          "quote": "or crashes\n  - currently those are colocated with the apiserver, and their unavailability has similar consequences as apiserver\n  - in future, these will be replicated as well and may not be co-located\n  - they do not have their own persistent state\n- Individual node (VM or physical machine) shuts down\n  - Results\n    - pods on that Node stop running\n- Network partition\n  - Results\n    - partition A thinks the nodes in partition B are down; partition B thinks the apiserver is down."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/nodes.md",
+          "score": 1.5622124671936035
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-cluster/_index.md",
+          "score": 0.3344905376434326
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/production-environment/_index.md",
+          "score": -0.05663517862558365
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/windows-resource-management.md",
+          "score": -0.8388785123825073
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/command-line-tools-reference/kube-controller-manager.md",
+          "score": -1.0640497207641602
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 404.09,
+        "generation": 0.22,
+        "total": 404.31
+      }
+    },
+    {
+      "id": "private_state-04",
+      "question": "Why did my checkout Pod crash at 14:03 today?",
+      "category": "private_state",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": true,
+      "mode": "abstained",
+      "fallback_reason": null,
+      "answer": "I could not find enough relevant evidence in the indexed documentation.",
+      "citations": [],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md",
+          "score": -2.856280565261841
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md",
+          "score": -3.0173850059509277
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md",
+          "score": -6.3567962646484375
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-pods.md",
+          "score": -6.508912086486816
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+          "score": -6.577378273010254
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 430.31,
+        "generation": 0.05,
+        "total": 430.36
+      }
+    },
+    {
+      "id": "private_state-05",
+      "question": "What is the current CPU usage of my payments container?",
+      "category": "private_state",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "CFS quota is not used to bound\nthe CPU usage of these containers as their usage is bound by the scheduling domain\nitself. [1]",
+      "citations": [
+        {
+          "source_id": "3c228322bbc185aef69ca8d5",
+          "title": "Resource managers",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/resource-managers.md",
+          "quote": "CFS quota is not used to bound\nthe CPU usage of these containers as their usage is bound by the scheduling domain\nitself."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/resource-managers.md",
+          "score": 0.33768191933631897
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+          "score": -0.7098631858825684
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+          "score": -1.6542932987213135
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+          "score": -1.7617722749710083
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/manage-resources/cpu-constraint-namespace.md",
+          "score": -2.278848171234131
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 425.09,
+        "generation": 0.17,
+        "total": 425.26
+      }
+    },
+    {
+      "id": "private_state-06",
+      "question": "Show the exact YAML of our production checkout Deployment.",
+      "category": "private_state",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "To be sure things are right, let's list all of the namespaces in our cluster. [1]",
+      "citations": [
+        {
+          "source_id": "93c9ec98d58c892548ca83c6",
+          "title": "Namespaces Walkthrough",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/cluster-management/namespaces-walkthrough.md",
+          "quote": "To be sure things are right, let's list all of the namespaces in our cluster."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/cluster-management/namespaces-walkthrough.md",
+          "score": 0.5879003405570984
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/cluster-management/namespaces-walkthrough.md",
+          "score": -0.8872295618057251
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/translate-compose-kubernetes.md",
+          "score": -1.9987406730651855
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-kubernetes-objects/kustomization.md",
+          "score": -2.3383374214172363
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-kubernetes-objects/kustomization.md",
+          "score": -2.5741193294525146
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 421.08,
+        "generation": 0.15,
+        "total": 421.23
+      }
+    },
+    {
+      "id": "private_state-07",
+      "question": "What is the external IP address of my LoadBalancer Service?",
+      "category": "private_state",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "console\n   NAME         TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)    AGE\n   my-service   LoadBalancer   10.3.245.137   104.198.205.71   8080/TCP   54s\n   ``` [1]\n\nMake a note of the external IP address (`LoadBalancer Ingress`) exposed by\n   your service. [2]\n\nThe load balancer's IP address is listed next to `LoadBalancer Ingress`. [3]",
+      "citations": [
+        {
+          "source_id": "ec6d963cd179f51cb39bca3e",
+          "title": "Exposing an External IP Address to Access an Application in a Cluster",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateless-application/expose-external-ip-address.md",
+          "quote": "console\n   NAME         TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)    AGE\n   my-service   LoadBalancer   10.3.245.137   104.198.205.71   8080/TCP   54s\n   ```"
+        },
+        {
+          "source_id": "34895e098547732e9f5954d5",
+          "title": "Exposing an External IP Address to Access an Application in a Cluster",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateless-application/expose-external-ip-address.md",
+          "quote": "Make a note of the external IP address (`LoadBalancer Ingress`) exposed by\n   your service."
+        },
+        {
+          "source_id": "9e03d5c54ff84f2a17decdcd",
+          "title": "Create an External Load Balancer",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/access-application-cluster/create-external-load-balancer.md",
+          "quote": "The load balancer's IP address is listed next to `LoadBalancer Ingress`."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateless-application/expose-external-ip-address.md",
+          "score": 7.628416061401367
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateless-application/expose-external-ip-address.md",
+          "score": 7.617135047912598
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/access-application-cluster/create-external-load-balancer.md",
+          "score": 7.51147985458374
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/services/source-ip.md",
+          "score": 7.051401615142822
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/services/connect-applications-service.md",
+          "score": 6.788921356201172
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 444.5,
+        "generation": 0.29,
+        "total": 444.79
+      }
+    },
+    {
+      "id": "private_state-08",
+      "question": "Which Kubernetes version is installed in my cluster?",
+      "category": "private_state",
+      "relevant_paths": [],
+      "rank": null,
+      "abstained": false,
+      "mode": "extractive",
+      "fallback_reason": null,
+      "answer": "In Kubernetes version 1.11 and later, CoreDNS is recommended and is installed by default with kubeadm. [1]\n\n` that can deploy the version\nof Kubernetes that you want to use in your new cluster. [2]\n\n* `kubelet`: the component that runs on all of the machines in your cluster\n  and does things like starting pods and containers. [3]",
+      "citations": [
+        {
+          "source_id": "535806531e20246a6b3b3823",
+          "title": "Configure DNS for a Cluster",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/access-application-cluster/configure-dns-cluster.md",
+          "quote": "In Kubernetes version 1.11 and later, CoreDNS is recommended and is installed by default with kubeadm."
+        },
+        {
+          "source_id": "b82dfa9230f63633cdcf7490",
+          "title": "Creating a cluster with kubeadm",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm.md",
+          "quote": "` that can deploy the version\nof Kubernetes that you want to use in your new cluster."
+        },
+        {
+          "source_id": "80f2fc75e508da220622f5c4",
+          "title": "Installing kubeadm",
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/production-environment/tools/kubeadm/install-kubeadm.md",
+          "quote": "* `kubelet`: the component that runs on all of the machines in your cluster\n  and does things like starting pods and containers."
+        }
+      ],
+      "retrieved": [
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/access-application-cluster/configure-dns-cluster.md",
+          "score": 7.928520202636719
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm.md",
+          "score": 7.082979679107666
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/setup/production-environment/tools/kubeadm/install-kubeadm.md",
+          "score": 6.288224220275879
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/cluster-upgrade.md",
+          "score": 5.79182243347168
+        },
+        {
+          "url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-cluster/troubleshoot-kubectl.md",
+          "score": 5.7538299560546875
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 416.97,
+        "generation": 0.25,
+        "total": 417.22
+      }
+    }
+  ]
+}

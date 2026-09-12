@@ -31,8 +31,66 @@ def main():
     backup.add_argument("destination", type=Path)
     restore = commands.add_parser("restore", help="Validate and atomically restore a snapshot")
     restore.add_argument("source", type=Path)
+    quality = commands.add_parser("quality", help="Run failure-preserving quality gates")
+    quality.add_argument("--suite", choices=["retrieval", "structured"], default="retrieval")
+    quality.add_argument("--dataset", type=Path)
+    quality.add_argument("--policy", type=Path, default=Path("evals/quality-policy.json"))
+    quality.add_argument("--output", type=Path, default=Path("data/quality.json"))
+    quality.add_argument("--baseline", type=Path)
     args = parser.parse_args()
     settings = Settings()
+    if args.command == "quality":
+        from citestack.quality import (
+            QualityPolicy,
+            compare_baseline,
+            journal,
+            provenance,
+            retrieval_quality,
+            structured_quality,
+            write_report,
+        )
+
+        runtime = provenance()
+        progress = journal(args.output.with_suffix(".cases.jsonl"))
+        policy = QualityPolicy.model_validate_json(args.policy.read_text())
+        dataset = args.dataset or Path(f"evals/{args.suite}-quality.jsonl")
+        if args.suite == "structured":
+            import asyncio
+
+            from citestack.extraction import TicketExtractor
+            from citestack.providers import OllamaProvider
+
+            provider = OllamaProvider(settings)
+            if not asyncio.run(provider.ready()):
+                raise RuntimeError(
+                    "Quality evaluation requires the configured model to be available"
+                )
+            metadata = asyncio.run(provider.model_metadata())
+            report = structured_quality(
+                TicketExtractor(settings), dataset, policy, progress=progress
+            )
+            report["model"] = metadata
+            report["generation_config"] = {
+                "max_attempts": settings.structured_max_attempts,
+                "temperature": 0,
+                "context_limit": 8192,
+                "output_limit": 1200,
+            }
+        else:
+            from citestack.index import Retriever
+            from citestack.models import NeuralModels
+
+            retriever = Retriever(settings, NeuralModels(settings))
+            try:
+                report = retrieval_quality(retriever, dataset, policy, progress=progress)
+            finally:
+                retriever.close()
+        report["runtime"] = runtime
+        if args.baseline:
+            compare_baseline(report, json.loads(args.baseline.read_text()))
+        status = write_report(report, args.output)
+        print(json.dumps({"passed": report["passed"], "metrics": report["metrics"]}, indent=2))
+        raise SystemExit(status)
     if args.command == "extract":
         from citestack.extraction import TicketExtractor
 

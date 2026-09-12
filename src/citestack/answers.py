@@ -10,6 +10,7 @@ from citestack.config import Settings
 from citestack.providers import OllamaProvider
 from citestack.runtime import request_id_var
 from citestack.schemas import Answer, Citation, GeneratedAnswer, Hit
+from citestack.scope import requires_private_context
 from citestack.structured import StructuredOutputEngine
 
 logger = logging.getLogger("citestack")
@@ -106,12 +107,22 @@ class AnswerService:
 
     def answer(self, question: str, top_k: int = 5) -> Answer:
         start = perf_counter()
-        hits = self.retriever.search(question, top_k=top_k)
+        private_context = requires_private_context(question)
+        hits = [] if private_context else self.retriever.search(question, top_k=top_k)
         retrieved = perf_counter()
         selected = select_context(hits, self.settings)
         result = Answer(
             request_id=request_id_var.get() if request_id_var.get() != "cli" else uuid4().hex,
-            answer="I could not find enough relevant evidence in the indexed documentation.",
+            answer=(
+                "This service explains documentation and cannot inspect your cluster, logs, "
+                "configuration, or secrets. Ask how to check this information, or use your "
+                "authorized cluster tools to inspect it."
+                if private_context
+                else "I could not find enough relevant evidence in the indexed documentation."
+            ),
+            abstention_reason="requires_private_context"
+            if private_context
+            else "insufficient_evidence",
             citations=[],
             abstained=True,
             mode="abstained",
@@ -122,6 +133,8 @@ class AnswerService:
             if self.settings.answer_mode == "ollama":
                 try:
                     generated = generate(question, selected, self.settings)
+                    if generated.abstained:
+                        result.abstention_reason = "model_abstained"
                     if not generated.abstained:
                         source_map = {hit.chunk.id: hit.chunk for hit in selected}
                         lines = []
@@ -148,6 +161,8 @@ class AnswerService:
                 if citations:
                     result.answer, result.citations = text, citations
                     result.abstained, result.mode = False, "extractive"
+        if not result.abstained:
+            result.abstention_reason = None
         result.timings_ms = {
             "retrieval": round((retrieved - start) * 1000, 2),
             "generation": round((perf_counter() - retrieved) * 1000, 2),

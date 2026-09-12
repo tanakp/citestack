@@ -1,0 +1,14 @@
+{
+  "suite": "structured",
+  "dataset_sha256": "380e847b77534832e05d14983d32aa66a33e0bd028ef10b0f59bbc9b903696ab",
+  "passed": true,
+  "metrics": {
+    "structured_accuracy": 0.9,
+    "structured_success": 1.0
+  },
+  "model": {
+    "name": "qwen3:4b",
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "server_version": "0.18.2"
+  }
+}

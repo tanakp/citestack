@@ -1,0 +1,9 @@
+{
+  "retrieval_hit_rate": 0.85,
+  "answerable_coverage": 0.9,
+  "out_of_domain_abstention": 0.9,
+  "private_state_abstention": 0.9,
+  "citation_provenance": 1.0,
+  "structured_accuracy": 0.85,
+  "structured_success": 0.9
+}

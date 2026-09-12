@@ -1,4 +1,4 @@
-# Retrieval evaluation
+# Evaluation datasets
 
 `kubernetes.jsonl` contains 20 authored smoke questions and one expected documentation
 page per question. Labels are paths into the pinned source tree. Evaluation refuses
@@ -27,3 +27,10 @@ Run `uv run citestack eval --output docs/evaluation.json`. The CLI exits nonzero
 reranked hit rate is below `--min-hit-rate` (default 0.8). A manual GitHub Actions
 workflow runs this check and uploads the full report. Mandatory merge protection
 must be configured separately in repository settings.
+
+## Automatic quality suites
+
+See [quality gates and known failures](../docs/quality.md) for the 56-case retrieval/
+abstention suite, 20-ticket extraction suite, policy, reference digests, retained
+failures, and automatic CI. The original four-strategy evaluation remains available
+for diagnostics; it is not the only release gate anymore.

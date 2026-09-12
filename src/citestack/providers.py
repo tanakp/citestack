@@ -96,3 +96,29 @@ class OllamaProvider:
             )
         except ProviderFailure:
             return False
+
+    async def model_metadata(self):
+        """Return only the configured model's reproducibility identifiers."""
+        payload = await self._request("GET", "/api/tags", budget=remaining_seconds(2))
+        expected = self.settings.ollama_model
+        expected = expected if ":" in expected else expected + ":latest"
+        if not isinstance(payload, dict) or not isinstance(payload.get("models"), list):
+            raise ProviderFailure("provider_response_invalid")
+        for model in payload["models"]:
+            if isinstance(model, dict) and model.get("name") == expected:
+                digest = model.get("digest")
+                if (
+                    not isinstance(digest, str)
+                    or len(digest) != 64
+                    or any(c not in "0123456789abcdef" for c in digest)
+                ):
+                    raise ProviderFailure("provider_response_invalid")
+                version = await self._request("GET", "/api/version", budget=remaining_seconds(2))
+                if not isinstance(version, dict) or not isinstance(version.get("version"), str):
+                    raise ProviderFailure("provider_response_invalid")
+                return {
+                    "name": expected,
+                    "digest": digest,
+                    "server_version": version.get("version"),
+                }
+        raise ProviderFailure("provider_unavailable")

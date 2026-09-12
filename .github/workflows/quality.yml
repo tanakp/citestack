@@ -1,0 +1,67 @@
+name: Quality gates
+on:
+  push:
+    branches: [main, production-hardening]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  retrieval-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      HF_HOME: .cache/huggingface
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: "0.12.3"
+          enable-cache: true
+      - run: uv sync --frozen --python 3.12
+      - run: uv run citestack fetch
+      - run: uv run citestack ingest
+      - name: Gate full-corpus retrieval and abstention
+        run: uv run citestack quality --output data/quality-retrieval.json --baseline evals/retrieval-reference.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: retrieval-quality-${{ github.sha }}
+          path: data/quality-retrieval.*
+          if-no-files-found: warn
+  structured-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: "0.12.3"
+          enable-cache: true
+      - run: uv sync --frozen --python 3.12
+      - name: Start pinned local model server
+        run: |
+          docker run -d --name quality-ollama -p 127.0.0.1:11434:11434 --memory 6g --cpus 2 \
+            ollama/ollama:0.18.2@sha256:5a5d014aa774f78ebe1340c0d4afc2e35afc12a2c3b34c84e71f78ea20af4ba3
+          for attempt in $(seq 1 30); do
+            curl --fail --silent http://127.0.0.1:11434/api/version && break
+            sleep 1
+          done
+          docker exec quality-ollama ollama pull qwen3:4b
+      - name: Gate real-model extraction with exact model digest
+        env:
+          CITESTACK_GENERATION_TIMEOUT: "120"
+          CITESTACK_GENERATION_BUDGET: "120"
+        run: uv run citestack quality --suite structured --output data/quality-structured.json --baseline evals/structured-reference.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: structured-quality-${{ github.sha }}
+          path: data/quality-structured.*
+          if-no-files-found: warn
+      - name: Stop model server
+        if: always()
+        run: docker rm -f quality-ollama || true

@@ -125,3 +125,29 @@ def test_schema_and_model_sent_without_ambient_proxy(settings):
 def test_readiness_checks_configured_model(settings, payload, expected):
     upstream = provider(settings, lambda _: httpx.Response(200, json=payload))
     assert asyncio.run(upstream.ready()) is expected
+
+
+def test_model_metadata_records_only_selected_model(settings):
+    def respond(request):
+        if request.url.path == "/api/version":
+            return httpx.Response(200, json={"version": "0.18.2"})
+        return httpx.Response(
+            200,
+            json={
+                "models": [
+                    {"name": "private-unrelated-model", "digest": "b" * 64},
+                    {"name": "qwen3:4b", "digest": "a" * 64},
+                ]
+            },
+        )
+
+    result = asyncio.run(provider(settings, respond).model_metadata())
+    assert result == {"name": "qwen3:4b", "digest": "a" * 64, "server_version": "0.18.2"}
+
+
+def test_model_metadata_rejects_missing_digest(settings):
+    upstream = provider(
+        settings, lambda _: httpx.Response(200, json={"models": [{"name": "qwen3:4b"}]})
+    )
+    with pytest.raises(ProviderFailure, match="provider_response_invalid"):
+        asyncio.run(upstream.model_metadata())

@@ -104,3 +104,24 @@ See [recovery verification](recovery-verification.json), [per-question results](
 and the [recovery runbook](recovery.md). This evidence does not replace the outstanding
 expanded quality/abstention evaluation or sustained load experiments. The local default
 now uses format 2; the old index and corpus were preserved under ignored `data/backups/`.
+
+## Progress: real-model quality gates (2026-09-12)
+
+Added 56 retrieval/abstention cases and 20 synthetic ticket cases with strict dataset
+validation, policy floors, versioned reference digests, and a 2.5-point regression
+limit. Per-case journals preserve completed observations on interrupted runs. Reports
+include failed examples and reproducibility metadata. The automatic workflow now
+rebuilds the full corpus and uses actual retrieval models plus a pinned Ollama image
+and exact model digest; it does not substitute mock generation for model quality.
+
+The initial retrieval baseline found private-state abstention at 1/8. An explicit
+scope boundary improves this regression set to 8/8 without reducing 40/40 answerable
+coverage; source hit@5 is 39/40 and unrelated abstention is 8/8. The ticket suite scores
+18/20 exact field matches with 20/20 valid successful outputs. A prompt candidate
+regressed to 17/20 and was reverted; both reports remain published. All are development
+cases, not held-out accuracy claims. See [quality methodology](quality.md).
+
+Local unit/API verification: 165 tests pass. Automated model jobs and eventual required
+branch checks still need confirmation at the published revision. Complete deployment,
+security audit automation, monitoring alerts, measured load limits, and final release
+verification remain outstanding.

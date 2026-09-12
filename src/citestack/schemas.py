@@ -66,5 +66,8 @@ class Answer(BaseModel):
     abstained: bool
     mode: Literal["extractive", "ollama", "abstained"]
     fallback_reason: str | None = None
+    abstention_reason: (
+        Literal["insufficient_evidence", "requires_private_context", "model_abstained"] | None
+    ) = None
     hits: list[Hit]
     timings_ms: dict[str, float]

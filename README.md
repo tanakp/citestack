@@ -96,10 +96,13 @@ release. See [backup and recovery](docs/recovery.md) for migration and rollback 
 | Failure behavior | Abstention, bounded repair, labeled excerpts on model failure |
 | Serving | Credential-bound clients, separate index snapshots, persistent quotas, body/deadline limits, bounded workers, readiness, metrics |
 | Index safety | Validated checksums including FTS data, atomic publication, immutable backups, tested restore, consistent readers |
-| Evaluation | BM25/dense/hybrid/reranked comparison, inspectable per-question results, CLI quality threshold |
+| Evaluation | Full-corpus retrieval/abstention and real-model ticket gates, saved failures, versioned references, automatic CI |
 
 Production hardening is in progress. See the [operating controls](docs/operations.md)
 and [acceptance plan](docs/production-plan.md) for verified behavior and remaining work.
+
+[Quality gates and retained failures](docs/quality.md) document what the current scores
+measure and the errors that remain.
 
 ## Structured output engine (project #2)
 

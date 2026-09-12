@@ -1,0 +1,56 @@
+{"id": "doc-01", "category": "documentation", "question": "What is the smallest deployable unit that Kubernetes manages?", "relevant_paths": ["/content/en/docs/concepts/workloads/pods/_index.md"]}
+{"id": "doc-02", "category": "documentation", "question": "How do I roll back a Deployment to an earlier revision?", "relevant_paths": ["/content/en/docs/concepts/workloads/controllers/deployment.md"]}
+{"id": "doc-03", "category": "documentation", "question": "Are Kubernetes Secrets encrypted in etcd by default?", "relevant_paths": ["/content/en/docs/concepts/configuration/secret.md"]}
+{"id": "doc-04", "category": "documentation", "question": "What is a ConfigMap and what kind of data should it store?", "relevant_paths": ["/content/en/docs/concepts/configuration/configmap.md"]}
+{"id": "doc-05", "category": "documentation", "question": "How does a StatefulSet give Pods stable identities?", "relevant_paths": ["/content/en/docs/concepts/workloads/controllers/statefulset.md"]}
+{"id": "doc-06", "category": "documentation", "question": "How can I run a copy of a Pod on every node?", "relevant_paths": ["/content/en/docs/concepts/workloads/controllers/daemonset.md"]}
+{"id": "doc-07", "category": "documentation", "question": "How do I schedule a Job to run repeatedly at specified times?", "relevant_paths": ["/content/en/docs/concepts/workloads/controllers/cron-jobs.md"]}
+{"id": "doc-08", "category": "documentation", "question": "How does a Kubernetes Job track successful completion of Pods?", "relevant_paths": ["/content/en/docs/concepts/workloads/controllers/job.md"]}
+{"id": "doc-09", "category": "documentation", "question": "What is the difference between ClusterIP and NodePort Services?", "relevant_paths": ["/content/en/docs/concepts/services-networking/service.md"]}
+{"id": "doc-10", "category": "documentation", "question": "How does an Ingress route HTTP traffic to Services?", "relevant_paths": ["/content/en/docs/concepts/services-networking/ingress.md"]}
+{"id": "doc-11", "category": "documentation", "question": "How do NetworkPolicies control incoming and outgoing Pod traffic?", "relevant_paths": ["/content/en/docs/concepts/services-networking/network-policies.md"]}
+{"id": "doc-12", "category": "documentation", "question": "How does a PersistentVolumeClaim request storage?", "relevant_paths": ["/content/en/docs/concepts/storage/persistent-volumes.md"]}
+{"id": "doc-13", "category": "documentation", "question": "How do StorageClasses support dynamic volume provisioning?", "relevant_paths": ["/content/en/docs/concepts/storage/storage-classes.md"]}
+{"id": "doc-14", "category": "documentation", "question": "What is the difference between a Role and a ClusterRole?", "relevant_paths": ["/content/en/docs/reference/access-authn-authz/rbac.md"]}
+{"id": "doc-15", "category": "documentation", "question": "How can a HorizontalPodAutoscaler scale replicas based on CPU utilization?", "relevant_paths": ["/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md"]}
+{"id": "doc-16", "category": "documentation", "question": "What is the difference between readiness probes and liveness probes?", "relevant_paths": ["/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md"]}
+{"id": "doc-17", "category": "documentation", "question": "How do CPU requests and CPU limits affect container scheduling and execution?", "relevant_paths": ["/content/en/docs/concepts/configuration/manage-resources-containers.md"]}
+{"id": "doc-18", "category": "documentation", "question": "How do taints and tolerations affect which Pods can run on a node?", "relevant_paths": ["/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md"]}
+{"id": "doc-19", "category": "documentation", "question": "How do namespaces divide cluster resources?", "relevant_paths": ["/content/en/docs/concepts/overview/working-with-objects/namespaces.md"]}
+{"id": "doc-20", "category": "documentation", "question": "How can labels and selectors identify groups of Kubernetes objects?", "relevant_paths": ["/content/en/docs/concepts/overview/working-with-objects/labels.md"]}
+{"id": "doc-21", "category": "documentation", "question": "What does a PodDisruptionBudget restrict during voluntary disruptions?", "relevant_paths": ["/content/en/docs/concepts/workloads/pods/disruptions.md"]}
+{"id": "doc-22", "category": "documentation", "question": "How do init containers differ from regular app containers?", "relevant_paths": ["/content/en/docs/concepts/workloads/pods/init-containers.md"]}
+{"id": "doc-23", "category": "documentation", "question": "What is the purpose of a restartable sidecar container?", "relevant_paths": ["/content/en/docs/concepts/workloads/pods/sidecar-containers.md"]}
+{"id": "doc-24", "category": "documentation", "question": "Why does deletion wait for finalizers to be removed?", "relevant_paths": ["/content/en/docs/concepts/overview/working-with-objects/finalizers.md"]}
+{"id": "doc-25", "category": "documentation", "question": "How does garbage collection remove dependent objects?", "relevant_paths": ["/content/en/docs/concepts/architecture/garbage-collection.md"]}
+{"id": "doc-26", "category": "documentation", "question": "What identities do ServiceAccounts provide for processes in Pods?", "relevant_paths": ["/content/en/docs/concepts/security/service-accounts.md"]}
+{"id": "doc-27", "category": "documentation", "question": "What DNS name does a normal Service receive?", "relevant_paths": ["/content/en/docs/concepts/services-networking/dns-pod-service.md"]}
+{"id": "doc-28", "category": "documentation", "question": "How do resource quotas constrain resource consumption in a namespace?", "relevant_paths": ["/content/en/docs/concepts/policy/resource-quotas.md"]}
+{"id": "doc-29", "category": "documentation", "question": "How can LimitRanges enforce minimum and maximum resource requests?", "relevant_paths": ["/content/en/docs/concepts/policy/limit-range.md"]}
+{"id": "doc-30", "category": "documentation", "question": "What does a startup probe do for a slow-starting container?", "relevant_paths": ["/content/en/docs/concepts/workloads/pods/probes.md"]}
+{"id": "doc-31", "category": "documentation", "question": "How can a TTL controller clean up a finished Job?", "relevant_paths": ["/content/en/docs/concepts/workloads/controllers/ttlafterfinished.md"]}
+{"id": "doc-32", "category": "documentation", "question": "How does Pod priority influence scheduling and preemption?", "relevant_paths": ["/content/en/docs/concepts/scheduling-eviction/pod-priority-preemption.md"]}
+{"id": "doc-33", "category": "documentation", "question": "How do topology spread constraints distribute Pods across failure domains?", "relevant_paths": ["/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md"]}
+{"id": "doc-34", "category": "documentation", "question": "Why are ephemeral containers useful for debugging an existing Pod?", "relevant_paths": ["/content/en/docs/concepts/workloads/pods/ephemeral-containers.md"]}
+{"id": "doc-35", "category": "documentation", "question": "How does a projected volume combine multiple sources in one directory?", "relevant_paths": ["/content/en/docs/concepts/storage/projected-volumes.md"]}
+{"id": "doc-36", "category": "documentation", "question": "Which tasks use Lease objects for coordination?", "relevant_paths": ["/content/en/docs/concepts/architecture/leases.md"]}
+{"id": "doc-37", "category": "documentation", "question": "What does Pod Security Admission do in enforce mode?", "relevant_paths": ["/content/en/docs/concepts/security/pod-security-admission.md"]}
+{"id": "doc-38", "category": "documentation", "question": "When are validating admission controllers invoked?", "relevant_paths": ["/content/en/docs/reference/access-authn-authz/admission-controllers.md"]}
+{"id": "doc-39", "category": "documentation", "question": "How can required node affinity constrain scheduling?", "relevant_paths": ["/content/en/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity.md"]}
+{"id": "doc-40", "category": "documentation", "question": "What is the difference between generic ephemeral volumes and persistent volumes?", "relevant_paths": ["/content/en/docs/concepts/storage/ephemeral-volumes.md"]}
+{"id": "out_of_domain-01", "category": "out_of_domain", "question": "How do I bake a sourdough loaf at home?", "relevant_paths": []}
+{"id": "out_of_domain-02", "category": "out_of_domain", "question": "Who won the FIFA World Cup in 1998?", "relevant_paths": []}
+{"id": "out_of_domain-03", "category": "out_of_domain", "question": "What is the best treatment for seasonal allergies?", "relevant_paths": []}
+{"id": "out_of_domain-04", "category": "out_of_domain", "question": "Write a love poem about the moon.", "relevant_paths": []}
+{"id": "out_of_domain-05", "category": "out_of_domain", "question": "What is the weather forecast for Istanbul tomorrow?", "relevant_paths": []}
+{"id": "out_of_domain-06", "category": "out_of_domain", "question": "How much is a flight from London to Tokyo today?", "relevant_paths": []}
+{"id": "out_of_domain-07", "category": "out_of_domain", "question": "How do I replace the timing belt on a car?", "relevant_paths": []}
+{"id": "out_of_domain-08", "category": "out_of_domain", "question": "Explain how photosynthesis works in oak leaves.", "relevant_paths": []}
+{"id": "private_state-01", "category": "private_state", "question": "How many Pods are running in my cluster right now?", "relevant_paths": []}
+{"id": "private_state-02", "category": "private_state", "question": "What is the current password stored in my production database Secret?", "relevant_paths": []}
+{"id": "private_state-03", "category": "private_state", "question": "Which nodes in our production cluster are currently unhealthy?", "relevant_paths": []}
+{"id": "private_state-04", "category": "private_state", "question": "Why did my checkout Pod crash at 14:03 today?", "relevant_paths": []}
+{"id": "private_state-05", "category": "private_state", "question": "What is the current CPU usage of my payments container?", "relevant_paths": []}
+{"id": "private_state-06", "category": "private_state", "question": "Show the exact YAML of our production checkout Deployment.", "relevant_paths": []}
+{"id": "private_state-07", "category": "private_state", "question": "What is the external IP address of my LoadBalancer Service?", "relevant_paths": []}
+{"id": "private_state-08", "category": "private_state", "question": "Which Kubernetes version is installed in my cluster?", "relevant_paths": []}

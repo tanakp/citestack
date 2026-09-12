@@ -1,0 +1,12 @@
+{
+  "suite": "retrieval",
+  "dataset_sha256": "2b4f0d5bc144f3cca0ca8ceaef3929baeee3c67795f9dde7f23b3d669d198fd1",
+  "passed": true,
+  "metrics": {
+    "retrieval_hit_rate": 0.975,
+    "answerable_coverage": 1.0,
+    "citation_provenance": 1.0,
+    "out_of_domain_abstention": 1.0,
+    "private_state_abstention": 1.0
+  }
+}
