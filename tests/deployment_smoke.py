@@ -77,7 +77,18 @@ def main():
                     "image": "citestack:ci",
                     "entrypoint": ["python", "/stub.py"],
                     "command": [],
-                    "healthcheck": {"disable": True},
+                    "healthcheck": {
+                        "test": [
+                            "CMD",
+                            "python",
+                            "-c",
+                            "import urllib.request; "
+                            "urllib.request.urlopen('http://127.0.0.1:11434/api/tags')",
+                        ],
+                        "interval": "2s",
+                        "timeout": "5s",
+                        "retries": 5,
+                    },
                     "volumes": [f"{Path('tests/ollama_stub.py').resolve()}:/stub.py:ro"],
                 },
             }

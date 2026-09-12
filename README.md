@@ -165,7 +165,8 @@ The default CLI gate requires reranked hit rate@5 of at least 0.8. See
 [evaluation methodology](evals/README.md) for definitions and limits.
 
 CI runs lint, formatting, and isolated unit/API tests on pushes and pull requests.
-Automatic **Quality gates** rebuild the full corpus, enforce retrieval/abstention
+Automatic **Quality gates** build or restore a verified public index keyed by source
+and locked dependencies, enforce retrieval/abstention
 thresholds, and run pinned real-model extraction against versioned references. The
 manual **Neural retrieval evaluation** keeps the four-strategy comparison available.
 **Security and operations** audits locked dependencies, scans Git history for secrets,

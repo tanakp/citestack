@@ -114,3 +114,9 @@ Fresh Linux generation at commit `a01b125` passed at **20/20 exact field matches
 See the [full fresh Linux report](quality-linux-structured.json) and
 [CI run](https://github.com/tanakp/citestack/actions/runs/34698606141). This remains
 a small development regression set, not a held-out general accuracy estimate.
+
+CI caches only public corpus/index artifacts and pinned retrieval weights, keyed by
+all application source and the dependency lock. A hit still runs full snapshot
+integrity inspection and every retrieval/abstention case; model quality is never
+replaced by cached scores. This avoids rebuilding embeddings for documentation-only
+changes. Source, model configuration, or dependency changes create a new build key.
