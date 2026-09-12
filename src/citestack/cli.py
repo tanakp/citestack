@@ -27,6 +27,10 @@ def main():
     extract = commands.add_parser("extract", help="Extract a typed support ticket using Ollama")
     extract.add_argument("text")
     commands.add_parser("inspect", help="Read index metadata without loading models")
+    backup = commands.add_parser("backup", help="Validate and copy an immutable snapshot")
+    backup.add_argument("destination", type=Path)
+    restore = commands.add_parser("restore", help="Validate and atomically restore a snapshot")
+    restore.add_argument("source", type=Path)
     args = parser.parse_args()
     settings = Settings()
     if args.command == "extract":
@@ -55,15 +59,16 @@ def main():
             timeout_graceful_shutdown=settings.shutdown_timeout,
         )
         return
-    if args.command == "inspect":
-        import sqlite3
+    if args.command in {"inspect", "backup", "restore"}:
+        from citestack.snapshots import copy_snapshot, inspect_snapshot
 
-        with sqlite3.connect(settings.index_path.resolve().as_uri() + "?mode=ro", uri=True) as db:
-            print(
-                json.dumps(
-                    json.loads(db.execute("SELECT value FROM metadata").fetchone()[0]), indent=2
-                )
-            )
+        if args.command == "inspect":
+            manifest = inspect_snapshot(settings.index_path)
+        elif args.command == "backup":
+            manifest = copy_snapshot(settings.index_path, args.destination)
+        else:
+            manifest = copy_snapshot(args.source, settings.index_path, restore=True)
+        print(json.dumps(manifest, indent=2))
         return
     from citestack.index import Retriever, build_index
     from citestack.models import NeuralModels

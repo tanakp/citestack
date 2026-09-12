@@ -80,3 +80,27 @@ These results do not establish the remaining checklist items. Still required: ex
 quality and abstention evaluation, index/ingestion integrity and recovery, a complete
 TLS deployment profile, security audit automation, monitoring alerts, measured load
 limits with real models, and verification of the final published release.
+
+## Progress: snapshot integrity and recovery (2026-09-12)
+
+Index format 2 now validates a content identifier covering metadata, vectors, payloads,
+SQL schema, and FTS shadow tables; it also checks counts, identifiers, normalization,
+and matching search text. Build and backup/restore run the native FTS integrity check.
+`inspect`, `backup`, and `restore` work without loading models. Backups cannot overwrite
+an existing destination; restore validates a private copy before atomic publication.
+Tests cover corruption, resealed invalid vectors, stale corpus provenance, failed
+restore preserving the destination, shared publication locks, and reader consistency.
+
+The glossary fix was exercised on a fresh pinned download: 1,180 usable pages (all
+1,175 previous pages plus five newly qualifying pages). Corpus/manifest digests now
+bind provenance to the documents actually ingested. Ingestion also bounds tree bytes,
+corpus bytes/count, line sizes, and pending download results behind slow files.
+
+Local verification: 144 tests and Ruff checks passed. The full 132,685,824-byte snapshot
+was inspected, backed up, restored, and queried with the real BGE/cross-encoder models.
+A deliberately corrupted backup was rejected without changing the restoration target.
+The existing 20-case development evaluation remains 95% hit@5 for reranking (19/20).
+See [recovery verification](recovery-verification.json), [per-question results](evaluation-v2.json),
+and the [recovery runbook](recovery.md). This evidence does not replace the outstanding
+expanded quality/abstention evaluation or sustained load experiments. The local default
+now uses format 2; the old index and corpus were preserved under ignored `data/backups/`.

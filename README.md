@@ -6,7 +6,7 @@
 
 CiteStack is a runnable RAG reference service with document ingestion, token-based
 chunking, BM25 + semantic retrieval, neural reranking, and validated citations.
-It indexes a pinned snapshot of **1,175 Kubernetes documentation pages** and runs
+It indexes a pinned snapshot of **1,180 Kubernetes documentation pages** and runs
 locally without a paid API key.
 
 Built to make engineering decisions inspectable: the repository includes an API,
@@ -80,6 +80,9 @@ The response includes `answer`, `citations`, `abstained`, `mode`, `fallback_reas
 retrieved `hits`, a `request_id`, and retrieval/generation/total `timings_ms`.
 Citation numbers in the answer correspond to the one-based `citations` array.
 
+Index format 2 requires a fresh fetch and rebuild when upgrading from the initial
+release. See [backup and recovery](docs/recovery.md) for migration and rollback commands.
+
 ## What is implemented
 
 | Stage | Implementation |
@@ -92,7 +95,7 @@ Citation numbers in the answer correspond to the one-based `citations` array.
 | Answers | Local Ollama, Pydantic schema validation, source-ID and verbatim-quote checks |
 | Failure behavior | Abstention, bounded repair, labeled excerpts on model failure |
 | Serving | Credential-bound clients, separate index snapshots, persistent quotas, body/deadline limits, bounded workers, readiness, metrics |
-| Index safety | Atomic snapshot replacement, build lock, embedding identity checks, consistent readers |
+| Index safety | Validated checksums including FTS data, atomic publication, immutable backups, tested restore, consistent readers |
 | Evaluation | BM25/dense/hybrid/reranked comparison, inspectable per-question results, CLI quality threshold |
 
 Production hardening is in progress. See the [operating controls](docs/operations.md)

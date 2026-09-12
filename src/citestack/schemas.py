@@ -4,6 +4,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class Document(BaseModel):
+    model_config = ConfigDict(hide_input_in_errors=True)
     id: str
     title: str
     url: str
@@ -11,6 +12,7 @@ class Document(BaseModel):
 
 
 class Chunk(BaseModel):
+    model_config = ConfigDict(hide_input_in_errors=True)
     id: str
     document_id: str
     title: str

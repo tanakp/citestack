@@ -43,7 +43,9 @@ Rebuilds replace the corpus snapshot, so deleted sources do not leave stale chun
 Embedding identity and revision are checked before opening an index.
 
 A service process keeps an open database connection and an in-memory vector matrix
-from the same snapshot. Rebuilding does not switch a running process to the new
+from the same snapshot. Snapshot validation checks the manifest, counts, normalized
+vectors, FTS content and posting-list checksums before serving. [Backup and restore](recovery.md)
+validate private copies before atomic publication. Rebuilding does not switch a running process to the new
 index: restart it explicitly. The SQLite read connection is protected by a lock.
 The model's dense vectors are searched exactly, which is straightforward at this
 corpus size; ANN or a separate vector database would become useful at larger scale.

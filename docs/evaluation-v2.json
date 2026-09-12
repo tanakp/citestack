@@ -1,0 +1,1111 @@
+{
+  "dataset": "kubernetes.jsonl",
+  "cases": 20,
+  "k": 5,
+  "index": {
+    "schema_version": 2,
+    "corpus_sha256": "2aba3a73d76f6c2095d2847eab02c9581b4b5981c456eba17714e3d0e2470ecb",
+    "embedding_fingerprint": "BAAI/bge-small-en-v1.5@5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "dimensions": 384,
+    "documents": 1180,
+    "chunks": 24594,
+    "chunk_tokens": 220,
+    "overlap_tokens": 35,
+    "built_at": "2026-09-12T02:42:11.860957+00:00",
+    "source": {
+      "source": "Kubernetes documentation contributors",
+      "revision": "17133089068629ec12ca15c1bdf36a60d2671a74",
+      "tree_url": "https://api.github.com/repos/kubernetes/website/git/trees/17133089068629ec12ca15c1bdf36a60d2671a74",
+      "blob_checksums_verified": true,
+      "license": "CC-BY-4.0",
+      "license_url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/LICENSE",
+      "cleaner_version": "markdown-v2-glossary",
+      "transforms": "English docs; glossary labels retained; other shortcodes and link targets removed",
+      "documents": 1180,
+      "corpus_sha256": "2aba3a73d76f6c2095d2847eab02c9581b4b5981c456eba17714e3d0e2470ecb"
+    },
+    "snapshot_id": "3fb41063f1fe6ebaa0095163db2c963eace49b7e0a985427a9c26505aded3c98"
+  },
+  "modes": {
+    "bm25": {
+      "hit_rate_at_k": 0.85,
+      "mrr_at_k": 0.6266666666666667,
+      "latency_p50_ms": 16.65,
+      "latency_p95_ms": 20.334,
+      "results": [
+        {
+          "question": "What is the smallest deployable unit that Kubernetes manages?",
+          "expected_path": "/content/en/docs/concepts/workloads/pods/_index.md",
+          "rank": 1,
+          "latency_ms": 18.13,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/_index.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/kubernetes-api.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/windows/intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/pod.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning.md"
+          ]
+        },
+        {
+          "question": "How do I roll back a Deployment to an earlier revision?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/deployment.md",
+          "rank": 1,
+          "latency_ms": 17.17,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_rollout/kubectl_rollout_undo.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-daemon/rollback-daemon-set.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md"
+          ]
+        },
+        {
+          "question": "Are Kubernetes Secrets encrypted in etcd by default?",
+          "expected_path": "/content/en/docs/concepts/configuration/secret.md",
+          "rank": null,
+          "latency_ms": 13.39,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/kms-provider.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/secrets-good-practices.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/kms-provider.md"
+          ]
+        },
+        {
+          "question": "What is a ConfigMap and what kind of data should it store?",
+          "expected_path": "/content/en/docs/concepts/configuration/configmap.md",
+          "rank": 1,
+          "latency_ms": 20.98,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md"
+          ]
+        },
+        {
+          "question": "How does a StatefulSet give Pods stable identities?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/statefulset.md",
+          "rank": 5,
+          "latency_ms": 11.9,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/stateful-set-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/basic-stateful-set.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/force-delete-stateful-set-pod.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/basic-stateful-set.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/statefulset.md"
+          ]
+        },
+        {
+          "question": "How can I run a copy of a Pod on every node?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/daemonset.md",
+          "rank": 2,
+          "latency_ms": 19.09,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-daemon/create-daemon-set.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/daemon-set-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/daemon-set-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/_index.md"
+          ]
+        },
+        {
+          "question": "How do I schedule a Job to run repeatedly at specified times?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+          "rank": 1,
+          "latency_ms": 17.33,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_cronjob.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/automated-tasks-with-cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/controller.md"
+          ]
+        },
+        {
+          "question": "How does a Kubernetes Job track successful completion of Pods?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/job.md",
+          "rank": 2,
+          "latency_ms": 16.76,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/indexed-parallel-processing-static.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md"
+          ]
+        },
+        {
+          "question": "What is the difference between ClusterIP and NodePort Services?",
+          "expected_path": "/content/en/docs/concepts/services-networking/service.md",
+          "rank": 3,
+          "latency_ms": 17.6,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/services/source-ip.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/expose/expose-intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-service.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/services/connect-applications-service.md"
+          ]
+        },
+        {
+          "question": "How does an Ingress route HTTP traffic to Services?",
+          "expected_path": "/content/en/docs/concepts/services-networking/ingress.md",
+          "rank": 1,
+          "latency_ms": 13.31,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/networking/virtual-ips.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/_index.md"
+          ]
+        },
+        {
+          "question": "How do NetworkPolicies control incoming and outgoing Pod traffic?",
+          "expected_path": "/content/en/docs/concepts/services-networking/network-policies.md",
+          "rank": 2,
+          "latency_ms": 11.29,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/cluster-administration/system-traces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/networking/virtual-ips.md"
+          ]
+        },
+        {
+          "question": "How does a PersistentVolumeClaim request storage?",
+          "expected_path": "/content/en/docs/concepts/storage/persistent-volumes.md",
+          "rank": null,
+          "latency_ms": 12.47,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/limit-storage-consumption.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/labels-annotations-taints/_index.md"
+          ]
+        },
+        {
+          "question": "How do StorageClasses support dynamic volume provisioning?",
+          "expected_path": "/content/en/docs/concepts/storage/storage-classes.md",
+          "rank": null,
+          "latency_ms": 3.47,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/dynamic-volume-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md"
+          ]
+        },
+        {
+          "question": "What is the difference between a Role and a ClusterRole?",
+          "expected_path": "/content/en/docs/reference/access-authn-authz/rbac.md",
+          "rank": 2,
+          "latency_ms": 20.3,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_clusterrole.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/pod-security-standards.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_clusterrole.md"
+          ]
+        },
+        {
+          "question": "How can a HorizontalPodAutoscaler scale replicas based on CPU utilization?",
+          "expected_path": "/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+          "rank": 1,
+          "latency_ms": 14.11,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling.md"
+          ]
+        },
+        {
+          "question": "What is the difference between readiness probes and liveness probes?",
+          "expected_path": "/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "rank": 2,
+          "latency_ms": 17.43,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md"
+          ]
+        },
+        {
+          "question": "How do CPU requests and CPU limits affect container scheduling and execution?",
+          "expected_path": "/content/en/docs/concepts/configuration/manage-resources-containers.md",
+          "rank": 1,
+          "latency_ms": 11.63,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/limit-range.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace.md"
+          ]
+        },
+        {
+          "question": "How do taints and tolerations affect which Pods can run on a node?",
+          "expected_path": "/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+          "rank": 1,
+          "latency_ms": 20.17,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/dynamic-resource-allocation/device-taints.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/dynamic-resource-allocation/device-taints.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/node/node-status.md"
+          ]
+        },
+        {
+          "question": "How do namespaces divide cluster resources?",
+          "expected_path": "/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+          "rank": 2,
+          "latency_ms": 5.32,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/namespace.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/config-api/kubeconfig.v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/resource-quotas.md"
+          ]
+        },
+        {
+          "question": "How can labels and selectors identify groups of Kubernetes objects?",
+          "expected_path": "/content/en/docs/concepts/overview/working-with-objects/labels.md",
+          "rank": 1,
+          "latency_ms": 16.54,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/configure-pdb.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/extensible-admission-controllers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-kubernetes-objects/declarative-config.md"
+          ]
+        }
+      ]
+    },
+    "dense": {
+      "hit_rate_at_k": 0.9,
+      "mrr_at_k": 0.6475,
+      "latency_p50_ms": 11.71,
+      "latency_p95_ms": 12.968500000000002,
+      "results": [
+        {
+          "question": "What is the smallest deployable unit that Kubernetes manages?",
+          "expected_path": "/content/en/docs/concepts/workloads/pods/_index.md",
+          "rank": 2,
+          "latency_ms": 14.65,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/pod.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/_index.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro.md"
+          ]
+        },
+        {
+          "question": "How do I roll back a Deployment to an earlier revision?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/deployment.md",
+          "rank": 1,
+          "latency_ms": 11.79,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/update/update-intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md"
+          ]
+        },
+        {
+          "question": "Are Kubernetes Secrets encrypted in etcd by default?",
+          "expected_path": "/content/en/docs/concepts/configuration/secret.md",
+          "rank": null,
+          "latency_ms": 11.47,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/kms-provider.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/securing-a-cluster.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/decrypt-data.md"
+          ]
+        },
+        {
+          "question": "What is a ConfigMap and what kind of data should it store?",
+          "expected_path": "/content/en/docs/concepts/configuration/configmap.md",
+          "rank": 1,
+          "latency_ms": 11.75,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/config-map-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/config-map-v1.md"
+          ]
+        },
+        {
+          "question": "How does a StatefulSet give Pods stable identities?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/statefulset.md",
+          "rank": 3,
+          "latency_ms": 11.11,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/statefulset.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/stateful-set-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/statefulset.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/stateful-set-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/basic-stateful-set.md"
+          ]
+        },
+        {
+          "question": "How can I run a copy of a Pod on every node?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/daemonset.md",
+          "rank": null,
+          "latency_ms": 11.25,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-daemon/pods-some-nodes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/services/source-ip.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/_index.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md"
+          ]
+        },
+        {
+          "question": "How do I schedule a Job to run repeatedly at specified times?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+          "rank": 1,
+          "latency_ms": 11.25,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/cron-job-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/cron-job-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md"
+          ]
+        },
+        {
+          "question": "How does a Kubernetes Job track successful completion of Pods?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/job.md",
+          "rank": 1,
+          "latency_ms": 10.99,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/fine-parallel-processing-work-queue.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md"
+          ]
+        },
+        {
+          "question": "What is the difference between ClusterIP and NodePort Services?",
+          "expected_path": "/content/en/docs/concepts/services-networking/service.md",
+          "rank": 3,
+          "latency_ms": 11.48,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/service-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/service-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/cluster-ip-allocation.md"
+          ]
+        },
+        {
+          "question": "How does an Ingress route HTTP traffic to Services?",
+          "expected_path": "/content/en/docs/concepts/services-networking/ingress.md",
+          "rank": 2,
+          "latency_ms": 11.04,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md"
+          ]
+        },
+        {
+          "question": "How do NetworkPolicies control incoming and outgoing Pod traffic?",
+          "expected_path": "/content/en/docs/concepts/services-networking/network-policies.md",
+          "rank": 1,
+          "latency_ms": 12.1,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/network-policy.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md"
+          ]
+        },
+        {
+          "question": "How does a PersistentVolumeClaim request storage?",
+          "expected_path": "/content/en/docs/concepts/storage/persistent-volumes.md",
+          "rank": 1,
+          "latency_ms": 12.16,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/persistent-volume-claim-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md"
+          ]
+        },
+        {
+          "question": "How do StorageClasses support dynamic volume provisioning?",
+          "expected_path": "/content/en/docs/concepts/storage/storage-classes.md",
+          "rank": 5,
+          "latency_ms": 11.73,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/dynamic-volume-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/storage-classes.md"
+          ]
+        },
+        {
+          "question": "What is the difference between a Role and a ClusterRole?",
+          "expected_path": "/content/en/docs/reference/access-authn-authz/rbac.md",
+          "rank": 1,
+          "latency_ms": 11.67,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/rbac/cluster-role-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/rbac/cluster-role-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/rbac/cluster-role-binding-v1.md"
+          ]
+        },
+        {
+          "question": "How can a HorizontalPodAutoscaler scale replicas based on CPU utilization?",
+          "expected_path": "/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+          "rank": 2,
+          "latency_ms": 12.88,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/autoscaling/horizontal-pod-autoscaler-v2.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/autoscaling/horizontal-pod-autoscaler-v2.md"
+          ]
+        },
+        {
+          "question": "What is the difference between readiness probes and liveness probes?",
+          "expected_path": "/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "rank": 3,
+          "latency_ms": 11.62,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md"
+          ]
+        },
+        {
+          "question": "How do CPU requests and CPU limits affect container scheduling and execution?",
+          "expected_path": "/content/en/docs/concepts/configuration/manage-resources-containers.md",
+          "rank": 1,
+          "latency_ms": 11.89,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/resource-managers.md"
+          ]
+        },
+        {
+          "question": "How do taints and tolerations affect which Pods can run on a node?",
+          "expected_path": "/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+          "rank": 1,
+          "latency_ms": 12.01,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/taint.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/dynamic-resource-allocation/device-taints.md"
+          ]
+        },
+        {
+          "question": "How do namespaces divide cluster resources?",
+          "expected_path": "/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+          "rank": 4,
+          "latency_ms": 11.69,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/namespace.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md"
+          ]
+        },
+        {
+          "question": "How can labels and selectors identify groups of Kubernetes objects?",
+          "expected_path": "/content/en/docs/concepts/overview/working-with-objects/labels.md",
+          "rank": 1,
+          "latency_ms": 12.01,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/expose/expose-intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/labels-annotations-taints/_index.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md"
+          ]
+        }
+      ]
+    },
+    "hybrid": {
+      "hit_rate_at_k": 0.95,
+      "mrr_at_k": 0.77,
+      "latency_p50_ms": 28.36,
+      "latency_p95_ms": 32.408,
+      "results": [
+        {
+          "question": "What is the smallest deployable unit that Kubernetes manages?",
+          "expected_path": "/content/en/docs/concepts/workloads/pods/_index.md",
+          "rank": 1,
+          "latency_ms": 30.63,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/_index.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/pod.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/windows/intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/kubernetes-api.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro.md"
+          ]
+        },
+        {
+          "question": "How do I roll back a Deployment to an earlier revision?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/deployment.md",
+          "rank": 1,
+          "latency_ms": 29.07,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_rollout/kubectl_rollout_undo.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md"
+          ]
+        },
+        {
+          "question": "Are Kubernetes Secrets encrypted in etcd by default?",
+          "expected_path": "/content/en/docs/concepts/configuration/secret.md",
+          "rank": null,
+          "latency_ms": 25.51,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/kms-provider.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/decrypt-data.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/decrypt-data.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/kms-provider.md"
+          ]
+        },
+        {
+          "question": "What is a ConfigMap and what kind of data should it store?",
+          "expected_path": "/content/en/docs/concepts/configuration/configmap.md",
+          "rank": 1,
+          "latency_ms": 33.13,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md"
+          ]
+        },
+        {
+          "question": "How does a StatefulSet give Pods stable identities?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/statefulset.md",
+          "rank": 5,
+          "latency_ms": 23.41,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/stateful-set-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/basic-stateful-set.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/stateful-set-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/force-delete-stateful-set-pod.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/statefulset.md"
+          ]
+        },
+        {
+          "question": "How can I run a copy of a Pod on every node?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/daemonset.md",
+          "rank": 1,
+          "latency_ms": 31.04,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-daemon/create-daemon-set.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-daemon/pods-some-nodes.md"
+          ]
+        },
+        {
+          "question": "How do I schedule a Job to run repeatedly at specified times?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+          "rank": 1,
+          "latency_ms": 29.05,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/automated-tasks-with-cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_cronjob.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/automated-tasks-with-cron-jobs.md"
+          ]
+        },
+        {
+          "question": "How does a Kubernetes Job track successful completion of Pods?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/job.md",
+          "rank": 2,
+          "latency_ms": 28.41,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/fine-parallel-processing-work-queue.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md"
+          ]
+        },
+        {
+          "question": "What is the difference between ClusterIP and NodePort Services?",
+          "expected_path": "/content/en/docs/concepts/services-networking/service.md",
+          "rank": 1,
+          "latency_ms": 29.28,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/services/source-ip.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/service-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/services/connect-applications-service.md"
+          ]
+        },
+        {
+          "question": "How does an Ingress route HTTP traffic to Services?",
+          "expected_path": "/content/en/docs/concepts/services-networking/ingress.md",
+          "rank": 1,
+          "latency_ms": 24.7,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md"
+          ]
+        },
+        {
+          "question": "How do NetworkPolicies control incoming and outgoing Pod traffic?",
+          "expected_path": "/content/en/docs/concepts/services-networking/network-policies.md",
+          "rank": 1,
+          "latency_ms": 22.89,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/network-policy.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md"
+          ]
+        },
+        {
+          "question": "How does a PersistentVolumeClaim request storage?",
+          "expected_path": "/content/en/docs/concepts/storage/persistent-volumes.md",
+          "rank": 1,
+          "latency_ms": 23.96,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/persistent-volume-claim-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md"
+          ]
+        },
+        {
+          "question": "How do StorageClasses support dynamic volume provisioning?",
+          "expected_path": "/content/en/docs/concepts/storage/storage-classes.md",
+          "rank": 5,
+          "latency_ms": 14.67,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/dynamic-volume-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/storage-classes.md"
+          ]
+        },
+        {
+          "question": "What is the difference between a Role and a ClusterRole?",
+          "expected_path": "/content/en/docs/reference/access-authn-authz/rbac.md",
+          "rank": 1,
+          "latency_ms": 32.37,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_clusterrole.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_clusterrole.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/rbac/cluster-role-v1.md"
+          ]
+        },
+        {
+          "question": "How can a HorizontalPodAutoscaler scale replicas based on CPU utilization?",
+          "expected_path": "/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+          "rank": 1,
+          "latency_ms": 25.99,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/autoscaling/horizontal-pod-autoscaler-v2.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/horizontal-pod-autoscaler.md"
+          ]
+        },
+        {
+          "question": "What is the difference between readiness probes and liveness probes?",
+          "expected_path": "/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "rank": 2,
+          "latency_ms": 29.07,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md"
+          ]
+        },
+        {
+          "question": "How do CPU requests and CPU limits affect container scheduling and execution?",
+          "expected_path": "/content/en/docs/concepts/configuration/manage-resources-containers.md",
+          "rank": 2,
+          "latency_ms": 23.5,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/limit-range.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/_index.md"
+          ]
+        },
+        {
+          "question": "How do taints and tolerations affect which Pods can run on a node?",
+          "expected_path": "/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+          "rank": 1,
+          "latency_ms": 31.79,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/dynamic-resource-allocation/device-taints.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/dynamic-resource-allocation/device-taints.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/taint.md"
+          ]
+        },
+        {
+          "question": "How do namespaces divide cluster resources?",
+          "expected_path": "/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+          "rank": 2,
+          "latency_ms": 16.8,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/namespace.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/namespaces.md"
+          ]
+        },
+        {
+          "question": "How can labels and selectors identify groups of Kubernetes objects?",
+          "expected_path": "/content/en/docs/concepts/overview/working-with-objects/labels.md",
+          "rank": 1,
+          "latency_ms": 28.31,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/expose/expose-intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-kubernetes-objects/imperative-config.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/configure-pdb.md"
+          ]
+        }
+      ]
+    },
+    "reranked": {
+      "hit_rate_at_k": 0.95,
+      "mrr_at_k": 0.7283333333333333,
+      "latency_p50_ms": 526.925,
+      "latency_p95_ms": 724.7085000000002,
+      "results": [
+        {
+          "question": "What is the smallest deployable unit that Kubernetes manages?",
+          "expected_path": "/content/en/docs/concepts/workloads/pods/_index.md",
+          "rank": 2,
+          "latency_ms": 389.62,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/pod.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/_index.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/windows/intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/architecture/_index.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/_index.md"
+          ]
+        },
+        {
+          "question": "How do I roll back a Deployment to an earlier revision?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/deployment.md",
+          "rank": 1,
+          "latency_ms": 357.65,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/deployment.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/update-deployment-rolling.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/update/update-intro.md"
+          ]
+        },
+        {
+          "question": "Are Kubernetes Secrets encrypted in etcd by default?",
+          "expected_path": "/content/en/docs/concepts/configuration/secret.md",
+          "rank": null,
+          "latency_ms": 391.34,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-kubernetes-objects/storage-version-migration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/secrets-good-practices.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/kms-provider.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/administer-cluster/encrypt-data.md"
+          ]
+        },
+        {
+          "question": "What is a ConfigMap and what kind of data should it store?",
+          "expected_path": "/content/en/docs/concepts/configuration/configmap.md",
+          "rank": 1,
+          "latency_ms": 411.9,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md"
+          ]
+        },
+        {
+          "question": "How does a StatefulSet give Pods stable identities?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/statefulset.md",
+          "rank": 5,
+          "latency_ms": 705.91,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/basic-stateful-set.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/stateful-set-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/statefulset.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/stateful-application/basic-stateful-set.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/statefulset.md"
+          ]
+        },
+        {
+          "question": "How can I run a copy of a Pod on every node?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/daemonset.md",
+          "rank": 3,
+          "latency_ms": 1081.88,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/manage-daemon/create-daemon-set.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/debug/debug-application/debug-running-pod.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/apps/daemon-set-v1.md"
+          ]
+        },
+        {
+          "question": "How do I schedule a Job to run repeatedly at specified times?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+          "rank": 1,
+          "latency_ms": 584.91,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/automated-tasks-with-cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/indexed-parallel-processing-static.md"
+          ]
+        },
+        {
+          "question": "How does a Kubernetes Job track successful completion of Pods?",
+          "expected_path": "/content/en/docs/concepts/workloads/controllers/job.md",
+          "rank": 2,
+          "latency_ms": 598.41,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/job.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/batch/job-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/job/job-with-pod-to-pod-communication.md"
+          ]
+        },
+        {
+          "question": "What is the difference between ClusterIP and NodePort Services?",
+          "expected_path": "/content/en/docs/concepts/services-networking/service.md",
+          "rank": 3,
+          "latency_ms": 502.7,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/service-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/core/service-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/expose/expose-intro.md"
+          ]
+        },
+        {
+          "question": "How does an Ingress route HTTP traffic to Services?",
+          "expected_path": "/content/en/docs/concepts/services-networking/ingress.md",
+          "rank": 1,
+          "latency_ms": 468.94,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/ingress.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/ingress-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/service.md"
+          ]
+        },
+        {
+          "question": "How do NetworkPolicies control incoming and outgoing Pod traffic?",
+          "expected_path": "/content/en/docs/concepts/services-networking/network-policies.md",
+          "rank": 2,
+          "latency_ms": 482.49,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/networking/network-policy-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/network-policies.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/services-networking/_index.md"
+          ]
+        },
+        {
+          "question": "How does a PersistentVolumeClaim request storage?",
+          "expected_path": "/content/en/docs/concepts/storage/persistent-volumes.md",
+          "rank": 1,
+          "latency_ms": 524.54,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/multi-tenancy.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/storage-classes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/configuration/configure-persistent-volume-storage.md"
+          ]
+        },
+        {
+          "question": "How do StorageClasses support dynamic volume provisioning?",
+          "expected_path": "/content/en/docs/concepts/storage/storage-classes.md",
+          "rank": 5,
+          "latency_ms": 494.58,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/dynamic-volume-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/dynamic-provisioning.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/persistent-volumes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/storage/storage-classes.md"
+          ]
+        },
+        {
+          "question": "What is the difference between a Role and a ClusterRole?",
+          "expected_path": "/content/en/docs/reference/access-authn-authz/rbac.md",
+          "rank": 1,
+          "latency_ms": 529.31,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/access-authn-authz/rbac.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/rbac/cluster-role-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubernetes-api/rbac/cluster-role-binding-v1.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_clusterrole.md"
+          ]
+        },
+        {
+          "question": "How can a HorizontalPodAutoscaler scale replicas based on CPU utilization?",
+          "expected_path": "/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+          "rank": 1,
+          "latency_ms": 555.45,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/horizontal-pod-autoscaler.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md"
+          ]
+        },
+        {
+          "question": "What is the difference between readiness probes and liveness probes?",
+          "expected_path": "/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+          "rank": 1,
+          "latency_ms": 562.43,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/probes.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/pods/pod-lifecycle.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md"
+          ]
+        },
+        {
+          "question": "How do CPU requests and CPU limits affect container scheduling and execution?",
+          "expected_path": "/content/en/docs/concepts/configuration/manage-resources-containers.md",
+          "rank": 1,
+          "latency_ms": 561.03,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/configuration/manage-resources-containers.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/resource-management/resource-managers.md"
+          ]
+        },
+        {
+          "question": "How do taints and tolerations affect which Pods can run on a node?",
+          "expected_path": "/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+          "rank": 1,
+          "latency_ms": 548.26,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/taint-and-toleration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/taint.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/toleration.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/workloads/controllers/daemonset.md"
+          ]
+        },
+        {
+          "question": "How do namespaces divide cluster resources?",
+          "expected_path": "/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+          "rank": 1,
+          "latency_ms": 507.99,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/reference/glossary/namespace.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/policy/resource-quotas.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/namespaces.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/security/multi-tenancy.md"
+          ]
+        },
+        {
+          "question": "How can labels and selectors identify groups of Kubernetes objects?",
+          "expected_path": "/content/en/docs/concepts/overview/working-with-objects/labels.md",
+          "rank": 1,
+          "latency_ms": 605.98,
+          "retrieved": [
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/tutorials/kubernetes-basics/expose/expose-intro.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/labels.md",
+            "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/content/en/docs/concepts/overview/working-with-objects/annotations.md"
+          ]
+        }
+      ]
+    }
+  },
+  "retrieval_config": {
+    "candidate_k": 30,
+    "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "reranker_revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "device": "cpu",
+    "rrf_k": 60,
+    "max_chunks_per_document": 2
+  }
+}

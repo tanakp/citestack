@@ -4,7 +4,8 @@ The production hardening branch targets one API process on one host, with distin
 client index snapshots. The full deployment/quality acceptance checklist is still
 [in progress](production-plan.md). This document describes the controls already in
 code; TLS deployment, alerting, measured model capacity, and recovery instructions
-will be added before the production release is declared complete.
+will be added before the production release is declared complete. Index backup and
+restore are now documented in the [recovery runbook](recovery.md).
 
 ## Production configuration
 

@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-12",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "dataset": "fresh pinned Kubernetes docs, glossary-preserving cleaner",
+  "manifest": {
+    "schema_version": 2,
+    "corpus_sha256": "2aba3a73d76f6c2095d2847eab02c9581b4b5981c456eba17714e3d0e2470ecb",
+    "embedding_fingerprint": "BAAI/bge-small-en-v1.5@5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "dimensions": 384,
+    "documents": 1180,
+    "chunks": 24594,
+    "chunk_tokens": 220,
+    "overlap_tokens": 35,
+    "built_at": "2026-09-12T02:42:11.860957+00:00",
+    "source": {
+      "source": "Kubernetes documentation contributors",
+      "revision": "17133089068629ec12ca15c1bdf36a60d2671a74",
+      "tree_url": "https://api.github.com/repos/kubernetes/website/git/trees/17133089068629ec12ca15c1bdf36a60d2671a74",
+      "blob_checksums_verified": true,
+      "license": "CC-BY-4.0",
+      "license_url": "https://github.com/kubernetes/website/blob/17133089068629ec12ca15c1bdf36a60d2671a74/LICENSE",
+      "cleaner_version": "markdown-v2-glossary",
+      "transforms": "English docs; glossary labels retained; other shortcodes and link targets removed",
+      "documents": 1180,
+      "corpus_sha256": "2aba3a73d76f6c2095d2847eab02c9581b4b5981c456eba17714e3d0e2470ecb"
+    },
+    "snapshot_id": "3fb41063f1fe6ebaa0095163db2c963eace49b7e0a985427a9c26505aded3c98"
+  },
+  "index_bytes": 132685824,
+  "inspect_seconds": 1.275,
+  "checks": [
+    "full_snapshot_validation",
+    "backup_id_matches",
+    "restore_id_matches",
+    "corrupt_restore_rejected",
+    "destination_unchanged_after_rejection",
+    "real_bge_and_cross_encoder_retrieval_after_restore"
+  ],
+  "legacy_development_eval": {
+    "bm25": 0.85,
+    "dense": 0.9,
+    "hybrid": 0.95,
+    "reranked": 0.95
+  },
+  "limits": "One local recovery exercise and the existing 20 development questions; not held-out quality or sustained load evidence."
+}

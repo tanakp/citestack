@@ -4,6 +4,7 @@ import re
 import sqlite3
 import tempfile
 import threading
+from contextlib import closing
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -11,17 +12,24 @@ import numpy as np
 from filelock import FileLock
 
 from citestack.config import Settings
-from citestack.ingestion import chunk_document, load_documents
+from citestack.ingestion import chunk_document, corpus_digest, load_documents
 from citestack.schemas import Chunk, Hit
-
-SCHEMA_VERSION = 1
+from citestack.snapshots import SCHEMA_VERSION, publish, snapshot_id, validate_snapshot
 
 
 def build_index(corpus: Path, settings: Settings, models) -> dict:
     """Build a complete snapshot and atomically replace it only after success."""
     settings.index_path.parent.mkdir(parents=True, exist_ok=True)
     with FileLock(str(settings.index_path) + ".build.lock", timeout=0):
-        documents = load_documents(corpus)
+        with FileLock(str(corpus) + ".fetch.lock", timeout=0):
+            documents = load_documents(corpus)
+            corpus_sha256 = corpus_digest(documents)
+            source_path = corpus.with_suffix(".manifest.json")
+            source_manifest = None
+            if source_path.exists():
+                source_manifest = json.loads(source_path.read_text())
+                if source_manifest.get("corpus_sha256") != corpus_sha256:
+                    raise ValueError("Corpus provenance mismatch; refetch the corpus")
         chunks = [
             chunk
             for document in documents
@@ -41,9 +49,10 @@ def build_index(corpus: Path, settings: Settings, models) -> dict:
         norms = np.linalg.norm(vectors, axis=1, keepdims=True)
         if np.any(norms == 0):
             raise ValueError("Zero embedding vector")
-        vectors = (vectors / norms).astype(np.float32)
+        vectors = (vectors / norms).astype("<f4")
         manifest = {
             "schema_version": SCHEMA_VERSION,
+            "corpus_sha256": corpus_sha256,
             "embedding_fingerprint": models.fingerprint,
             "dimensions": int(vectors.shape[1]),
             "documents": len(documents),
@@ -52,16 +61,15 @@ def build_index(corpus: Path, settings: Settings, models) -> dict:
             "overlap_tokens": settings.overlap_tokens,
             "built_at": datetime.now(UTC).isoformat(),
         }
-        source_manifest = corpus.with_suffix(".manifest.json")
-        if source_manifest.exists():
-            manifest["source"] = json.loads(source_manifest.read_text())
+        if source_manifest is not None:
+            manifest["source"] = source_manifest
         handle, name = tempfile.mkstemp(
             prefix="index-", suffix=".sqlite", dir=settings.index_path.parent
         )
         os.close(handle)
         temporary = Path(name)
         try:
-            with sqlite3.connect(temporary) as connection:
+            with closing(sqlite3.connect(temporary)) as connection, connection:
                 connection.executescript(
                     "CREATE TABLE metadata (value TEXT NOT NULL);"
                     "CREATE TABLE chunks (id INTEGER PRIMARY KEY, payload TEXT NOT NULL, "
@@ -80,9 +88,13 @@ def build_index(corpus: Path, settings: Settings, models) -> dict:
                     "INSERT INTO search(rowid, title, heading, body) VALUES (?, ?, ?, ?)",
                     [(i, c.title, c.heading, c.text) for i, c in enumerate(chunks)],
                 )
-            with temporary.open("rb") as ready:
-                os.fsync(ready.fileno())
-            temporary.replace(settings.index_path)
+                connection.execute("INSERT INTO search(search, rank) VALUES('integrity-check', 1)")
+                connection.commit()  # Flush FTS pending posting lists before hashing.
+                manifest["snapshot_id"] = snapshot_id(connection, manifest)
+                connection.execute("UPDATE metadata SET value=?", (json.dumps(manifest),))
+                connection.commit()
+                validate_snapshot(connection)
+            publish(temporary, settings.index_path, replace=True)
         finally:
             temporary.unlink(missing_ok=True)
         return manifest
@@ -109,23 +121,10 @@ class Retriever:
         self.connection = sqlite3.connect(uri, uri=True, check_same_thread=False)
         self.lock = threading.Lock()
         try:
-            self.manifest = json.loads(
-                self.connection.execute("SELECT value FROM metadata").fetchone()[0]
+            self.manifest, self.chunks, self.ids, self.vectors = validate_snapshot(
+                self.connection,
+                fingerprint=models.fingerprint,
             )
-            if self.manifest["schema_version"] != SCHEMA_VERSION:
-                raise ValueError("Index schema changed; rebuild the index")
-            if self.manifest["embedding_fingerprint"] != models.fingerprint:
-                raise ValueError("Embedding model changed; rebuild the index")
-            rows = self.connection.execute(
-                "SELECT id, payload, vector FROM chunks ORDER BY id"
-            ).fetchall()
-            if not rows:
-                raise ValueError("Index is empty")
-            self.chunks = {row[0]: Chunk.model_validate_json(row[1]) for row in rows}
-            self.ids = np.array([row[0] for row in rows])
-            self.vectors = np.vstack([np.frombuffer(row[2], dtype=np.float32) for row in rows])
-            if self.vectors.shape[1] != self.manifest["dimensions"]:
-                raise ValueError("Corrupt index vector dimensions")
         except Exception:
             self.connection.close()
             raise
