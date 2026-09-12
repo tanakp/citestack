@@ -244,6 +244,5 @@ environment. This mode was verified with a real cited answer in the local checko
 - A zero reranker threshold is a starting value, not calibrated confidence. Add
   independently labeled unanswerable questions before relying on abstention behavior.
 
-See [architecture and tradeoffs](docs/architecture.md),
-[the interview walkthrough](docs/interview-guide.md), and [source attribution](NOTICE.md).
+See [architecture and tradeoffs](docs/architecture.md) and [source attribution](NOTICE.md).
 Code is MIT licensed; downloaded documents and model weights retain their own licenses.
