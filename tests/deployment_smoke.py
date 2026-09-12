@@ -71,7 +71,8 @@ def main():
             "services": {
                 "api": {
                     "image": "citestack:ci",
-                    "healthcheck": {"interval": "2s", "start_period": "2s"},
+                    # Poll quickly, but allow cold real-model loading before failures count.
+                    "healthcheck": {"interval": "2s", "start_period": "120s"},
                 },
                 "ollama": {
                     "image": "citestack:ci",
@@ -165,7 +166,7 @@ def main():
                     assert time.monotonic() < deadline, "Rootless Ollama failed to start"
                     time.sleep(0.5)
                 checks.append("rootless_ollama_startup")
-            compose("up", "-d", "--no-build", "--wait", "--wait-timeout", "120")
+            compose("up", "-d", "--no-build", "--wait", "--wait-timeout", "180")
             assert request("/readyz")[0] == 200
             try:
                 request("/healthz", tls=ssl.create_default_context())
