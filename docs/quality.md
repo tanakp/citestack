@@ -106,8 +106,7 @@ identifier phrase such as “catalog service” to “catalog,” verifies compl
 boundaries (so “cat” cannot match “catalog”), and preserves quoted multiword names.
 This is an application normalization rule, not a relaxed evaluator or lower threshold.
 Revalidation of the 20 recorded Linux outputs produced 20 correct field sets; that
-replay is not evidence of a new model run. The new CI run must independently verify
-fresh model generation with the corrected validator.
+replay is not evidence of a new model run. Fresh Linux runs independently verify generation with the corrected validator.
 
 Fresh Linux generation at commit `a01b125` passed at **20/20 exact field matches and
 20/20 schema-valid successes** using the same pinned model and unchanged reference.
@@ -120,3 +119,9 @@ all application source and the dependency lock. A hit still runs full snapshot
 integrity inspection and every retrieval/abstention case; model quality is never
 replaced by cached scores. This avoids rebuilding embeddings for documentation-only
 changes. Source, model configuration, or dependency changes create a new build key.
+
+Release confirmation at `99910ba` passed the full retrieval/deployment job twice;
+structured extraction again scored 20/20. The published Linux ticket report now
+records that release candidate. See [release verification](release-verification.json)
+for exact run/attempt links and [Linux capacity](capacity.md#linux-deployment-measurement)
+for the measured operating limits and retained earlier failure.

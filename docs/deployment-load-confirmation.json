@@ -1,0 +1,12 @@
+{
+  "concurrency": 2,
+  "seconds": 63.42,
+  "requests": 26,
+  "all_have_citations": true,
+  "requests_per_second": 0.41,
+  "p95_seconds": 5.077,
+  "api_cpu_limit": 2,
+  "api_memory_bytes": 2147483648,
+  "generation": "extractive",
+  "clients_loaded": 2
+}

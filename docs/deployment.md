@@ -5,7 +5,8 @@ and a local Ollama service. `compose.production.yaml` adds verified TLS ingress,
 non-root service accounts, read-only container filesystems, explicit memory/CPU/PID
 limits, private backend ports, persistent quotas, and read-only model/index mounts.
 This is a single-host deployment with planned restart downtime, not a highly available
-cluster. Monitoring/alert wiring and measured capacity remain in the acceptance plan.
+cluster. See [monitoring integration](operations.md#monitoring-integration),
+[measured capacity](capacity.md), and the [release evidence](release-verification.json).
 
 ## Prepare as the non-root deployment account
 
@@ -88,8 +89,8 @@ use `--insecure` as the production connectivity check.
 The API is limited to two CPUs, 2 GiB RAM, 256 PIDs, and two inference workers. Ollama is
 limited to two CPUs, 6 GiB RAM, one parallel generation, and a queue of two. Nginx has
 0.5 CPU, 128 MiB RAM, and 64 PIDs. These are explicit limits, not a throughput promise;
-real sustained-load measurements and resulting recommended client concurrency are still
-required before final acceptance. A 40-second supervisor grace period bounds shutdown
+see the [capacity report](capacity.md) for measured workloads and recommended initial
+client concurrency. A 40-second supervisor grace period bounds shutdown
 after the API's 30-second drain window.
 
 Writable state is limited to the host's `quotas/` and `ollama/` directories plus bounded

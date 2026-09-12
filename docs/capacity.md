@@ -41,12 +41,31 @@ time spent waiting to offer another request. Four minutes is a bounded load expe
 not an endurance or leak-free claim. This does not establish an SLA, multi-host scaling,
 large-tenant-count capacity, or behavior on arbitrary private documents.
 
-The full-corpus CI deployment check also exercises two simultaneous extractive clients
-through verified TLS under the production API's two-CPU/2-GiB container limits. Its
-`deployment-load.json` artifact records independent Linux measurements and fails on
-non-200 responses or missing citations. That result must pass before release; do not
-substitute the Mac figures for it. Re-run on your intended host, corpus and traffic mix
-before increasing limits or making a customer latency commitment.
+## Linux deployment measurement
+
+The [Linux load artifact](deployment-load.json) records **52 successful cited answers
+in 60.75 seconds** through verified HTTPS, with two concurrent request loops sharing the load-test credential, two loaded
+client snapshots, and the production API's **two-CPU / 2-GiB** limits. Throughput was
+0.856 answers/second and successful-request p95 was 2.695 seconds. All requests in
+that run returned HTTP 200 with citations. This is extractive retrieval; the model
+protocol peer was deterministic, while BGE and the reranker were real pinned models.
+
+A prior Linux load run failed a response assertion before first-failure details were
+preserved. Its cause remains unclassified; the [failed run](https://github.com/tanakp/citestack/actions/runs/34715567125)
+remains available. The harness now stops peers on the first failure and reports its
+HTTP status, so later successful traffic cannot bury the diagnostic. Passing short
+runs do not establish an availability SLA or eliminate intermittent-failure risk.
+The [independent confirmation](deployment-load-confirmation.json) served 26 cited
+answers in 63.42 seconds, with no failed requests and p95 of 5.077 seconds. Across
+these two runs throughput varied from 0.410 to 0.856 answers/second. Shared CI-host
+performance varies; provision and benchmark your target host rather than promising
+the faster number. Both runs completed the TLS, upload-timeout, quota-restart and
+container-isolation checks. See [release evidence](release-verification.json).
+
+Re-run on your intended host, corpus and traffic mix before increasing limits or
+making a customer latency commitment. Generated-answer capacity and long endurance
+runs remain separate experiments; the local Mac generation figures are not Linux
+CPU estimates.
 
 ## Reproduce
 

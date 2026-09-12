@@ -108,8 +108,8 @@ is cached briefly and proves model availability, not the quality of a generated 
 The supported target is one API process on one host. Quotas share a local SQLite file,
 not a distributed counter. No distributed tracing, autoscaling, per-token billing,
 or audited security certification is claimed. See [operating controls](operations.md)
-and the unfinished [production acceptance plan](production-plan.md) for scope and
-remaining deployment/evaluation work.
+and the [production acceptance record](production-plan.md) for tested scope, evidence,
+and remaining operational responsibilities.
 
 ## Design references
 

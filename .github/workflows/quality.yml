@@ -57,7 +57,7 @@ jobs:
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
-          name: retrieval-quality-${{ github.sha }}
+          name: retrieval-quality-${{ github.sha }}-${{ github.run_attempt }}
           path: |
             data/quality-retrieval.*
             data/deployment-load.json
@@ -89,7 +89,7 @@ jobs:
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
-          name: structured-quality-${{ github.sha }}
+          name: structured-quality-${{ github.sha }}-${{ github.run_attempt }}
           path: data/quality-structured.*
           if-no-files-found: warn
       - name: Stop model server

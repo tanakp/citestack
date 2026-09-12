@@ -1,11 +1,10 @@
 # Operating controls
 
-The production hardening branch targets one API process on one host, with distinct
-client index snapshots. The full deployment/quality acceptance checklist is still
-[in progress](production-plan.md). This document describes the controls already in
-code. See the [TLS deployment profile](deployment.md), [capacity experiment](capacity.md),
-monitoring integration below, and [recovery runbook](recovery.md). Final Linux deployment
-verification remains a release requirement.
+The release targets one API process on one host, with distinct client index snapshots.
+See the [acceptance evidence](production-plan.md), [TLS deployment profile](deployment.md),
+[capacity experiments](capacity.md), monitoring integration below, and
+[recovery runbook](recovery.md). Host security, certificates, backup retention, and
+notification destinations remain operator responsibilities.
 
 ## Production configuration
 

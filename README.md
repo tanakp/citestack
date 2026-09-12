@@ -1,13 +1,17 @@
 # CiteStack
 
 [![CI](https://github.com/tanakp/citestack/actions/workflows/ci.yml/badge.svg)](https://github.com/tanakp/citestack/actions/workflows/ci.yml)
+[![Quality gates](https://github.com/tanakp/citestack/actions/workflows/quality.yml/badge.svg)](https://github.com/tanakp/citestack/actions/workflows/quality.yml)
+[![Security and operations](https://github.com/tanakp/citestack/actions/workflows/security.yml/badge.svg)](https://github.com/tanakp/citestack/actions/workflows/security.yml)
 
-**Ask questions over public documentation. Inspect the evidence behind every answer.**
+**Cited documentation answers and schema-validated extraction, with tested failure paths.**
 
 CiteStack is a runnable RAG reference service with document ingestion, token-based
 chunking, BM25 + semantic retrieval, neural reranking, and validated citations.
 It indexes a pinned snapshot of **1,180 Kubernetes documentation pages** and runs
-locally without a paid API key.
+locally without a paid API key. A reusable structured-output engine enforces Pydantic
+schemas, shares a bounded retry budget, and returns validated fallbacks when generation
+fails. Both workflows use the same validation core.
 
 Built to make engineering decisions inspectable: the repository includes an API,
 CLI, reproducible evaluation, failure-path tests, Docker packaging, and CI.
@@ -101,8 +105,9 @@ release. See [backup and recovery](docs/recovery.md) for migration and rollback 
 [Production deployment](docs/deployment.md) provides a TLS Compose profile and private
 configuration bootstrap.
 
-Production hardening is in progress. See the [operating controls](docs/operations.md)
-and [acceptance plan](docs/production-plan.md) for verified behavior and remaining work.
+Release 0.3 targets one Docker host with credential-bound clients and separate indexes.
+See the [release evidence](docs/release-verification.json), [operating controls](docs/operations.md),
+and [acceptance plan](docs/production-plan.md) for tested behavior and explicit limits.
 
 [Quality gates and retained failures](docs/quality.md) document what the current scores
 measure and the errors that remain.
@@ -214,6 +219,14 @@ To index your own public documents, supply JSONL records with `id`, `title`, `ur
 and `text`, then run `uv run citestack ingest --corpus path/to/corpus.jsonl`.
 Use stable IDs and safe, public source URLs. Corpus content and model weights stay
 outside Git; `.env` is ignored.
+
+### Local import troubleshooting
+
+If Python reports `ModuleNotFoundError: citestack` on macOS, check whether the virtual
+environment’s `.pth` files have been marked hidden. Python can skip those editable-
+install startup files. `uv run --no-editable citestack --help` uses a regular package
+installation instead; keep `--no-editable` on subsequent `uv run` commands in that
+environment. This mode was verified with a real cited answer in the local checkout.
 
 ## Boundaries and next steps
 

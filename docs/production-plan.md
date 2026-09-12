@@ -1,7 +1,10 @@
 # Production hardening acceptance plan
 
-Status: in progress. This is an acceptance checklist, not a certification or a claim
-that the current release already satisfies these requirements.
+Status: implemented and validated for the documented single-host target. This record
+is not a certification, SLA, or claim of distributed production scale. Promotion
+requires all seven checks to pass on the candidate commit. See the
+[release evidence](release-verification.json); dated progress notes below retain the
+issues encountered during development.
 
 The starting release (0.2) has optional API-key authentication, in-process concurrency
 control, atomic index replacement, strict structured outputs, and development smoke
@@ -16,25 +19,25 @@ may be published.
 
 ## Required evidence before completion
 
-- [ ] Fail-closed production settings, secret-safe configuration and error reporting,
+- [x] Fail-closed production settings, secret-safe configuration and error reporting,
   mandatory authentication, key rotation, and explicit network exposure controls.
-- [ ] Request-body and receive-time limits, request rate limits, bounded inference,
+- [x] Request-body and receive-time limits, request rate limits, bounded inference,
   total generation/request deadlines, capped provider responses, and tests of overload,
   cancellation, slow upstreams, and malformed requests.
-- [ ] Liveness distinct from dependency readiness, graceful shutdown/draining,
+- [x] Liveness distinct from dependency readiness, graceful shutdown/draining,
   correlated request logs without sensitive payloads, bounded-cardinality metrics,
   and actionable alert definitions.
-- [ ] Corpus/index integrity validation, safe and bounded ingestion, retained source
+- [x] Corpus/index integrity validation, safe and bounded ingestion, retained source
   meaning, reproducible versioned snapshots, and a tested backup/restore/rollback path.
-- [ ] Expanded retrieval/abstention and structured-output evaluation with explicit
+- [x] Expanded retrieval/abstention and structured-output evaluation with explicit
   quality gates, preserved failures, and measured operating limits on real models/data.
-- [ ] A hardened, reproducible deployment (including secrets, TLS ingress, resource
+- [x] A hardened, reproducible deployment (including secrets, TLS ingress, resource
   limits, health checks, persistence, and upgrade/rollback instructions) exercised in CI.
-- [ ] CI tests security/reliability invariants, real container behavior, dependency
+- [x] CI tests security/reliability invariants, real container behavior, dependency
   vulnerabilities, and meaningful quality checks rather than only imports or CLI help.
-- [ ] Load/failure experiments and an operator runbook describe supported capacity,
+- [x] Load/failure experiments and an operator runbook describe supported capacity,
   model limitations, recovery procedures, and residual risks backed by actual results.
-- [ ] All changes are reviewed against this checklist, pushed to GitHub, and final
+- [x] All changes are reviewed against this checklist, pushed to GitHub, and final
   checks pass at the published commit. No broad guarantee rests on a narrow smoke test.
 
 ## Starting findings (before hardening)
@@ -177,3 +180,21 @@ release and rejecting any unknown third-party inventory entry closes that covera
 gap. The local normalized inventory audits all 55 third-party packages with no known
 advisories. GitHub `main` now requires all seven Actions checks (including for admins),
 with force pushes and branch deletion disabled. Fresh Linux validation is pending.
+
+## Release acceptance evidence (2026-09-12)
+
+Candidate `99910ba` passed 176 unit/API tests, restricted TCP and real TLS deployment
+checks, complete advisory matching for 55 third-party packages, Git history secret
+scanning, and Prometheus rule tests. Real-model ticket accuracy/success is 20/20.
+Full-corpus source hit@5 is 39/40, answerable coverage 40/40, both abstention sets
+8/8, and citation provenance 100%. The Linux real-retrieval deployment completed two
+independent load/restart runs under two CPUs and 2 GiB RAM, serving 52 and 26 cited
+answers respectively. The [recorded evidence](release-verification.json) links exact
+CI attempts and states limits, including one earlier unclassified load-response
+failure. The enhanced first-failure diagnostic remains enforced.
+
+The reviewed release retains one process/host, operator-managed TLS certificates and
+alert receivers, admission-count quotas rather than token billing, and explicit
+fallback/abstention semantics. A short load experiment is not a long soak or SLA.
+The final documentation commit must satisfy the same seven required GitHub checks
+before promotion; main protection also prevents force pushes and deletion.

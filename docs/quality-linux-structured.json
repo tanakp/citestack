@@ -64,7 +64,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 18732.44
+        "elapsed_ms": 18750.35
       }
     },
     {
@@ -101,7 +101,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 7214.18
+        "elapsed_ms": 7155.59
       }
     },
     {
@@ -138,7 +138,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 6755.47
+        "elapsed_ms": 6754.61
       }
     },
     {
@@ -178,7 +178,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 7852.2
+        "elapsed_ms": 7748.49
       }
     },
     {
@@ -215,7 +215,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 8474.95
+        "elapsed_ms": 8382.03
       }
     },
     {
@@ -252,7 +252,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 7686.51
+        "elapsed_ms": 7549.47
       }
     },
     {
@@ -289,7 +289,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 6755.18
+        "elapsed_ms": 6847.96
       }
     },
     {
@@ -326,7 +326,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 6926.88
+        "elapsed_ms": 6863.95
       }
     },
     {
@@ -363,7 +363,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 7384.56
+        "elapsed_ms": 7304.97
       }
     },
     {
@@ -400,7 +400,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 8113.39
+        "elapsed_ms": 7948.44
       }
     },
     {
@@ -437,7 +437,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 7120.11
+        "elapsed_ms": 7059.09
       }
     },
     {
@@ -474,7 +474,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 6695.54
+        "elapsed_ms": 6678.47
       }
     },
     {
@@ -511,7 +511,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 7356.64
+        "elapsed_ms": 7132.63
       }
     },
     {
@@ -548,7 +548,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 8358.61
+        "elapsed_ms": 8224.96
       }
     },
     {
@@ -585,7 +585,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 7500.84
+        "elapsed_ms": 7221.75
       }
     },
     {
@@ -622,7 +622,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 7977.95
+        "elapsed_ms": 7716.94
       }
     },
     {
@@ -653,7 +653,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 5890.42
+        "elapsed_ms": 5741.84
       }
     },
     {
@@ -684,7 +684,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 6498.25
+        "elapsed_ms": 6438.6
       }
     },
     {
@@ -715,7 +715,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 6510.6
+        "elapsed_ms": 6415.11
       }
     },
     {
@@ -746,7 +746,7 @@
         "attempts": 1,
         "errors": [],
         "schema_name": "SupportTicket",
-        "elapsed_ms": 6384.05
+        "elapsed_ms": 6398.23
       }
     }
   ],
@@ -762,8 +762,8 @@
     "output_limit": 1200
   },
   "runtime": {
-    "started_at": "2026-09-12T14:13:37.633017+00:00",
-    "source_sha256": "d57e3359d0530b43cd50c737ab2b63ffcd64f1768df4ea79ca69b49c21756512",
+    "started_at": "2026-09-12T20:04:06.102269+00:00",
+    "source_sha256": "44ab4ed16ba0efbbeee6edb1b5445033752df4955cf411f86dac9d2a935a60cc",
     "python": "3.12.3",
     "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
     "libraries": {
