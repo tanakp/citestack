@@ -9,6 +9,7 @@ import socket
 import ssl
 import subprocess
 import tempfile
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -210,13 +211,19 @@ def main():
                 load_key = (root / "keys/load.key").read_text().strip()
                 started = time.monotonic()
                 deadline = started + args.load_seconds
+                load_failed = threading.Event()
 
                 def load_worker():
                     observations = []
-                    while time.monotonic() < deadline:
+                    while time.monotonic() < deadline and not load_failed.is_set():
                         tick = time.monotonic()
                         status, raw = request(path, payload, credential=load_key)
-                        assert status == 200 and json.loads(raw)["citations"]
+                        if status != 200:
+                            load_failed.set()
+                            raise AssertionError(f"Load request returned HTTP {status}")
+                        if not json.loads(raw)["citations"]:
+                            load_failed.set()
+                            raise AssertionError("Load response lost citation evidence")
                         observations.append(time.monotonic() - tick)
                     return observations
 
