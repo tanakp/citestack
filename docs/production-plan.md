@@ -169,3 +169,11 @@ validated fallback and recovery. See the [capacity report](capacity.md) for late
 hardware, and limitations. The limited Linux Compose test now also measures a
 60-second two-client real retrieval phase. Deployment, audit CI, final release review,
 required branch checks, and publication verification remain pending.
+
+CI caught a malformed Compose temporary-filesystem list before deployment; quoting
+the options fixes the mount and a parser regression test prevents recurrence. The
+first Linux advisory audit skipped Torch's `+cpu` variant. Auditing its upstream
+release and rejecting any unknown third-party inventory entry closes that coverage
+gap. The local normalized inventory audits all 55 third-party packages with no known
+advisories. GitHub `main` now requires all seven Actions checks (including for admins),
+with force pushes and branch deletion disabled. Fresh Linux validation is pending.

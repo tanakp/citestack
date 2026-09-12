@@ -90,8 +90,9 @@ Markdown corpus with documented transformations, not a byte-for-byte rendered si
 
 These commands back up index snapshots only. Client registry secrets, quotas, model
 artifacts, application images, and deployment configuration need their own retention
-and recovery policies. Quota recovery and complete deployment rollback remain part of
-the production runbook work; an index restore must never silently reset client quotas.
+and recovery policies. See [quota incident response](operations.md#incident-response) and
+[deployment rollback](deployment.md#upgrade-and-rollback). An index restore must never
+silently reset client quotas.
 
 ## Measured recovery exercise
 
@@ -102,4 +103,4 @@ and retrieved expected evidence with the pinned BGE and cross-encoder models aft
 restore. Full snapshot inspection took about 1.28 seconds on the recorded local host.
 These are single-run timings, not a recovery-time SLA. The original 20 development
 queries still score 19/20 for reranked hit@5; [all results](evaluation-v2.json) retain
-the miss and retrieved paths. Expanded quality and load evaluation remain separate work.
+the miss and retrieved paths. Expanded [quality](quality.md) and [load experiments](capacity.md) are reported separately.

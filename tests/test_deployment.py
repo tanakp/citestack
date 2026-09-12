@@ -1,8 +1,10 @@
 import hashlib
 import json
 import stat
+from pathlib import Path
 
 import pytest
+import yaml
 
 from citestack.deployment import initialize
 
@@ -43,3 +45,11 @@ def test_root_owned_deployment_rejected(tmp_path, monkeypatch):
     monkeypatch.setattr("citestack.deployment.os.getuid", lambda: 0)
     with pytest.raises(ValueError, match="non-root"):
         initialize(tmp_path / "production", "localhost", ["default"])
+
+
+def test_compose_mount_options_remain_one_absolute_mount():
+    path = Path(__file__).resolve().parents[1] / "compose.production.yaml"
+    services = yaml.safe_load(path.read_text())["services"]
+    for service in services.values():
+        assert len(service["tmpfs"]) == 1
+        assert service["tmpfs"][0].startswith("/tmp:rw,noexec,nosuid,size=")

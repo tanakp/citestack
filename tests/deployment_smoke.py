@@ -231,8 +231,20 @@ def main():
                 assert details["HostConfig"]["ReadonlyRootfs"]
                 assert "ALL" in details["HostConfig"]["CapDrop"]
                 assert details["HostConfig"]["Memory"] > 0
+                assert details["HostConfig"]["NanoCpus"] > 0
+                assert details["HostConfig"]["PidsLimit"] > 0
+                assert any(
+                    value
+                    in {"no-new-privileges", "no-new-privileges:true", "no-new-privileges=true"}
+                    for value in details["HostConfig"]["SecurityOpt"]
+                )
                 if service != "proxy":
                     assert not details["HostConfig"]["PortBindings"]
+                if service == "api":
+                    mounts = {item["Destination"]: item for item in details["Mounts"]}
+                    for path in ("/app/config", "/app/indexes", "/app/retrieval-models"):
+                        assert not mounts[path]["RW"]
+                    assert mounts["/app/quotas"]["RW"]
             checks.extend(
                 ["nonroot_readonly_containers", "resource_limits", "private_backend_ports"]
             )

@@ -18,14 +18,24 @@ jobs:
       - run: uv sync --frozen --python 3.12
       - name: Audit the installed locked Linux dependencies
         run: |
-          mkdir -p data
-          uv tool run pip-audit==2.10.1 --path .venv/lib/python3.12/site-packages \
+          uv run python tests/audit_dependencies.py
+          uv tool run pip-audit==2.10.1 --no-deps --disable-pip -r data/audit-requirements.txt \
             --format json --output data/dependency-audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          dependencies = json.loads(Path('data/dependency-audit.json').read_text())['dependencies']
+          expected = len(Path('data/audit-requirements.txt').read_text().splitlines())
+          assert len(dependencies) == expected, 'Incomplete dependency audit'
+          assert not any(item.get('skip_reason') for item in dependencies), 'Unaudited dependency'
+          PY
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: dependency-audit-${{ github.sha }}
-          path: data/dependency-audit.json
+          path: |
+            data/dependency-audit.json
+            data/audit-requirements.txt
   secret-scan:
     runs-on: ubuntu-latest
     timeout-minutes: 5

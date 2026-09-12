@@ -169,7 +169,9 @@ Automatic **Quality gates** rebuild the full corpus, enforce retrieval/abstentio
 thresholds, and run pinned real-model extraction against versioned references. The
 manual **Neural retrieval evaluation** keeps the four-strategy comparison available.
 **Security and operations** audits locked dependencies, scans Git history for secrets,
-and tests alert rules. Repository branch protection is configured separately.
+and tests alert rules. The public repository protects `main` with all seven required
+GitHub Actions checks, including the two real-model gates; administrator updates are
+subject to the same checks.
 
 ## Docker
 
