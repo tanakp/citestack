@@ -1,6 +1,7 @@
 """Exercise the real production Compose profile over verified TLS. Requires Docker."""
 
 import argparse
+import http.client
 import json
 import os
 import shutil
@@ -29,7 +30,7 @@ def main():
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary) / "production"
         tenants = ["default", "load"] if args.load_seconds else ["default"]
-        initialize(root, "localhost", tenants, daily_limit=2)
+        initialize(root, "localhost", tenants, daily_limit=3)
         if args.rag_index:
             shutil.copyfile(args.rag_index, root / "indexes/default.sqlite")
             if not args.model_cache:
@@ -190,6 +191,20 @@ def main():
             checks.extend(
                 ["authentication", "application_request", "private_metrics", "proxy_body_limit"]
             )
+            # Send an incomplete authenticated body over TLS; receiving must be
+            # bounded before the proxy has a full body to forward.
+            connection = http.client.HTTPSConnection("localhost", port, context=context, timeout=10)
+            try:
+                connection.putrequest("POST", path)
+                connection.putheader("X-API-Key", key)
+                connection.putheader("Content-Type", "application/json")
+                connection.putheader("Content-Length", "20")
+                connection.endheaders()
+                connection.send(b"{")
+                assert connection.getresponse().status == 408
+            finally:
+                connection.close()
+            checks.append("incomplete_upload_deadline")
             load_report = None
             if args.load_seconds:
                 load_key = (root / "keys/load.key").read_text().strip()
