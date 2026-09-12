@@ -37,7 +37,29 @@ def main():
     quality.add_argument("--policy", type=Path, default=Path("evals/quality-policy.json"))
     quality.add_argument("--output", type=Path, default=Path("data/quality.json"))
     quality.add_argument("--baseline", type=Path)
+    initialize = commands.add_parser(
+        "init-production", help="Create private deployment configuration"
+    )
+    initialize.add_argument("directory", type=Path)
+    initialize.add_argument("--hostname", default="localhost")
+    initialize.add_argument("--tenant", action="append", dest="tenants")
+    initialize.add_argument("--daily-limit", type=int, default=1000)
     args = parser.parse_args()
+    if args.command == "init-production":
+        from citestack.deployment import initialize
+
+        print(
+            json.dumps(
+                initialize(
+                    args.directory,
+                    args.hostname,
+                    args.tenants or ["default"],
+                    daily_limit=args.daily_limit,
+                ),
+                indent=2,
+            )
+        )
+        return
     settings = Settings()
     if args.command == "quality":
         from citestack.quality import (

@@ -1,0 +1,76 @@
+# Initialize compose.env with `citestack init-production`; no credentials are in this file.
+services:
+  api:
+    image: ${CITESTACK_IMAGE:-citestack:production}
+    build: .
+    user: "${CITESTACK_RUN_UID:?initialize production}:${CITESTACK_RUN_GID:?initialize production}"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2
+    tmpfs: [/tmp:rw,noexec,nosuid,size=64m]
+    environment:
+      CITESTACK_ENVIRONMENT: production
+      CITESTACK_ALLOWED_HOSTS: ${CITESTACK_PRODUCTION_HOSTS:?initialize production}
+      CITESTACK_TENANT_CONFIG: /app/config/tenants.json
+      CITESTACK_QUOTA_PATH: /app/quotas/quotas.sqlite
+      CITESTACK_OLLAMA_URL: http://ollama:11434
+      CITESTACK_OLLAMA_MODEL: qwen3:4b
+      CITESTACK_MAX_CONCURRENT_REQUESTS: "2"
+      CITESTACK_SHUTDOWN_TIMEOUT: "30"
+      HF_HOME: /app/retrieval-models
+      HF_HUB_OFFLINE: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OMP_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      TOKENIZERS_PARALLELISM: "false"
+    volumes:
+      - ${CITESTACK_DEPLOY_DIR:?initialize production}/config:/app/config:ro
+      - ${CITESTACK_DEPLOY_DIR:?initialize production}/indexes:/app/indexes:ro
+      - ${CITESTACK_DEPLOY_DIR:?initialize production}/retrieval-models:/app/retrieval-models:ro
+      - ${CITESTACK_DEPLOY_DIR:?initialize production}/quotas:/app/quotas
+    restart: unless-stopped
+    stop_grace_period: 40s
+    networks: [backend]
+  proxy:
+    image: nginx:stable-alpine@sha256:dc5069ad14f19660b141b21236140b91656bf89bbc3e2417c70ae650cd66104c
+    user: "${CITESTACK_RUN_UID:?initialize production}:${CITESTACK_RUN_GID:?initialize production}"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 128m
+    cpus: 0.5
+    tmpfs: [/tmp:rw,noexec,nosuid,size=16m]
+    ports: ["${CITESTACK_BIND_IP:-127.0.0.1}:${CITESTACK_HTTPS_PORT:-8443}:8443"]
+    volumes:
+      - ./deploy/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ${CITESTACK_DEPLOY_DIR:?initialize production}/tls:/run/tls:ro
+    depends_on: [api]
+    restart: unless-stopped
+    networks: [backend]
+  ollama:
+    image: ollama/ollama:0.18.2@sha256:5a5d014aa774f78ebe1340c0d4afc2e35afc12a2c3b34c84e71f78ea20af4ba3
+    user: "${CITESTACK_RUN_UID:?initialize production}:${CITESTACK_RUN_GID:?initialize production}"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 256
+    mem_limit: 6g
+    cpus: 2
+    tmpfs: [/tmp:rw,noexec,nosuid,size=512m]
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+      OLLAMA_MODELS: /models
+      HOME: /models
+      OLLAMA_NUM_PARALLEL: "1"
+      OLLAMA_MAX_QUEUE: "2"
+    volumes:
+      - ${CITESTACK_DEPLOY_DIR:?initialize production}/ollama:/models
+    restart: unless-stopped
+    stop_grace_period: 40s
+    networks: [backend]
+networks:
+  backend:

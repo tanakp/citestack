@@ -98,6 +98,9 @@ release. See [backup and recovery](docs/recovery.md) for migration and rollback 
 | Index safety | Validated checksums including FTS data, atomic publication, immutable backups, tested restore, consistent readers |
 | Evaluation | Full-corpus retrieval/abstention and real-model ticket gates, saved failures, versioned references, automatic CI |
 
+[Production deployment](docs/deployment.md) provides a TLS Compose profile and private
+configuration bootstrap.
+
 Production hardening is in progress. See the [operating controls](docs/operations.md)
 and [acceptance plan](docs/production-plan.md) for verified behavior and remaining work.
 
@@ -126,7 +129,14 @@ status, attempt counts, and safe validation diagnostics. See the
 
 ## Evaluation and tests
 
-Measured on the pinned 1,175-page / 24,580-chunk corpus on macOS ARM64,
+The expanded suite over 1,180 pages measures **39/40 source hit@5**, **40/40
+answerable coverage**, and **8/8 abstentions** in each unrelated/private-state category.
+Fresh Linux generation scored **20/20 exact ticket fields and schema-valid successes**.
+See [quality methodology and preserved failures](docs/quality.md). These are authored
+development cases, not held-out accuracy claims.
+
+The original retrieval-strategy comparison below used the earlier 1,175-page /
+24,580-chunk corpus on macOS ARM64,
 using CPU retrieval and the same 20 questions in every mode:
 
 | Retrieval | Hit rate@5 | MRR@5 | Median retrieval latency |
@@ -155,9 +165,11 @@ The default CLI gate requires reranked hit rate@5 of at least 0.8. See
 [evaluation methodology](evals/README.md) for definitions and limits.
 
 CI runs lint, formatting, and isolated unit/API tests on pushes and pull requests.
-The manually triggered **Neural retrieval evaluation** workflow rebuilds the actual
-corpus and runs the quality threshold. Repository branch-protection settings are
-separate; a workflow alone does not prevent every merge.
+Automatic **Quality gates** rebuild the full corpus, enforce retrieval/abstention
+thresholds, and run pinned real-model extraction against versioned references. The
+manual **Neural retrieval evaluation** keeps the four-strategy comparison available.
+**Security and operations** audits locked dependencies, scans Git history for secrets,
+and tests alert rules. Repository branch protection is configured separately.
 
 ## Docker
 
@@ -186,7 +198,7 @@ All settings use the `CITESTACK_` prefix and can be loaded from `.env`.
 | `OLLAMA_URL` | `http://127.0.0.1:11434` | Operator-configured model server |
 | `CONTEXT_TOKENS` | `1600` | Retrieval-tokenizer context allowance |
 | `MIN_RERANK_SCORE` | `0` | Initial relevance cutoff; requires domain calibration |
-| `API_KEY` | unset | Optional `X-API-Key` authentication |
+| `API_KEY` | unset | `X-API-Key` authentication; production requires a key or tenant registry |
 | `MAX_CONCURRENT_REQUESTS` | `2` | Saturation returns 503 + `Retry-After` |
 | `STRUCTURED_MAX_ATTEMPTS` | `2` | Total model attempts for extraction and RAG generation (1–5) |
 
@@ -208,8 +220,11 @@ outside Git; `.env` is ignored.
   tokenizer, not the exact tokenizer of every generation model.
 - Exact vector search is suitable for this demonstrated corpus; larger deployments
   should benchmark ANN indexes and separate storage.
-- Before public exposure, add TLS, gateway rate/body limits, monitoring, and an API key.
-  This project does not implement tenant isolation or a distributed serving platform.
+- The [production profile](docs/deployment.md) supplies TLS, client isolation, persistent
+  admission quotas, and resource limits. Operators still supply certificates, firewall
+  rules, and alert routing. This is a single-host service with planned restart downtime.
+- [Load measurements](docs/capacity.md) and dependency-recovery checks state their hardware
+  and workload limits; they do not establish customer SLAs or distributed capacity.
 - A zero reranker threshold is a starting value, not calibrated confidence. Add
   independently labeled unanswerable questions before relying on abstention behavior.
 

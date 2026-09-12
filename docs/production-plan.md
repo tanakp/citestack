@@ -37,7 +37,7 @@ may be published.
 - [ ] All changes are reviewed against this checklist, pushed to GitHub, and final
   checks pass at the published commit. No broad guarantee rests on a narrow smoke test.
 
-## Current findings
+## Starting findings (before hardening)
 
 1. Missing API keys silently disable authentication, even when serving on all interfaces.
 2. Request validation can echo input values; there is no ingress body cap or rate limit.
@@ -134,3 +134,38 @@ the original Linux report remains in `docs/quality-linux-baseline.json`. A separ
 unit test timing race was removed by giving the overload assertion its own request
 budget after exercising the short timeout. Local checks now pass 169 tests. The
 reference thresholds remain unchanged; fresh Linux verification is required.
+
+## Progress: deployment profile (2026-09-12)
+
+Added `init-production`, a private configuration bootstrap that refuses overwrites,
+generates high-entropy client keys in mode-0600 files, and mounts only their hashes
+into the API. The production Compose profile uses pinned Python/Nginx/Ollama images,
+TLS 1.2/1.3, private backend ports, non-root users, read-only filesystems/model/index
+mounts, persistent quotas, dropped capabilities, and memory/CPU/PID/temporary-space
+limits. The development Compose file no longer injects an empty API key.
+
+The deployment test exercises the actual profile over certificate-verified HTTPS,
+checks effective Docker isolation settings, and verifies quota persistence after an
+API restart. It also checks rootless Ollama startup; the full-corpus quality job runs
+the profile with real RAG models and index mounts. These new container checks require
+fresh Linux execution; local unit/API tests pass 174 cases. See the deployment runbook
+for setup, certificate/key rotation, planned-downtime upgrade, and rollback procedures.
+
+## Progress: security, alerts, and load evidence (2026-09-12)
+
+Fresh Linux structured generation passed 20/20 exact cases at `a01b125`, with the
+original references unchanged. Local unit/API tests now pass 175 cases. A checksum-
+pinned Gitleaks scan found no leaks across all seven existing commits. pip-audit
+2.10.1 found no known advisories in 55 installed third-party packages; the local
+CiteStack package itself is not on PyPI and is not vulnerability-database-audited.
+Both checks now run in CI. Prometheus rule tests pass for unreachable service, error
+ratio, fallback ratio, readiness failure, hold times, recovery, and low-volume cases.
+The alert receiver remains an operator integration, not an active notification claim.
+
+A real-model four-minute HTTP experiment completed 389 cited retrieval answers and
+20 successful tickets; deliberate overload returned 1,128 bounded 503 responses.
+Stopping/restarting the real model process verified liveness, unready status,
+validated fallback and recovery. See the [capacity report](capacity.md) for latency,
+hardware, and limitations. The limited Linux Compose test now also measures a
+60-second two-client real retrieval phase. Deployment, audit CI, final release review,
+required branch checks, and publication verification remain pending.

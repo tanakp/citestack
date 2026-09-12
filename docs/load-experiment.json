@@ -1,0 +1,127 @@
+{
+  "recorded_at": "2026-09-12T14:41:08.446407+00:00",
+  "git_revision": "a01b125bea9458a20a424c1237a8e1db61853779",
+  "dirty_worktree": true,
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "logical_cpus": 10,
+  "python": "3.12.13",
+  "limits": {
+    "api_workers": 2,
+    "torch_threads": 2,
+    "ollama_parallel": 1,
+    "container_cpu_memory_limits": false,
+    "client_rate_limit_raised_for_load": true
+  },
+  "snapshot_id": "3fb41063f1fe6ebaa0095163db2c963eace49b7e0a985427a9c26505aded3c98",
+  "documents": 1180,
+  "ollama_version": {
+    "version": "0.18.2"
+  },
+  "models": {
+    "models": [
+      {
+        "name": "qwen3:4b",
+        "model": "qwen3:4b",
+        "modified_at": "2026-03-16T20:48:00.704846441+03:00",
+        "size": 2497293931,
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M"
+        }
+      }
+    ]
+  },
+  "phases": [
+    {
+      "path": "/v1/answer",
+      "concurrency": 1,
+      "offered_seconds": 60,
+      "elapsed_seconds": 60.419,
+      "requests": 119,
+      "http_statuses": {
+        "200": 119
+      },
+      "outcomes": {},
+      "successful_requests_per_second": 1.97,
+      "success_latency_seconds": {
+        "p50": 0.483,
+        "p95": 0.5575,
+        "max": 1.1047
+      }
+    },
+    {
+      "path": "/v1/answer",
+      "concurrency": 2,
+      "offered_seconds": 60,
+      "elapsed_seconds": 60.244,
+      "requests": 126,
+      "http_statuses": {
+        "200": 126
+      },
+      "outcomes": {},
+      "successful_requests_per_second": 2.091,
+      "success_latency_seconds": {
+        "p50": 0.8399,
+        "p95": 1.6734,
+        "max": 2.1687
+      }
+    },
+    {
+      "path": "/v1/answer",
+      "concurrency": 4,
+      "offered_seconds": 60,
+      "elapsed_seconds": 60.737,
+      "requests": 1266,
+      "http_statuses": {
+        "503": 1128,
+        "200": 138
+      },
+      "outcomes": {},
+      "successful_requests_per_second": 2.272,
+      "success_latency_seconds": {
+        "p50": 0.8372,
+        "p95": 1.1733,
+        "max": 1.2457
+      }
+    },
+    {
+      "path": "/v1/structured/ticket",
+      "concurrency": 1,
+      "offered_seconds": 60,
+      "elapsed_seconds": 62.416,
+      "requests": 20,
+      "http_statuses": {
+        "200": 20
+      },
+      "outcomes": {
+        "success": 20
+      },
+      "successful_requests_per_second": 0.32,
+      "success_latency_seconds": {
+        "p50": 3.104,
+        "p95": 3.3965,
+        "max": 3.4144
+      }
+    }
+  ],
+  "failure_checks": [
+    "liveness_during_model_outage",
+    "readiness_503",
+    "validated_fallback",
+    "recovery_after_model_restart"
+  ],
+  "limitations": [
+    "Local host, not the limited Linux Compose stack",
+    "Closed-loop load has coordinated omission",
+    "Repeated public questions and synthetic tickets",
+    "No long-term soak or quality grading under load"
+  ]
+}

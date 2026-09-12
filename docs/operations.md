@@ -3,9 +3,9 @@
 The production hardening branch targets one API process on one host, with distinct
 client index snapshots. The full deployment/quality acceptance checklist is still
 [in progress](production-plan.md). This document describes the controls already in
-code; TLS deployment, alerting, measured model capacity, and recovery instructions
-will be added before the production release is declared complete. Index backup and
-restore are now documented in the [recovery runbook](recovery.md).
+code. See the [TLS deployment profile](deployment.md), [capacity experiment](capacity.md),
+monitoring integration below, and [recovery runbook](recovery.md). Final Linux deployment
+verification remains a release requirement.
 
 ## Production configuration
 
@@ -122,3 +122,54 @@ behavior, then shuts both down. It does not download a model or test model quali
 CI executes it inside a read-only Docker container with dropped capabilities. Real
 model quality measurements are recorded separately; they are not inferred from this
 transport test. The production acceptance checklist remains the release authority.
+
+## Monitoring integration
+
+Load `deploy/alerts.yml` into your existing Prometheus and adapt
+`deploy/prometheus.example.yml` to its private-network location. Mount an active client
+key at `/run/secrets/metrics-key` as a read-only secret; never embed it in the YAML.
+The external proxy blocks metrics. A monitor must join the private backend network
+and address `api:8000`, or use an equivalently protected internal route. Scrapes use
+GET and do not consume POST quotas. Rotate the scrape credential with the registry.
+
+The rules cover unreachable API metrics (two minutes), repeated readiness failures,
+over 5% HTTP server errors, and over 10% validated output fallbacks. Error/fallback
+ratios require at least 20 observations in five minutes to avoid low-volume noise.
+The normal container health check supplies readiness observations every 30 seconds.
+CI uses Prometheus's `promtool` to test firing, hold time, recovery, and suppression.
+These initial thresholds are operator policies, not established customer SLOs.
+
+Connect your Alertmanager routing and receiver before relying on notifications;
+no notification destination is configured or contacted by this repository. Also
+monitor host disk, memory/OOM events, certificate expiry, and the monitor itself in
+your infrastructure stack. The supplied application rules cannot detect every host
+failure. Prometheus configuration and rule semantics follow the
+[official documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/).
+
+## Incident response
+
+1. **API unavailable:** check container health/exit state and disk availability. Use
+   `/healthz` to distinguish a stopped process from `/readyz` dependency failure.
+   Inspect correlated JSON logs; do not enable raw request or model-prompt logging.
+2. **Readiness/fallback alert:** check `ollama list`, the pinned model digest, server
+   memory and logs. Restore the expected model and verify a synthetic ticket succeeds.
+   A schema-valid fallback is a degraded result, not evidence that generation works.
+3. **503/504 spike:** reduce client concurrency and honor `Retry-After`; check occupied
+   inference slots. A timed-out native worker still holds its slot. Restart only in a
+   planned disruption window after the configured drain; do not multiply API workers
+   without a memory and capacity experiment.
+4. **429 spike:** check the client's UTC daily budget and token bucket. Failed POST
+   attempts also count. Do not delete the quota database to clear an incident.
+5. **Index failure or quality regression:** freeze promotion, run snapshot inspection,
+   restore a verified backup, and rerun the appropriate quality gate. Keep the failed
+   artifact and previous image for diagnosis. Follow [recovery](recovery.md) and
+   [deployment rollback](deployment.md#upgrade-and-rollback).
+6. **Credential exposure:** revoke the digest in the registry, deploy a new random key,
+   and restart API/monitor consumers. Removing a key from Git does not revoke it.
+
+Back up quota state consistently with SQLite's backup API, not a copy of only the
+live main database while WAL writes are active. During disaster recovery, admissions
+after the backup are unknown: preserve the newest intact database or pause affected
+clients until their UTC quota window resets. Never promise exact spend recovery from
+a stale backup. Store quota/credential backups encrypted and test restoration in an
+isolated instance before replacing production state.

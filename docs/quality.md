@@ -108,3 +108,9 @@ This is an application normalization rule, not a relaxed evaluator or lower thre
 Revalidation of the 20 recorded Linux outputs produced 20 correct field sets; that
 replay is not evidence of a new model run. The new CI run must independently verify
 fresh model generation with the corrected validator.
+
+Fresh Linux generation at commit `a01b125` passed at **20/20 exact field matches and
+20/20 schema-valid successes** using the same pinned model and unchanged reference.
+See the [full fresh Linux report](quality-linux-structured.json) and
+[CI run](https://github.com/tanakp/citestack/actions/runs/34698606141). This remains
+a small development regression set, not a held-out general accuracy estimate.

@@ -1,0 +1,68 @@
+rule_files: [alerts.yml]
+evaluation_interval: 1m
+tests:
+  - interval: 1m
+    input_series:
+      - series: 'up{job="citestack",instance="api:8000"}'
+        values: '1 0 0 0 1'
+    alert_rule_test:
+      - eval_time: 2m
+        alertname: CiteStackUnavailable
+        exp_alerts: []
+      - eval_time: 3m
+        alertname: CiteStackUnavailable
+        exp_alerts:
+          - exp_labels: {job: citestack, instance: 'api:8000', severity: critical}
+            exp_annotations:
+              summary: API metrics have been unreachable for two minutes
+              runbook_url: https://github.com/tanakp/citestack/blob/main/docs/operations.md#incident-response
+      - eval_time: 4m
+        alertname: CiteStackUnavailable
+        exp_alerts: []
+  - interval: 1m
+    input_series:
+      - series: 'citestack_http_requests_total{route="/v1/answer",status="503"}'
+        values: '0+2x15'
+      - series: 'citestack_http_requests_total{route="/v1/answer",status="200"}'
+        values: '0+18x15'
+      - series: 'citestack_output_total{operation="ticket",outcome="fallback"}'
+        values: '0+4x15'
+      - series: 'citestack_output_total{operation="ticket",outcome="success"}'
+        values: '0+16x15'
+      - series: 'citestack_http_requests_total{route="/readyz",status="503"}'
+        values: '0+2x15'
+    alert_rule_test:
+      - eval_time: 10m
+        alertname: CiteStackErrors
+        exp_alerts:
+          - exp_labels: {severity: warning}
+            exp_annotations:
+              summary: More than five percent of API requests failed
+              runbook_url: https://github.com/tanakp/citestack/blob/main/docs/operations.md#incident-response
+      - eval_time: 10m
+        alertname: CiteStackFallbacks
+        exp_alerts:
+          - exp_labels: {severity: warning}
+            exp_annotations:
+              summary: More than ten percent of outputs used a fallback
+              runbook_url: https://github.com/tanakp/citestack/blob/main/docs/operations.md#incident-response
+      - eval_time: 5m
+        alertname: CiteStackDependencyUnavailable
+        exp_alerts:
+          - exp_labels: {severity: critical}
+            exp_annotations:
+              summary: Model readiness repeatedly failed
+              runbook_url: https://github.com/tanakp/citestack/blob/main/docs/operations.md#incident-response
+  - interval: 1m
+    input_series:
+      - series: 'citestack_http_requests_total{route="/v1/answer",status="503"}'
+        values: '0 1 1 1 1 1 1 1 1 1 1'
+      - series: 'citestack_output_total{operation="ticket",outcome="fallback"}'
+        values: '0 1 1 1 1 1 1 1 1 1 1'
+    alert_rule_test:
+      - eval_time: 10m
+        alertname: CiteStackErrors
+        exp_alerts: []
+      - eval_time: 10m
+        alertname: CiteStackFallbacks
+        exp_alerts: []

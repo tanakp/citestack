@@ -1,0 +1,31 @@
+groups:
+  - name: citestack
+    rules:
+      - alert: CiteStackUnavailable
+        expr: up{job="citestack"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: API metrics have been unreachable for two minutes
+          runbook_url: https://github.com/tanakp/citestack/blob/main/docs/operations.md#incident-response
+      - alert: CiteStackErrors
+        expr: sum(rate(citestack_http_requests_total{route=~"/v1/.*",status=~"5.."}[5m])) / clamp_min(sum(rate(citestack_http_requests_total{route=~"/v1/.*"}[5m])), 0.001) > 0.05 and sum(increase(citestack_http_requests_total{route=~"/v1/.*"}[5m])) >= 20
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: More than five percent of API requests failed
+          runbook_url: https://github.com/tanakp/citestack/blob/main/docs/operations.md#incident-response
+      - alert: CiteStackFallbacks
+        expr: sum(rate(citestack_output_total{outcome="fallback"}[5m])) / clamp_min(sum(rate(citestack_output_total[5m])), 0.001) > 0.1 and sum(increase(citestack_output_total[5m])) >= 20
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: More than ten percent of outputs used a fallback
+          runbook_url: https://github.com/tanakp/citestack/blob/main/docs/operations.md#incident-response
+      - alert: CiteStackDependencyUnavailable
+        expr: sum(increase(citestack_http_requests_total{route="/readyz",status="503"}[5m])) >= 3
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: Model readiness repeatedly failed
+          runbook_url: https://github.com/tanakp/citestack/blob/main/docs/operations.md#incident-response

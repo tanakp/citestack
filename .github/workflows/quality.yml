@@ -26,11 +26,17 @@ jobs:
       - run: uv run citestack ingest
       - name: Gate full-corpus retrieval and abstention
         run: uv run citestack quality --output data/quality-retrieval.json --baseline evals/retrieval-reference.json
+      - name: Exercise production RAG deployment with immutable index and model mounts
+        run: |
+          docker build -t citestack:ci .
+          PYTHONPATH=src python tests/deployment_smoke.py --rag-index data/index.sqlite --model-cache .cache/huggingface --load-seconds 60
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: retrieval-quality-${{ github.sha }}
-          path: data/quality-retrieval.*
+          path: |
+            data/quality-retrieval.*
+            data/deployment-load.json
           if-no-files-found: warn
   structured-quality:
     runs-on: ubuntu-latest

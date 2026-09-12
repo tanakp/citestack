@@ -30,3 +30,10 @@ jobs:
             --tmpfs /tmp:rw,noexec,nosuid,size=64m \
             -v "$PWD/tests/container_smoke.py:/smoke.py:ro" \
             --entrypoint python citestack:ci /smoke.py
+
+      - name: Exercise production TLS, restart, and container isolation
+        run: PYTHONPATH=src python tests/deployment_smoke.py --check-ollama
+      - name: Verify default development Compose configuration
+        run: |
+          docker compose config --format json > /tmp/development-compose.json
+          python -c "import json; c=json.load(open('/tmp/development-compose.json')); assert c['services']['api']['environment'].get('CITESTACK_API_KEY') is None"
