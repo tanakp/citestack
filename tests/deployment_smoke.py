@@ -254,8 +254,10 @@ def main():
                 Path("data/deployment-load.json").write_text(
                     json.dumps(load_report, indent=2) + "\n"
                 )
-        except Exception:
+        except Exception as error:
             logs = compose("logs", "--no-color")
+            if isinstance(error, subprocess.CalledProcessError):
+                logs += "\n" + (error.stdout or "") + "\n" + (error.stderr or "")
             for key_file in (root / "keys").glob("*.key"):
                 logs = logs.replace(key_file.read_text().strip(), "[redacted]")
             print(logs[-6000:].replace("private-input-sentinel", "[redacted]"))
