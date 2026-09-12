@@ -125,3 +125,12 @@ Local unit/API verification: 165 tests pass. Automated model jobs and eventual r
 branch checks still need confirmation at the published revision. Complete deployment,
 security audit automation, monitoring alerts, measured load limits, and final release
 verification remain outstanding.
+
+The first automatic Linux retrieval gate passed at 39/40 with all abstention and
+provenance checks passing. The structured gate correctly failed at 17/20 versus the
+18/20 reference because three service identifiers included an extra generic noun.
+A source-grounded canonicalization rule now addresses that output contract mismatch;
+the original Linux report remains in `docs/quality-linux-baseline.json`. A separate
+unit test timing race was removed by giving the overload assertion its own request
+budget after exercising the short timeout. Local checks now pass 169 tests. The
+reference thresholds remain unchanged; fresh Linux verification is required.

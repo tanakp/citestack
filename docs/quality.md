@@ -93,3 +93,18 @@ The [accepted retrieval report](quality-retrieval.json) retains the one source-l
 miss. These measured results are from a local run and are not a traffic accuracy SLA,
 a sustained load test, or a security certification. CI verifies the packaged Linux
 configuration separately; model generation can vary across hardware and versions.
+
+## Linux validation and service-name normalization
+
+The first Linux run passed all retrieval gates but produced 17/20 exact ticket matches:
+three outputs appended the generic noun “service” to an otherwise correct identifier.
+The unchanged 18/20 reference correctly rejected that regression. The full
+[Linux failure report](quality-linux-baseline.json) is retained.
+
+The extraction validator now canonicalizes an unquoted, explicitly present lowercase
+identifier phrase such as “catalog service” to “catalog,” verifies complete name
+boundaries (so “cat” cannot match “catalog”), and preserves quoted multiword names.
+This is an application normalization rule, not a relaxed evaluator or lower threshold.
+Revalidation of the 20 recorded Linux outputs produced 20 correct field sets; that
+replay is not evidence of a new model run. The new CI run must independently verify
+fresh model generation with the corrected validator.

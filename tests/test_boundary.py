@@ -251,16 +251,19 @@ def test_request_deadline_returns_504_without_releasing_inference_slot(settings,
             self.retriever = retriever
 
         def answer(self, *args):
-            release.wait(2)
+            release.wait(10)
             return AnswerService(retriever, settings).answer(*args)
 
-    settings.request_timeout = 0.03
+    settings.request_timeout = 0.25
     settings.max_concurrent_requests = 1
     with TestClient(create_app(settings, SlowService())) as client:
         try:
             first = client.post("/v1/answer", json={"question": "Pod containers"})
             assert first.status_code == 504
             assert client.app.state.executor.active == 1
+            # Only the first request tests the short deadline. Admission for the
+            # overload assertion must not race slow CI scheduling or SQLite I/O.
+            settings.request_timeout = 2
             assert client.get("/healthz").status_code == 200
             assert client.post("/v1/answer", json={"question": "Pod containers"}).status_code == 503
         finally:

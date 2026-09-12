@@ -5,7 +5,7 @@ services:
       - "127.0.0.1:8000:8000"
     environment:
       CITESTACK_ANSWER_MODE: ${CITESTACK_ANSWER_MODE:-extractive}
-      CITESTACK_API_KEY: ${CITESTACK_API_KEY:-}
+      CITESTACK_API_KEY:
       CITESTACK_OLLAMA_URL: http://host.docker.internal:11434
       CITESTACK_OLLAMA_MODEL: ${CITESTACK_OLLAMA_MODEL:-qwen3:4b}
     extra_hosts:

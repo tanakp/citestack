@@ -113,3 +113,32 @@ def test_cli_extraction_without_models_or_index(tmp_path):
     assert result.returncode == 2
     payload = json.loads(result.stdout)
     assert payload["status"] == "fallback" and payload["attempts"] == 1
+
+
+def test_generic_service_noun_is_canonicalized_from_original_text(settings):
+    payload = {**TICKET, "affected_services": ["catalog service"]}
+    extractor = TicketExtractor(settings, StructuredOutputEngine(lambda _: json.dumps(payload)))
+    result = extractor.extract("The catalog service is down for all customers.")
+    assert result.status == "success" and result.data.affected_services == ["catalog"]
+
+
+@pytest.mark.parametrize(
+    "name,text",
+    [
+        ("cat", "The catalog service is down."),
+        ("checkout", "The checkout-prod service is down."),
+    ],
+)
+def test_partial_service_name_cannot_pass_grounding(settings, name, text):
+    payload = {**TICKET, "affected_services": [name]}
+    extractor = TicketExtractor(
+        settings, StructuredOutputEngine(lambda _: json.dumps(payload), max_attempts=1)
+    )
+    assert extractor.extract(text).status == "fallback"
+
+
+def test_quoted_multiword_service_name_is_preserved(settings):
+    payload = {**TICKET, "affected_services": ["customer service"]}
+    extractor = TicketExtractor(settings, StructuredOutputEngine(lambda _: json.dumps(payload)))
+    result = extractor.extract('The "customer service" application is down.')
+    assert result.status == "success" and result.data.affected_services == ["customer service"]

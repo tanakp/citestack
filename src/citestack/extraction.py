@@ -1,6 +1,7 @@
 """A small, usable structured-output application independent of the RAG index."""
 
 import json
+import re
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -72,9 +73,24 @@ class TicketExtractor:
 
         def validate(ticket: SupportTicket):
             if any(
-                service.casefold() not in text.casefold() for service in ticket.affected_services
+                not re.search(r"(?<![\w-])" + re.escape(service) + r"(?![\w-])", text, re.I)
+                for service in ticket.affected_services
             ):
-                raise ValueError("Affected service must appear in the input")
+                raise ValueError("Affected service must appear as a complete name in the input")
+            # Normalize only explicit identifier + generic noun phrases from the
+            # original text. Quoted multiword names and other output stay unchanged.
+            identifiers = {
+                match[0].casefold(): match[1]
+                for match in re.finditer(
+                    r'(?<![\w\-"\'])([a-z][a-z0-9_-]*) service\b(?!["\'])', text
+                )
+            }
+            ticket.affected_services = list(
+                dict.fromkeys(
+                    identifiers.get(service.casefold(), service)
+                    for service in ticket.affected_services
+                )
+            )
 
         return self.engine.run(
             SupportTicket,
